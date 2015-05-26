@@ -221,11 +221,11 @@ void Artikeldialog::testeAenderePreis(Artikel *artikel){
 * @details Autom Test Fkt
 */
 void Artikeldialog::testeAlles(){
-	int artikelNr= TESTNR;
+	int artikelNr = TESTNR;
 	string beschreibung = TESTBEZ;
 	int bestand = TESTBESTAND;
 	double preis= TESTPREIS;
-	Artikel* artikel(artikelNr,beschreibung,bestand);
+	Artikel* artikel(artikelNr, beschreibung, bestand);
 
 	cout << endl << "Starte alle Tests..." << endl;
 	testeConstructor1(artikelNr, beschreibung, preis);

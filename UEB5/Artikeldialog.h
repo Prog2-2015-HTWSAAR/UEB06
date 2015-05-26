@@ -23,7 +23,7 @@
 #define TESTAENDERUNG 5
 #define TESTABGANG 23
 #define TESTZUGANG 21
-
+#define BIGNUMBER 10000
 class Artikeldialog {
 public:
 	const string  ARTIKELNUMMER = "Artikelnummer: ";
