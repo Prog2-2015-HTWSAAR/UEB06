@@ -13,8 +13,44 @@
 #define ARTIKELDIALOG_H_
 #include "Artikel.h"
 #include <iostream>
+#define TESTNR 4711
+#define TESTBEZ "Wasser"
+#define NEUBEZ "Koelsch-Wasser"
+#define TESTBESTAND 42
+#define NEUBESTAND 40
+#define TESTPREIS 13.37
+#define NEUPREIS 137.70
+#define TESTAENDERUNG 5
+#define TESTABGANG 23
+#define TESTZUGANG 21
+
 class Artikeldialog {
 public:
+	const string  ARTIKELNUMMER = "Artikelnummer: ";
+	const string BEZEICHNUNG = "\nBezeichnung: ";
+	const string ARTIKELPREIS = "\nArtikelpreis: ";
+	const string BESTAND = "\naktl. Bestand: ";
+	const string SEPERATOR = "-------------------------------";
+	const string NEWPHRASE = "Neuer";
+	const string DIALOGOPTIONONE = "(1) Automatischer Test";
+	const string DIALOGOPTIONTWO = "(2) Manueller Test mit Bestandsangabe";
+	const string DIALOGOPTIONTHREE = "(3) Manueller Test ohne Bestandsangabe";
+	const string STANDARDEXITOPTION = "(0) -EXIT/BACK-";
+	const string STANDARDCHOICEPHRASE = "Waehlen sie eine Option : ";
+	const string MANUELLDIALOGOPTIONONE = "(1) SET - Bezeichnung";
+	const string MANUELLDIALOGOPTIONTWO = "(2) SET - ArtikelPreis";
+	const string MANUELLDIALOGOPTIONTHREE = "(3) SET - Bestand";
+	const string MANUELLDIALOGOPTIONFOUR = "(4) Aendere Preis (%)";
+	const string MANUELLDIALOGOPTIONFIVE = "(5) BUCHE - Abgang";
+	const string MANUELLDIALOGOPTIONSIX = "(6) BUCHE - Zugang";
+	const string PRICECHANGEPHRASE = "Preisaenderung (%): ";
+	const string INPUTERRORPHRASE = "-> FEHLERHAFTE EINGABE <-";
+	const string WITHOUTPHRASE = "ohne Bestand...";
+	const string RUNTESTCONSTRUCTORPHRASE = "Starte Test zum Erstellen eines Artikels";
+	const string USEVALUESPHRASE = "Nutze folgende Werte : ";
+	const string VALUEPHRASE = "Wert: ";
+	const string CREATEARTIKELPHRASE = "Erstellter Artikel:";
+	const string ERRORPHRASE = "Fehler: ";
 	Artikeldialog();
 	virtual ~Artikeldialog();
 	/**
@@ -97,6 +133,5 @@ public:
 	 */
 	void leereEingabe();
 };
-
 #endif /* ARTIKELDIALOG_H_ */
 

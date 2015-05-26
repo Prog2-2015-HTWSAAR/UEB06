@@ -14,6 +14,21 @@ using namespace std;
 */
 class Artikel {
 public:
+	const int LOWERBORDERARTIKELNUMMER = 1000;
+	const int UPPERBORDERARTIKELNUMMER = 9999;
+	const string ARTIKELNUMMER = "Artikelnummer: ";
+	const string BEZEICHNUNG = "Bezeichnung: ";
+	const string ARTIKELPREIS = "Artikelpreis: ";
+	const string BESTAND = "Bestand: ";
+	const string THROWARTIKELNUMMERERROR = "Die Artikelnummer muss eine 4-stellige positive Zahl sein!";
+	const string THROWBEZEICHNUNGERROR = "Die Bezeichnung eines Artikels darf nicht leer sein!";
+	const string THROWBESTANDERROR = "Der Bestand darf nie negativ sein!";
+	const string THROWPREISERROR = "Der Preis darf nie null oder negativ sein!";
+	const string THROWONLYPOSITIVEALLOWEDERROR = "Es duerfen nur positive Mengen gebucht werden!";
+	const string THROWBESTANDREDUCEERROR = "Es koennen nicht mehr Artikel abgebucht werden als vorhanden!";
+	const string THROWCHARGETOODAMNHIGHERROR = "This change is too damn High!";
+	const string THROWZEROORNANERROR = "0 or NaN Forbidden";
+
 	/**
 	* @brief Konstruktor mit 4 Parametern
 	* @details Konstruktor zur Erzeugung eines Artikel Obj mit Bestandsangabe
@@ -65,7 +80,7 @@ public:
 	 * @brief Preisaenderung
 	 * @param preisaenderung in Prozent (max. 99%)
 	 */
-	void aenderePreis(double preisAenderung);
+	void aenderePreis(double preisaenderung);
 	/**
 	* @brief get Artikelnummer
 	* @return artikelNr

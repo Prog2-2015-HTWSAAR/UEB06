@@ -9,7 +9,7 @@
 * Artikel Funktionen
 *
 */
-
+#include <sstream>
 #include "Artikel.h"
 #include <cmath>
 /**
@@ -20,15 +20,14 @@
 * @param artikelPreis darf nicht negativ sein!
 */
 Artikel::Artikel(int artikelNr, string bezeichnung, double artikelPreis){
-	if (artikelNr < 1000  || artikelNr > 9999) {
-		throw "Die Artikelnummer muss eine 4-stellige positive Zahl sein!";
+	if (artikelNr < LOWERBORDERARTIKELNUMMER || artikelNr > UPPERBORDERARTIKELNUMMER) {
+		throw THROWARTIKELNUMMERERROR;
 	}
-
 	if (bezeichnung.empty()){
-		throw "Die Bezeichnung eines Artikels darf nicht leer sein!";
+		throw THROWBEZEICHNUNGERROR;
 	}
 	if(artikelPreis <= 0){
-			throw "Der Preis darf nie null oder negativ sein!";
+		throw THROWPREISERROR;
 		}
 	this->artikelNr = artikelNr;
 	this->bezeichnung = bezeichnung;
@@ -43,19 +42,19 @@ Artikel::Artikel(int artikelNr, string bezeichnung, double artikelPreis){
 * @param artikelPreis darf nicht negativ sein!
 * @param bestand darf nicht negativ sein!
 */
-Artikel::Artikel(int artikelNr, string bezeichnung, double artikelPreis, int bestand){
-	if (artikelNr < 1000  || artikelNr > 9999) {
-		throw "Die Artikelnummer muss eine 4-stellige positive Zahl sein!";
-	}
 
+Artikel::Artikel(int artikelNr, string bezeichnung, double artikelPreis, int bestand){
+	if (artikelNr < LOWERBORDERARTIKELNUMMER || artikelNr > UPPERBORDERARTIKELNUMMER) {
+		throw THROWARTIKELNUMMERERROR;
+	}
 	if (bezeichnung.empty()){
-		throw "Die Bezeichnung eines Artikels darf nicht leer sein!";
+		throw THROWBEZEICHNUNGERROR;
 	}
 	if (bestand < 0){
-		throw "Der Bestand darf nie negativ sein!";
+		throw THROWBESTANDERROR;
 	}
 	if(artikelPreis <= 0){
-		throw "Der Preis darf nie null oder negativ sein!";
+		throw THROWPREISERROR;
 	}
 	this->artikelNr = artikelNr;
 	this->bezeichnung = bezeichnung;
@@ -71,7 +70,7 @@ Artikel::Artikel(int artikelNr, string bezeichnung, double artikelPreis, int bes
 */
 void Artikel::bucheZugang(int menge){
 	if(menge <= 0){
-		throw "Es duerfen nur positive Mengen gebucht werden!";
+		throw THROWONLYPOSITIVEALLOWEDERROR;
 	}
 
 	bestand += menge;
@@ -83,10 +82,10 @@ void Artikel::bucheZugang(int menge){
 */
 void Artikel::bucheAbgang(int menge){
 	if(menge <= 0){
-		throw "Es duerfen nur positive Mengen gebucht werden!";
+		throw THROWONLYPOSITIVEALLOWEDERROR;
 	}
 	if (bestand - menge < 0){
-		throw "Es koennen nicht mehr Artikel abgebucht werden als vorhanden!";
+		throw THROWBESTANDREDUCEERROR;
 	}
 	bestand -= menge;
 }
@@ -97,7 +96,7 @@ void Artikel::bucheAbgang(int menge){
 */
 void Artikel::setBestand(int neuBestand){
 	if (neuBestand < 0){
-		throw "Der Bestand darf nie negativ sein!";
+		throw THROWBESTANDERROR;
 	}
 	bestand = neuBestand;
 
@@ -109,7 +108,7 @@ void Artikel::setBestand(int neuBestand){
 */
 void Artikel::setBezeichnung(string neuBezeichnung){
 	if (neuBezeichnung.empty()){
-		throw "Die Bezeichnung eines Artikels darf nicht leer sein!";
+		throw THROWBEZEICHNUNGERROR;
 	}
 	bezeichnung = neuBezeichnung;
 }
@@ -119,7 +118,7 @@ void Artikel::setBezeichnung(string neuBezeichnung){
 */
 void Artikel::setPreis(double neuPreis){
 	if(neuPreis < 0){
-		throw "Der Preis darf nie negativ sein!";
+		throw THROWPREISERROR;
 	}
 	artikelPreis=round(neuPreis*100)/100.0; // auf zwei stellen runden
 }
@@ -127,15 +126,21 @@ void Artikel::setPreis(double neuPreis){
  * @brief Preisaenderung
  * @param preisaenderung in Prozent (max. 99%)
  */
-void Artikel::aenderePreis(double preisAenderung){
-	if (abs(preisAenderung) > 100 ){
-		throw "This change is too damn High!";
-	}	if (abs(preisAenderung) == 0){
-		throw "0 or NaN Forbidden";
+void Artikel::aenderePreis(double preisaenderung){
+	if (abs(preisaenderung) > 100 ){
+		throw THROWCHARGETOODAMNHIGHERROR;
+	}	if (abs(preisaenderung) == 0){
+		throw THROWZEROORNANERROR;
 	}
-	artikelPreis*=(1+(preisAenderung/100));
+	artikelPreis*=(1+(preisaenderung/100));
 	artikelPreis=round(artikelPreis*100)/100;
 }
-virtual string toString() const{
-	//TODO implement this method
+
+string Artikel::toString() const {
+	ostringstream o;
+	o << ARTIKELNUMMER << artikelNr << "\t"
+	  << BEZEICHNUNG << bezeichnung << "\t "
+	  << ARTIKELPREIS << artikelPreis << "\t"
+	  << BESTAND << bestand;
+	return o.str();
 }

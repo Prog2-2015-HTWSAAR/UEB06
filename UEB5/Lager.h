@@ -13,6 +13,8 @@
  */
 class Lager {
 public:
+	const string MUSTERLAGER = "Musterlager";
+	const int ARTIKELANZAHL = 0;
 	/**
 	 * @brief Konstruktor ohne Namensangabe
 	 *

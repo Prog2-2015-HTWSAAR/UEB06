@@ -6,21 +6,20 @@
  */
 
 #include "Lager.h"
-
 Lager::Lager(int maxAnzArtikel) {
-	this->anzArtikel = 0;
+	this->anzArtikel = ARTIKELANZAHL;
 	this->maxAnzArtikel = maxAnzArtikel;
-	this->name = "Musterlager";
+	this->name = MUSTERLAGER;
 	this->artikelTab = new Artikel*[maxAnzArtikel];
 }
 Lager::Lager(int maxAnzArtikel, string name){
-	this->anzArtikel = 0;
+	this->anzArtikel = ARTIKELANZAHL;
 	this->maxAnzArtikel = maxAnzArtikel;
 	this->name = name;
 	this->artikelTab = new Artikel*[maxAnzArtikel];
 }
 Lager::~Lager() {
-	loescheAlleArtikel();
+	// TODO Auto-generated destructor stub
 }
 
 void Lager::createArtikel(int artikelNr, string bezeichnung, double artikelPreis){

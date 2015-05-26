@@ -14,17 +14,6 @@
 #include "Artikel.h"
 #include <iostream>
 
-#define TESTNR 4711
-#define TESTBEZ "Wasser"
-#define NEUBEZ "Koelsch-Wasser"
-#define TESTBESTAND 42
-#define NEUBESTAND 40
-#define TESTPREIS 13.37
-#define NEUPREIS 137.70
-#define TESTAENDERUNG 5
-#define TESTABGANG 23
-#define TESTZUGANG 21
-#define BIGNUMBER 10000
 
 Artikeldialog::Artikeldialog(){
 	// Nothing to do here
@@ -35,10 +24,10 @@ Artikeldialog::~Artikeldialog(){
 }
 
 void Artikeldialog::ausgeben(const Artikel& artikel){
-	cout << "Artikelnummer: " << artikel.getArtikelNr()
-			<< "\nBezeichnung: " << artikel.getBezeichnung()
-				<< "\nArtikelpreis: " << artikel.getArtikelPreis()
-					<< "\naktl. Bestand: " << artikel.getBestand() << endl;
+	cout << ARTIKELNUMMER << artikel.getArtikelNr()
+		 << BEZEICHNUNG << artikel.getBezeichnung()
+		 << ARTIKELPREIS << artikel.getArtikelPreis()
+		 << BESTAND << artikel.getBestand() << endl;
 }
 
 /**
@@ -47,18 +36,19 @@ void Artikeldialog::ausgeben(const Artikel& artikel){
 * @param bezeichnung Bezeichnung des neuen Obj
 * @param artikelpreis
 */
+
 void Artikeldialog::testeConstructor1(int artikelNr, string bezeichnung, double artikelpreis){
-	cout << endl << "Starte Test zum Erstellen eines Artikels ohne Bestand..." << endl;
-	cout << "Nutze folgende Werte:" << endl;
-	cout << "Artikelnummer:  " << artikelNr << endl;
-	cout << "Bezeichnung: " << bezeichnung << endl;
-	cout << "Artikelpreis: " << artikelpreis << endl;
+	cout << endl << RUNTESTCONSTRUCTORPHRASE << WITHOUTPHRASE << endl;
+	cout << USEVALUESPHRASE << endl;
+	cout << ARTIKELNUMMER << artikelNr << endl;
+	cout << BEZEICHNUNG << bezeichnung << endl;
+	cout << ARTIKELPREIS << artikelpreis << endl;
 	try{
 		Artikel artikel(artikelNr,bezeichnung,artikelpreis);
-		cout << endl << "Erstellter Artikel:" << endl;
+		cout << endl << CREATEARTIKELPHRASE << endl;
 		ausgeben(artikel);
 	} catch (const char* e) {
-		cout << "Fehler: " << e << endl;
+		cout << ERRORPHRASE << e << endl;
 	}
 
 }
@@ -70,19 +60,19 @@ void Artikeldialog::testeConstructor1(int artikelNr, string bezeichnung, double 
 */
 void Artikeldialog::testeConstructor2(int artikelNr, string bezeichnung, double artikelpreis, int bestand){
 
-	cout << endl << "Starte Test zum Erstellen eines Artikels mit Bestand..." << endl;
-	cout << "Nutze folgende Werte:" << endl;
-	cout << "Artikelnummer:  "<< artikelNr << endl;
-	cout << "Bezeichnung: " << bezeichnung << endl;
-	cout << "Artikelpreis: " << artikelpreis << endl;
-	cout << "Bestand: " << bestand << endl;
+	cout << endl << RUNTESTCONSTRUCTORPHRASE << endl;
+	cout << USEVALUESPHRASE << endl;
+	cout << ARTIKELNUMMER << artikelNr << endl;
+	cout << BEZEICHNUNG << bezeichnung << endl;
+	cout << ARTIKELPREIS << artikelpreis << endl;
+	cout << BESTAND << bestand << endl;
 
 	try {
 		Artikel artikel(artikelNr,bezeichnung,artikelpreis,bestand);
-		cout << endl << "Erstellter Artikel:" << endl;
+		cout << endl << CREATEARTIKELPHRASE << endl;
 		ausgeben(artikel);
 	} catch (const char* e) {
-		cout << "Fehler: " << e << endl;
+		cout << ERRORPHRASE << e << endl;
 	}
 
 }
@@ -106,7 +96,7 @@ void Artikeldialog::testeBucheAbgang(Artikel *artikel){
 		cout << endl << "Artikel nach Abgang:" << endl;
 		ausgeben(*artikel);
 	} catch (const char* e) {
-		cout << "Fehler: " << e << endl;
+		cout << ERRORPHRASE << e << endl;
 	}
 }
 
@@ -130,7 +120,7 @@ void Artikeldialog::testeBucheZugang(Artikel *artikel){
 		cout << endl << "Artikel nach Zugang:" << endl;
 		ausgeben(*artikel);
 	} catch (const char* e) {
-		cout << "Fehler: " << e << endl;
+		cout << ERRORPHRASE << e << endl;
 	}
 
 }
@@ -154,7 +144,7 @@ void Artikeldialog::testeSetBezeichnung(Artikel *artikel){
 		cout << endl << "Artikel nachher:" << endl;
 		ausgeben(*artikel);
 	} catch (const char* e) {
-		cout << "Fehler: " << e << endl;
+		cout << ERRORPHRASE << e << endl;
 	}
 
 }
@@ -178,7 +168,7 @@ void Artikeldialog::testeSetBestand(Artikel *artikel){
 		cout << endl << "Artikel nachher:" << endl;
 		ausgeben(*artikel);
 	} catch (const char* e) {
-		cout << "Fehler: " << e << endl;
+		cout << ERRORPHRASE << e << endl;
 	}
 
 }
@@ -200,7 +190,7 @@ void Artikeldialog::testeSetPreis(Artikel *artikel){
 		cout << endl << "Artikel nachher:" << endl;
 		ausgeben(*artikel);
 	} catch (const char* e) {
-		cout << "Fehler: " << e << endl;
+		cout << ERRORPHRASE << e << endl;
 	}
 
 }
@@ -223,7 +213,7 @@ void Artikeldialog::testeAenderePreis(Artikel *artikel){
 		cout << endl << "Artikel nach Zugang:" << endl;
 		ausgeben(*artikel);
 	} catch (const char* e) {
-		cout << "Fehler: " << e << endl;
+		cout << ERRORPHRASE << e << endl;
 	}
 }
 /**
@@ -254,17 +244,16 @@ void Artikeldialog::testeAlles(){
 void Artikeldialog::dialog(){
 	int answer;
 	do {
-		cout << "-------------------------------" << endl;
-		cout << "(1) Automatischer Test" << endl;
-		cout << "(2) Manueller Test mit Bestandsangabe" << endl;
-		cout << "(3) Manueller Test ohne Bestandsangabe" << endl;
-		cout << "(0) -EXIT-" << endl << endl;
-		cout << "Waehlen sie eine Option: ";
+		cout << SEPERATOR << endl;
+		cout << DIALOGOPTIONONE << endl;
+		cout << DIALOGOPTIONTWO << endl;
+		cout << DIALOGOPTIONTHREE << endl;
+		cout << STANDARDEXITOPTION << endl << endl;
+		cout << STANDARDCHOICEPHRASE;
 		cin >> answer;
 		try {
 			switch (answer){
 				case 0:
-					cout << "ENDE" << endl;
 					break;
 				case 1:
 					testeAlles();
@@ -276,10 +265,10 @@ void Artikeldialog::dialog(){
 					createArtikelOhneBestand();
 					break;
 				default:
-					cout << "-> FEHLERHAFTE EINGABE <-" << endl;
+					cout << INPUTERRORPHRASE << endl;
 			}
 		} catch (const char* e) {
-			cout << "Fehler: " << e << endl;
+			cout << ERRORPHRASE << e << endl;
 		}
 	} while (answer != 0);
 }
@@ -293,15 +282,15 @@ void Artikeldialog::createArtikelMitBestand(){
 	string bezeichnung="";
 	double artikelPreis=0.0;
 	int bestand = 0;
-	cout << "Artikel Erstellen" << endl << "Artikel Nr: ";
+	cout << CREATEARTIKELPHRASE << endl << ARTIKELNUMMER;
 	cin >> artikelNr;
 	leereEingabe();
-	cout << "Bezeichnung: ";
+	cout << BEZEICHNUNG;
 	cin >> bezeichnung;
-	cout << "Artikelpreis: ";
+	cout << ARTIKELPREIS;
 	cin >> artikelPreis;
 	leereEingabe();
-	cout << "Bestand: ";
+	cout << BESTAND;
 	cin >> bestand;
 	leereEingabe();
 	Artikel artikel(artikelNr, bezeichnung, artikelPreis, bestand);
@@ -316,12 +305,12 @@ void Artikeldialog::createArtikelOhneBestand(){
 	int artikelNr=0;
 	string bezeichnung="";
 	int artikelPreis=0;
-	cout << "Artikel Erstellen" << endl << "Artikel Nr: ";
+	cout << CREATEARTIKELPHRASE << endl << ARTIKELNUMMER;
 	cin >> artikelNr;
 	leereEingabe();
-	cout << "Bezeichnung: ";
+	cout << BEZEICHNUNG;
 	cin >> bezeichnung;
-	cout << "Artikelpreis: ";
+	cout << ARTIKELPREIS;
 	cin >> artikelPreis;
 	leereEingabe();
 	Artikel artikel(artikelNr, bezeichnung,artikelPreis);
@@ -338,59 +327,59 @@ void Artikeldialog::manuell(Artikel artikel){
 	int menge=0;
 	string bezeichnung;
 	do {
-		cout << "-------------------------------" << endl;
-		cout << "Artikel Nr: " << artikel.getArtikelNr() << endl;
-		cout << "Bezeichnung: " << artikel.getBezeichnung() << endl;
-		cout << "Preis: " << artikel.getArtikelPreis() << endl;
-		cout << "Bestand: " << artikel.getBestand() << endl;
-		cout << "-------------------------------" << endl;
-		cout << "(1) SET - Bezeichnung" << endl;
-		cout << "(2) SET - ArtikelPreis" << endl;
-		cout << "(3) SET - Bestand" << endl << endl;
-		cout << "(4) Aendere Preis (%)" << endl;
-		cout << "(5) BUCHE - Abgang" << endl;
-		cout << "(6) BUCHE - Zugang" << endl << endl;
-		cout << "(0) -BACK and delete Data-" << endl << endl;
-		cout << "Waehlen sie eine Option: ";
+		cout << SEPERATOR << endl;
+		cout << ARTIKELNUMMER << artikel.getArtikelNr() << endl;
+		cout << BEZEICHNUNG << artikel.getBezeichnung() << endl;
+		cout << ARTIKELPREIS << artikel.getArtikelPreis() << endl;
+		cout << BESTAND << artikel.getBestand() << endl;
+		cout << SEPERATOR << endl;
+		cout << MANUELLDIALOGOPTIONONE << endl;
+		cout << MANUELLDIALOGOPTIONTHREE << endl;
+		cout << MANUELLDIALOGOPTIONTHREE << endl << endl;
+		cout << MANUELLDIALOGOPTIONFOUR << endl;
+		cout << MANUELLDIALOGOPTIONFIVE << endl;
+		cout << MANUELLDIALOGOPTIONSIX << endl << endl;
+		cout << STANDARDEXITOPTION << endl << endl;
+		cout << STANDARDCHOICEPHRASE;
 		cin >> answer;
 		try {
 			switch (answer){
 				case 0:
 					break;
 				case 1:
-					cout << "Bezeichnung: ";
+					cout << BEZEICHNUNG;
 					cin >> bezeichnung;
 					artikel.setBezeichnung(bezeichnung);
 					break;
 				case 2:
-					cout << "Neuer Preis: ";
+					cout << NEWPHRASE << ARTIKELPREIS;
 					cin >> preis;
 					artikel.setPreis(preis);
 					break;
 				case 3:
-					cout << "Neubestand: ";
+					cout << NEWPHRASE << BESTAND;
 					cin >> menge;
 					artikel.setBestand(menge);
 					break;
 				case 4:
-					cout << "Preisaenderung (%): ";
+					cout << PRICECHANGEPHRASE;
 					cin >> preis;
 					artikel.aenderePreis(preis);
 					break;
 				case 5:
-					cout << "Wert: ";
+					cout << VALUEPHRASE;
 					cin >> menge;
 					artikel.bucheAbgang(menge);
 					break;
 				case 6:
-					cout << "Wert: ";
+					cout << VALUEPHRASE;
 					cin >> menge;
 					artikel.bucheZugang(menge);
 					break;
-				default: cout << "-> FEHLERHAFTE EINGABE <-" << endl;
+				default: cout << INPUTERRORPHRASE << endl;
 			}
 		} catch (const char* e) {
-			cout << endl << "Fehler: " << e << endl << endl;
+			cout << endl << ERRORPHRASE << e << endl << endl;
 		}
 		leereEingabe();
 	} while (answer != 0);
@@ -404,3 +393,4 @@ void Artikeldialog::leereEingabe(){
 	cin.clear();
 	cin.ignore(BIGNUMBER, '\n');
 }
+
