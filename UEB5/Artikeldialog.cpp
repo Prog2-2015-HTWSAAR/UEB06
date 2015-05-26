@@ -24,7 +24,7 @@
 #define TESTAENDERUNG 5
 #define TESTABGANG 23
 #define TESTZUGANG 21
-
+#define BIGNUMBER 10000
 
 Artikeldialog::Artikeldialog(){
 	// Nothing to do here
@@ -91,7 +91,7 @@ void Artikeldialog::testeConstructor2(int artikelNr, string bezeichnung, double 
 * @details Autom Test Buche Abgang Bestand
 * @param artikel Artikel obj
 */
-void Artikeldialog::testeBucheAbgang(Artikel artikel){
+void Artikeldialog::testeBucheAbgang(Artikel *artikel){
 	int menge = TESTABGANG;
 
 	cout << endl << "Starte Test zur Buchung eines Abgangs..." << endl;
@@ -99,12 +99,12 @@ void Artikeldialog::testeBucheAbgang(Artikel artikel){
 	cout << "Der Abgang umfasst "<< menge << " Artikel!" << endl;
 
 	cout << "Artikel vor Abgang:" << endl;
-	ausgeben(artikel);
+	ausgeben(*artikel);
 
 	try {
-		artikel.bucheAbgang(menge);
+		artikel->bucheAbgang(menge);
 		cout << endl << "Artikel nach Abgang:" << endl;
-		ausgeben(artikel);
+		ausgeben(*artikel);
 	} catch (const char* e) {
 		cout << "Fehler: " << e << endl;
 	}
@@ -115,7 +115,7 @@ void Artikeldialog::testeBucheAbgang(Artikel artikel){
 * @details Autom Test Buche Zugang Bestand
 * @param artikel Artikel obj
 */
-void Artikeldialog::testeBucheZugang(Artikel artikel){
+void Artikeldialog::testeBucheZugang(Artikel *artikel){
 	int menge=TESTZUGANG;
 
 	cout << endl << "Starte Test zur Buchung eines Zugangs..." << endl;
@@ -123,12 +123,12 @@ void Artikeldialog::testeBucheZugang(Artikel artikel){
 	cout << "Der Zugang umfasst " << menge << " Artikel!" << endl;
 
 	cout << "Artikel vor Zugang:" << endl;
-	ausgeben(artikel);
+	ausgeben(*artikel);
 
 	try {
-		artikel.bucheZugang(menge);
+		artikel->bucheZugang(menge);
 		cout << endl << "Artikel nach Zugang:" << endl;
-		ausgeben(artikel);
+		ausgeben(*artikel);
 	} catch (const char* e) {
 		cout << "Fehler: " << e << endl;
 	}
@@ -140,19 +140,19 @@ void Artikeldialog::testeBucheZugang(Artikel artikel){
 * @details Autom Test Setze Bezeichnung
 * @param artikel Artikel obj
 */
-void Artikeldialog::testeSetBezeichnung(Artikel artikel){
+void Artikeldialog::testeSetBezeichnung(Artikel *artikel){
 	string bezeichnung = NEUBEZ;
 	cout << endl << "Starte Test zum Setzen der Bezeichnung eines Artikels..." << endl;
 
 	cout << "Die neue Bezeichnung soll " << bezeichnung << " sein!" << endl;
 
 	cout << "Artikel vorher:" << endl;
-	ausgeben(artikel);
+	ausgeben(*artikel);
 
 	try {
-		artikel.setBezeichnung(bezeichnung);
+		artikel->setBezeichnung(bezeichnung);
 		cout << endl << "Artikel nachher:" << endl;
-		ausgeben(artikel);
+		ausgeben(*artikel);
 	} catch (const char* e) {
 		cout << "Fehler: " << e << endl;
 	}
@@ -164,19 +164,19 @@ void Artikeldialog::testeSetBezeichnung(Artikel artikel){
 * @details Autom Test Setze Bestand
 * @param artikel Artikel obj
 */
-void Artikeldialog::testeSetBestand(Artikel artikel){
+void Artikeldialog::testeSetBestand(Artikel *artikel){
 	int bestand = NEUBESTAND;
 	cout << endl << "Starte Test zum Setzen des Bestands eines Artikels..." << endl;
 
 	cout << "Der neue Bestand soll " << bestand << " sein!" << endl;
 
 	cout << "Artikel vorher:" << endl;
-	ausgeben(artikel);
+	ausgeben(*artikel);
 
 	try {
-		artikel.setBestand(bestand);
+		artikel->setBestand(bestand);
 		cout << endl << "Artikel nachher:" << endl;
-		ausgeben(artikel);
+		ausgeben(*artikel);
 	} catch (const char* e) {
 		cout << "Fehler: " << e << endl;
 	}
@@ -186,19 +186,19 @@ void Artikeldialog::testeSetBestand(Artikel artikel){
  * @brief Test des Setzens des Preises eines Artikels
  * @param artikel
  */
-void Artikeldialog::testeSetPreis(Artikel artikel){
+void Artikeldialog::testeSetPreis(Artikel *artikel){
 	double preis = NEUPREIS;
 	cout << endl << "Starte Test zum Setzen des Preises eines Artikels..." << endl;
 
 	cout << "Der neue Preis soll " << preis << " sein!" << endl;
 
 	cout << "Artikel vorher:" << endl;
-	ausgeben(artikel);
+	ausgeben(*artikel);
 
 	try {
-		artikel.setPreis(preis);
+		artikel->setPreis(preis);
 		cout << endl << "Artikel nachher:" << endl;
-		ausgeben(artikel);
+		ausgeben(*artikel);
 	} catch (const char* e) {
 		cout << "Fehler: " << e << endl;
 	}
@@ -208,7 +208,7 @@ void Artikeldialog::testeSetPreis(Artikel artikel){
  * @brief Test der Aenderung eines Preises
  * @param artikel
  */
-void Artikeldialog::testeAenderePreis(Artikel artikel){
+void Artikeldialog::testeAenderePreis(Artikel *artikel){
 	double preisaenderung=TESTAENDERUNG;
 
 	cout << endl << "Starte Test zur Aenderung des Preises..." << endl;
@@ -216,12 +216,12 @@ void Artikeldialog::testeAenderePreis(Artikel artikel){
 	cout << "Der Preis aendert sich um " << preisaenderung << " Prozent!" << endl;
 
 	cout << "Artikel vor Zugang:" << endl;
-	ausgeben(artikel);
+	ausgeben(*artikel);
 
 	try {
-		artikel.aenderePreis(preisaenderung);
+		artikel->aenderePreis(preisaenderung);
 		cout << endl << "Artikel nach Zugang:" << endl;
-		ausgeben(artikel);
+		ausgeben(*artikel);
 	} catch (const char* e) {
 		cout << "Fehler: " << e << endl;
 	}
@@ -235,7 +235,7 @@ void Artikeldialog::testeAlles(){
 	string beschreibung = TESTBEZ;
 	int bestand = TESTBESTAND;
 	double preis= TESTPREIS;
-	Artikel artikel(artikelNr,beschreibung,bestand);
+	Artikel* artikel(artikelNr,beschreibung,bestand);
 
 	cout << endl << "Starte alle Tests..." << endl;
 	testeConstructor1(artikelNr, beschreibung, preis);
@@ -295,18 +295,15 @@ void Artikeldialog::createArtikelMitBestand(){
 	int bestand = 0;
 	cout << "Artikel Erstellen" << endl << "Artikel Nr: ";
 	cin >> artikelNr;
-	cin.clear();
-	cin.ignore(10000, '\n');
+	leereEingabe();
 	cout << "Bezeichnung: ";
 	cin >> bezeichnung;
 	cout << "Artikelpreis: ";
 	cin >> artikelPreis;
-	cin.clear();
-	cin.ignore(10000, '\n');
+	leereEingabe();
 	cout << "Bestand: ";
 	cin >> bestand;
-	cin.clear();
-	cin.ignore(10000, '\n');
+	leereEingabe();
 	Artikel artikel(artikelNr, bezeichnung, artikelPreis, bestand);
 	manuell(artikel);
 
@@ -321,14 +318,12 @@ void Artikeldialog::createArtikelOhneBestand(){
 	int artikelPreis=0;
 	cout << "Artikel Erstellen" << endl << "Artikel Nr: ";
 	cin >> artikelNr;
-	cin.clear();
-	cin.ignore(10000, '\n');
+	leereEingabe();
 	cout << "Bezeichnung: ";
 	cin >> bezeichnung;
 	cout << "Artikelpreis: ";
 	cin >> artikelPreis;
-	cin.clear();
-	cin.ignore(10000, '\n');
+	leereEingabe();
 	Artikel artikel(artikelNr, bezeichnung,artikelPreis);
 	manuell(artikel);
 }
@@ -397,9 +392,15 @@ void Artikeldialog::manuell(Artikel artikel){
 		} catch (const char* e) {
 			cout << endl << "Fehler: " << e << endl << endl;
 		}
-		cin.clear();
-		cin.ignore(10000, '\n');
+		leereEingabe();
 	} while (answer != 0);
 }
 
-
+/**
+ * @brief Eingabeleerung
+ * @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
+ */
+void Artikeldialog::leereEingabe(){
+	cin.clear();
+	cin.ignore(BIGNUMBER, '\n');
+}

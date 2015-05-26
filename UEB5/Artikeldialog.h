@@ -41,32 +41,32 @@ public:
 	 * @brief Test der Zugangsbuchung eines Artikels
 	 * @param artikel
 	 */
-	void testeBucheZugang(Artikel artikel);
+	void testeBucheZugang(Artikel *artikel);
 	/**
 	 * @brief Test der Abgangsbuchung eines Artikels
 	 * @param artikel
 	 */
-	void testeBucheAbgang(Artikel artikel);
+	void testeBucheAbgang(Artikel *artikel);
 	/**
 	* @brief Test des Setzens der Bezeichnung eines Artikels
 	* @param artikel
 	*/
-	void testeSetBezeichnung(Artikel artikel);
+	void testeSetBezeichnung(Artikel *artikel);
 	/**
 	 * @brief Test des Setzens des Bestands eines Artikels
 	 * @param artikel
 	 */
-	void testeSetBestand(Artikel artikel);
+	void testeSetBestand(Artikel *artikel);
 	/**
 	 * @brief Test des Setzens des Preises eines Artikels
 	 * @param artikel
 	 */
-	void testeSetPreis(Artikel artikel);
+	void testeSetPreis(Artikel *artikel);
 	/**
 	 * @brief Test der Aenderung eines Preises
 	 * @param artikel
 	 */
-	void testeAenderePreis(Artikel artikel);
+	void testeAenderePreis(Artikel *artikel);
 	/**
 	 * @brief Ausfuehrung aller Tests
 	 */
@@ -91,6 +91,11 @@ public:
 	 * @details ruft manuell() auf
 	 */
 	void createArtikelOhneBestand();
+	/**
+	 * @brief Eingabeleerung
+	 * @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
+	 */
+	void leereEingabe();
 };
 
 #endif /* ARTIKELDIALOG_H_ */
