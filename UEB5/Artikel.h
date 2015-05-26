@@ -65,7 +65,7 @@ public:
 	 * @brief Preisaenderung
 	 * @param preisaenderung in Prozent (max. 99%)
 	 */
-	void aenderePreis(double preisaenderung);
+	void aenderePreis(double preisAenderung);
 	/**
 	* @brief get Artikelnummer
 	* @return artikelNr

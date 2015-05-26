@@ -127,13 +127,15 @@ void Artikel::setPreis(double neuPreis){
  * @brief Preisaenderung
  * @param preisaenderung in Prozent (max. 99%)
  */
-void Artikel::aenderePreis(double preisaenderung){
-	if (abs(preisaenderung) > 100 ){
+void Artikel::aenderePreis(double preisAenderung){
+	if (abs(preisAenderung) > 100 ){
 		throw "This change is too damn High!";
-	}	if (abs(preisaenderung) == 0){
+	}	if (abs(preisAenderung) == 0){
 		throw "0 or NaN Forbidden";
 	}
-	artikelPreis*=(1+(preisaenderung/100));
+	artikelPreis*=(1+(preisAenderung/100));
 	artikelPreis=round(artikelPreis*100)/100;
 }
-
+virtual string toString() const{
+	//TODO implement this method
+}
