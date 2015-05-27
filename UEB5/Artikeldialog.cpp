@@ -38,11 +38,10 @@ void Artikeldialog::ausgeben(const Artikel& artikel){
 */
 
 void Artikeldialog::testeConstructor1(int artikelNr, string bezeichnung, double artikelpreis){
-	cout << endl << RUNTESTCONSTRUCTORPHRASE << WITHOUTPHRASE << endl;
-	cout << USEVALUESPHRASE << endl;
-	cout << ARTIKELNUMMER << artikelNr << endl;
-	cout << BEZEICHNUNG << bezeichnung << endl;
-	cout << ARTIKELPREIS << artikelpreis << endl;
+	cout << endl << RUNTESTCONSTRUCTORPHRASE << WITHOUTPHRASE << endl
+		<< USEVALUESPHRASE << endl << ARTIKELNUMMER << artikelNr << endl
+		<< BEZEICHNUNG << bezeichnung << endl << ARTIKELPREIS 
+		<< artikelpreis << endl;
 	try{
 		Artikel artikel(artikelNr,bezeichnung,artikelpreis);
 		cout << endl << CREATEARTIKELPHRASE << endl;
@@ -60,12 +59,10 @@ void Artikeldialog::testeConstructor1(int artikelNr, string bezeichnung, double 
 */
 void Artikeldialog::testeConstructor2(int artikelNr, string bezeichnung, double artikelpreis, int bestand){
 
-	cout << endl << RUNTESTCONSTRUCTORPHRASE << endl;
-	cout << USEVALUESPHRASE << endl;
-	cout << ARTIKELNUMMER << artikelNr << endl;
-	cout << BEZEICHNUNG << bezeichnung << endl;
-	cout << ARTIKELPREIS << artikelpreis << endl;
-	cout << BESTAND << bestand << endl;
+	cout << endl << RUNTESTCONSTRUCTORPHRASE << endl << USEVALUESPHRASE 
+		<< endl << ARTIKELNUMMER << artikelNr << endl << BEZEICHNUNG 
+		<< bezeichnung << endl << ARTIKELPREIS << artikelpreis << endl
+		<< BESTAND << bestand << endl;
 
 	try {
 		Artikel artikel(artikelNr,bezeichnung,artikelpreis,bestand);
@@ -244,12 +241,9 @@ void Artikeldialog::testeAlles(){
 void Artikeldialog::dialog(){
 	int answer;
 	do {
-		cout << SEPERATOR << endl;
-		cout << DIALOGOPTIONONE << endl;
-		cout << DIALOGOPTIONTWO << endl;
-		cout << DIALOGOPTIONTHREE << endl;
-		cout << STANDARDEXITOPTION << endl << endl;
-		cout << STANDARDCHOICEPHRASE;
+		cout << SEPERATOR << endl << DIALOGOPTIONONE << endl << DIALOGOPTIONTWO 
+			<< endl << DIALOGOPTIONTHREE << endl << STANDARDEXITOPTION << endl 
+			<< endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
 		try {
 			switch (answer){
@@ -316,6 +310,7 @@ void Artikeldialog::createArtikelOhneBestand(){
 	Artikel artikel(artikelNr, bezeichnung,artikelPreis);
 	manuell(artikel);
 }
+
 /**
 * @brief manuell
 * @details manuell Fkt untere ebene des Dialogs
@@ -327,20 +322,15 @@ void Artikeldialog::manuell(Artikel artikel){
 	int menge=0;
 	string bezeichnung;
 	do {
-		cout << SEPERATOR << endl;
-		cout << ARTIKELNUMMER << artikel.getArtikelNr() << endl;
-		cout << BEZEICHNUNG << artikel.getBezeichnung() << endl;
-		cout << ARTIKELPREIS << artikel.getArtikelPreis() << endl;
-		cout << BESTAND << artikel.getBestand() << endl;
-		cout << SEPERATOR << endl;
-		cout << MANUELLDIALOGOPTIONONE << endl;
-		cout << MANUELLDIALOGOPTIONTHREE << endl;
-		cout << MANUELLDIALOGOPTIONTHREE << endl << endl;
-		cout << MANUELLDIALOGOPTIONFOUR << endl;
-		cout << MANUELLDIALOGOPTIONFIVE << endl;
-		cout << MANUELLDIALOGOPTIONSIX << endl << endl;
-		cout << STANDARDEXITOPTION << endl << endl;
-		cout << STANDARDCHOICEPHRASE;
+		cout << SEPERATOR << endl << ARTIKELNUMMER << artikel.getArtikelNr() 
+			<< endl << BEZEICHNUNG << artikel.getBezeichnung() << endl 
+			<< ARTIKELPREIS << artikel.getArtikelPreis() << endl << BESTAND 
+			<< artikel.getBestand() << endl << SEPERATOR << endl 
+			<< MANUELLDIALOGOPTIONONE << endl << MANUELLDIALOGOPTIONTHREE 
+			<< endl << MANUELLDIALOGOPTIONTHREE << endl << endl 
+			<< MANUELLDIALOGOPTIONFOUR << endl << MANUELLDIALOGOPTIONFIVE 
+			<< endl << MANUELLDIALOGOPTIONSIX << endl << endl 
+			<< STANDARDEXITOPTION << endl << endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
 		try {
 			switch (answer){

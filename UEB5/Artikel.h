@@ -21,14 +21,14 @@ public:
 	const string BEZEICHNUNG = "Bezeichnung: ";
 	const string ARTIKELPREIS = "Artikelpreis: ";
 	const string BESTAND = "Bestand: ";
-	const string THROWARTIKELNUMMERERROR = "Die Artikelnummer muss eine 4-stellige positive Zahl sein!";
-	const string THROWBEZEICHNUNGERROR = "Die Bezeichnung eines Artikels darf nicht leer sein!";
-	const string THROWBESTANDERROR = "Der Bestand darf nie negativ sein!";
-	const string THROWPREISERROR = "Der Preis darf nie null oder negativ sein!";
-	const string THROWONLYPOSITIVEALLOWEDERROR = "Es duerfen nur positive Mengen gebucht werden!";
-	const string THROWBESTANDREDUCEERROR = "Es koennen nicht mehr Artikel abgebucht werden als vorhanden!";
-	const string THROWCHARGETOODAMNHIGHERROR = "This change is too damn High!";
-	const string THROWZEROORNANERROR = "0 or NaN Forbidden";
+	const char* THROWARTIKELNUMMERERROR = "Die Artikelnummer muss eine 4-stellige positive Zahl sein!";
+	const char* THROWBEZEICHNUNGERROR = "Die Bezeichnung eines Artikels darf nicht leer sein!";
+	const char* THROWBESTANDERROR = "Der Bestand darf nie negativ sein!";
+	const char* THROWPREISERROR = "Der Preis darf nie null oder negativ sein!";
+	const char* THROWONLYPOSITIVEALLOWEDERROR = "Es duerfen nur positive Mengen gebucht werden!";
+	const char* THROWBESTANDREDUCEERROR = "Es koennen nicht mehr Artikel abgebucht werden als vorhanden!";
+	const char* THROWCHARGETOODAMNHIGHERROR = "This change is too damn High!";
+	const char* THROWZEROORNANERROR = "0 or NaN Forbidden";
 
 	/**
 	* @brief Konstruktor mit 4 Parametern

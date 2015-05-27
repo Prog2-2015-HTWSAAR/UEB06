@@ -12,12 +12,12 @@
 */
 #include <iostream>
 
-#include "Artikeldialog.h"
+#include "BasisDialog.h"
 /**
 * @brief Main Function
 */
 int main(){
-	Artikeldialog dia;
+	BasisDialog dia;
 	dia.dialog();
 	return 0;
 }

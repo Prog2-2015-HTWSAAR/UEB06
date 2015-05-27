@@ -30,7 +30,7 @@ public:
 	const string BEZEICHNUNG = "\nBezeichnung: ";
 	const string ARTIKELPREIS = "\nArtikelpreis: ";
 	const string BESTAND = "\naktl. Bestand: ";
-	const string SEPERATOR = "-------------------------------";
+	const string SEPERATOR = "-A-----------------------------";
 	const string NEWPHRASE = "Neuer";
 	const string DIALOGOPTIONONE = "(1) Automatischer Test";
 	const string DIALOGOPTIONTWO = "(2) Manueller Test mit Bestandsangabe";
@@ -132,6 +132,7 @@ public:
 	 * @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
 	 */
 	void leereEingabe();
+	void createArtikelLagerOhneBestand();
 };
 #endif /* ARTIKELDIALOG_H_ */
 
