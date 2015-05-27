@@ -26,7 +26,7 @@
 #define BIGNUMBER 10000
 class Artikeldialog {
 public:
-	const string  ARTIKELNUMMER = "Artikelnummer: ";
+	const string ARTIKELNUMMER = "Artikelnummer: ";
 	const string BEZEICHNUNG = "\nBezeichnung: ";
 	const string ARTIKELPREIS = "\nArtikelpreis: ";
 	const string BESTAND = "\naktl. Bestand: ";

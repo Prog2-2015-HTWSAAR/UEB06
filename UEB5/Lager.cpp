@@ -58,7 +58,7 @@ void Lager::preiseAendern(double preisAenderung){
 }
 int Lager::findeArtikel(int artikelNr){
 	for(int i = 0; i < anzArtikel; i++){
-	if (artikelNr == artikelTab[i]){
+	if (artikelNr == artikelTab[i]->getArtikelNr()){
 			return i;
 		}
 	}

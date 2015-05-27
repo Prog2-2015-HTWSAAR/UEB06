@@ -8,6 +8,7 @@
 #ifndef ARTIKEL_H_
 #define ARTIKEL_H_
 #include <string>
+
 using namespace std;
 /**
 * @brief Artikel Klasse
