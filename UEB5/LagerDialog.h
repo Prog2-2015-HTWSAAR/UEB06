@@ -4,19 +4,49 @@
 
 class LagerDialog
 {
+//	namespace Lager {
+	//	enum FunktionsTyp { ANLEGEN, EINZAHLEN, ABHEBEN, UEBERWEISEN, LOESCHEN, ENDE = 9 };
 public:
+	const string ARTIKELNUMMER = "Artikelnummer: ";
+	const string BEZEICHNUNG = "Bezeichnung: ";
+	const string ARTIKELPREIS = "Artikelpreis: ";
+	const string BESTAND = "Bestand: ";
+	const string EDITDIALOGOPTIONONE = "(1) SET - Bezeichnung";
+	const string EDITDIALOGOPTIONTWO = "(2) SET - ArtikelPreis";
+	const string EDITDIALOGOPTIONTHREE = "(3) SET - Bestand";
+	const string EDITDIALOGOPTIONFOUR = "(4) Aendere Preis (%)";
+	const string EDITDIALOGOPTIONFIVE = "(5) BUCHE - Abgang";
+	const string EDITDIALOGOPTIONSIX = "(6) BUCHE - Zugang";
+	const string PRICECHANGEPHRASE = "Preisaenderung (%): ";
 	const string SEPERATOR = "-L-----------------------------";
-	const string DIALOGOPTIONONE = "(1) Automatischer Test";
-	const string DIALOGOPTIONTWO = "(2) Manueller Test mit Bestandsangabe";
-	const string DIALOGOPTIONTHREE = "(3) Manueller Test ohne Bestandsangabe";
+	const string DIALOGOPTIONONE = "(1) Lager mit Name Anlegen";
+	const string DIALOGOPTIONTWO = "(2) Lager ohne Name Anlegen";
 	const string STANDARDEXITOPTION = "(0) -EXIT/BACK-";
+	const string STANDARDBACKOPTION = "(0) -BACK-";
+	const string LAGERDIALOGOPTIONONE = "(1) Artikel Anlegen";
+	const string LAGERDIALOGOPTIONTWO = "(2) Alle Artikel Ausgeben";
+	const string LAGERDIALOGOPTIONTHREE = "(3) Bestimmten Artikel Ausgeben";
+	const string LAGERDIALOGOPTIONFOUR = "(4) Artikel Bearbeiten";
+	const string LAGERDIALOGOPTIONFIVE = "(5) Artikel Loeschen";
+	const string LAGERDIALOGOPTIONEXIT = "(0) Lager Loeschen";
 	const string STANDARDCHOICEPHRASE = "Waehlen sie eine Option : ";
 	const string INPUTERRORPHRASE = "-> FEHLERHAFTE EINGABE <-";
 	const string ERRORPHRASE = "Fehler: ";
+	const string STANDARDLAGERNAME = "Lager";
+	const string ENTERNAMEPHRASE = "Bitte geben sie den Lagernamen ein: ";
+	const string ENTERSIZEPHRASE = "Bitte geben sie die Lagergroesse ein: ";
+
 	LagerDialog();
 	virtual ~LagerDialog();
 	void dialog();
 	void leereEingabe();
-};
-
+	void startLagerDialog(int size, string name);
+	void LagerDialog::artikelEditDialog();
+private:
+//	FunktionsTyp einlesenFunktion();
+//	void ausfuehrenFunktion(FunktionsTyp);
+	void legeKontoAnDialog();
+//	Lager* lager1;
+	};
+//}
 #endif

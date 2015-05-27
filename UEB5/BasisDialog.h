@@ -3,6 +3,8 @@
 #include "Artikel.h"
 #include "Artikeldialog.h"
 #include "LagerDialog.h"
+#include "Lager.h"
+
 class BasisDialog
 {
 public:
