@@ -8,11 +8,13 @@
 #ifndef LAGER_H_
 #define LAGER_H_
 #include "Artikel.h"
+
 /**
  * @brief Eine Lagerklasse
  */
 class Lager {
 public:
+	Lager& operator=(const Lager&) throw();
 	const string MUSTERLAGER = "Musterlager";
 	const int ARTIKELANZAHL = 0;
 	/**
@@ -65,7 +67,9 @@ public:
 	 *
 	 */
 	void preiseAendern(double preisaenderung);
-
+	string toString() const;
+	friend ostream& operator<<(ostream&, const Lager&);
+//	virtual string toString() const;
 private:
 	int findeArtikel(int artikelNr);
 	void loescheAlleArtikel();

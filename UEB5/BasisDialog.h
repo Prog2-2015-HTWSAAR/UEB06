@@ -4,7 +4,8 @@
 #include "Artikeldialog.h"
 #include "LagerDialog.h"
 #include "Lager.h"
-
+#include <sstream>
+#include <cmath>
 class BasisDialog
 {
 public:

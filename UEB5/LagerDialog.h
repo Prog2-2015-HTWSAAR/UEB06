@@ -19,15 +19,19 @@ public:
 	const string EDITDIALOGOPTIONSIX = "(6) BUCHE - Zugang";
 	const string PRICECHANGEPHRASE = "Preisaenderung (%): ";
 	const string SEPERATOR = "-L-----------------------------";
+	const string SEPERATORCREATELAGER =	"-L-------CREATE-LAGER----------";
+	const string SEPERATORDELETELAGER = "-L-------DELETE-LAGER----------";
+	const string SEPERATORCREATEARTIKEL =	"-L-------CREATE-ARTIKEL--------";
 	const string DIALOGOPTIONONE = "(1) Lager mit Name Anlegen";
 	const string DIALOGOPTIONTWO = "(2) Lager ohne Name Anlegen";
 	const string STANDARDEXITOPTION = "(0) -EXIT/BACK-";
 	const string STANDARDBACKOPTION = "(0) -BACK-";
 	const string LAGERDIALOGOPTIONONE = "(1) Artikel Anlegen";
-	const string LAGERDIALOGOPTIONTWO = "(2) Alle Artikel Ausgeben";
-	const string LAGERDIALOGOPTIONTHREE = "(3) Bestimmten Artikel Ausgeben";
-	const string LAGERDIALOGOPTIONFOUR = "(4) Artikel Bearbeiten";
-	const string LAGERDIALOGOPTIONFIVE = "(5) Artikel Loeschen";
+	const string LAGERDIALOGOPTIONTWO = "(2) Artikel Anlegen ohne Bestand";
+	const string LAGERDIALOGOPTIONTHREE = "(3) Alle Artikel Ausgeben";
+	const string LAGERDIALOGOPTIONFOUR = "(4) Bestimmten Artikel Ausgeben";
+	const string LAGERDIALOGOPTIONFIVE = "(5) Artikel Bearbeiten";
+	const string LAGERDIALOGOPTIONSIX = "(6) Artikel Loeschen";
 	const string LAGERDIALOGOPTIONEXIT = "(0) Lager Loeschen";
 	const string STANDARDCHOICEPHRASE = "Waehlen sie eine Option : ";
 	const string INPUTERRORPHRASE = "-> FEHLERHAFTE EINGABE <-";
@@ -46,7 +50,6 @@ private:
 //	FunktionsTyp einlesenFunktion();
 //	void ausfuehrenFunktion(FunktionsTyp);
 	void legeKontoAnDialog();
-//	Lager* lager1;
 	};
 //}
 #endif

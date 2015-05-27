@@ -20,19 +20,7 @@
 * @param artikelPreis darf nicht negativ sein!
 */
 Artikel::Artikel(int artikelNr, string bezeichnung, double artikelPreis){
-	if (artikelNr < LOWERBORDERARTIKELNUMMER || artikelNr > UPPERBORDERARTIKELNUMMER) {
-		throw THROWARTIKELNUMMERERROR;
-	}
-	if (bezeichnung.empty()){
-		throw THROWBEZEICHNUNGERROR;
-	}
-	if(artikelPreis <= 0){
-		throw THROWPREISERROR;
-		}
-	this->artikelNr = artikelNr;
-	this->bezeichnung = bezeichnung;
-	this->bestand = 0;
-	this->artikelPreis=artikelPreis; //TODO EINGABE?
+	Artikel(artikelNr, bezeichnung, artikelPreis, 0);
 }
 /**
 * @brief Konstruktor mit 4 Parametern

@@ -18,7 +18,7 @@ void LagerDialog::dialog(){
 			case 0:
 				break;
 			case 1:
-				cout << ENTERSIZEPHRASE;
+				cout << SEPERATORCREATELAGER << endl << ENTERSIZEPHRASE;
 				cin >> anzahl;
 				leereEingabe();
 				cout << ENTERNAMEPHRASE;
@@ -26,7 +26,7 @@ void LagerDialog::dialog(){
 				startLagerDialog(anzahl, name);
 				break;
 			case 2:
-				cout << ENTERSIZEPHRASE;
+				cout << SEPERATORCREATELAGER << endl << ENTERSIZEPHRASE;
 				cin >> anzahl;
 				leereEingabe();
 				startLagerDialog(anzahl, name);
@@ -42,21 +42,43 @@ void LagerDialog::dialog(){
 	} while (answer != 0);
 }
 void LagerDialog::startLagerDialog(int size, string name) {
-//	lager1 = new Lager(size, name);
+	Lager* lager1 = new Lager(size, name);
 	int answer;
+	int artikelNr;
+	int bestand;
+	double preis;
+	string bezeichnung;
 	do {
 		cout << SEPERATOR << endl << LAGERDIALOGOPTIONONE << endl << LAGERDIALOGOPTIONTWO
 			<< endl << LAGERDIALOGOPTIONTHREE << endl << LAGERDIALOGOPTIONFOUR 
-			<< endl << LAGERDIALOGOPTIONFIVE << endl << LAGERDIALOGOPTIONEXIT << endl 
-			<< endl << STANDARDCHOICEPHRASE;
+			<< endl << LAGERDIALOGOPTIONFIVE << endl << LAGERDIALOGOPTIONSIX << endl 
+			<< LAGERDIALOGOPTIONEXIT << endl << endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
 		try {
 			switch (answer){
 			case 0:
 				break;
 			case 1:
+				cout << SEPERATORCREATEARTIKEL << endl << ARTIKELNUMMER;
+				cin >> artikelNr;
+				cout << BEZEICHNUNG;
+				cin >> bezeichnung;
+				cout << ARTIKELPREIS;
+				cin >> preis;
+				cout << BESTAND;
+				cin >> bestand;
+				lager1->createArtikel(artikelNr, bezeichnung, preis, bestand);
 				break;
 			case 2:
+				cout << SEPERATORCREATEARTIKEL << endl << ARTIKELNUMMER;
+				cin >> artikelNr;
+				cout << BEZEICHNUNG;
+				cin >> bezeichnung;
+				cout << ARTIKELPREIS;
+				cin >> preis;
+				cout << BESTAND;
+				cin >> bestand;
+				lager1->createArtikel(artikelNr, bezeichnung, preis);
 				break;
 			case 3:
 				break;
@@ -68,6 +90,7 @@ void LagerDialog::startLagerDialog(int size, string name) {
 			default:
 				cout << INPUTERRORPHRASE << endl;
 			}
+			cout << *lager1 << endl;
 		}
 		catch (const char* e) {
 			cout << ERRORPHRASE << e << endl;

@@ -11,7 +11,6 @@
 
 */
 #include <iostream>
-
 #include "BasisDialog.h"
 /**
 * @brief Main Function

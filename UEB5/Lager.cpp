@@ -6,11 +6,10 @@
  */
 
 #include "Lager.h"
+#include <sstream>
+#include <cmath>
 Lager::Lager(int maxAnzArtikel) {
-	this->anzArtikel = ARTIKELANZAHL;
-	this->maxAnzArtikel = maxAnzArtikel;
-	this->name = MUSTERLAGER;
-	this->artikelTab = new Artikel*[maxAnzArtikel];
+	Lager(maxAnzArtikel, MUSTERLAGER);
 }
 Lager::Lager(int maxAnzArtikel, string name){
 	this->anzArtikel = ARTIKELANZAHL;
@@ -21,6 +20,7 @@ Lager::Lager(int maxAnzArtikel, string name){
 Lager::~Lager() {
 	// TODO Auto-generated destructor stub
 }
+
 
 void Lager::createArtikel(int artikelNr, string bezeichnung, double artikelPreis){
 	Artikel* ap = new Artikel(artikelNr, bezeichnung, artikelPreis);
@@ -70,4 +70,19 @@ void Lager::loescheAlleArtikel(){
 	}
 	anzArtikel = 0;
 }
-
+string Lager::toString() const {
+	ostringstream o;
+	o << "Lager: " << name << '\n';
+	for (int i = 0; i < anzArtikel; i++) {
+		o << artikelTab[i]->toString() << '\n';
+	}
+	o << endl;
+	return o.str();
+}
+ostream& operator<<(ostream& o, const Lager& lager) {
+	o << "Lager: " << lager.name << '\n';
+	for (int i = 0; i < lager.anzArtikel; i++) {
+		o << lager.artikelTab[i] << endl;
+	}
+	return o;
+}
