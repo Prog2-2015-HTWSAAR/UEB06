@@ -3,15 +3,25 @@
 * @author Andreas Schreiner & Simon Bastian
 * @date 16.05.2015
 *
-* Eingabe Funktionen
+* Artikel Klasse und zugehoerige Ausnahmen
 */
 #ifndef ARTIKEL_H_
 #define ARTIKEL_H_
 #include <string>
-
+#include <stdexcept>
 
 
 using namespace std;
+
+
+/**
+ * Standardausnahme fuer logische Fehler in der Artikelklasse
+ */
+class ArtikelException : public logic_error {
+public:
+    ArtikelException(const string& msg = "") : logic_error(msg) {}
+};
+
 /**
 * @brief Artikel Klasse
 */
@@ -39,51 +49,61 @@ public:
 	* @param bezeichnung darf kein leerer String sein!
 	* @param artikelPreis darf nicht negativ sein!
 	* @param bestand darf nicht negativ sein!
+	* @throw ArtikelException Falls Vorbedingungen nicht erfuellt sind!
 	*/
-	Artikel(int artikelNr, string bezeichnung, double artikelPreis, int bestand);
+	Artikel(int artikelNr, string bezeichnung, double artikelPreis, int bestand)
+			throw (ArtikelException);
 	/**
 	* @brief Konstruktor mit 3 Parametern
 	* @details Konstruktor zur Erzeugung eines Artikel Obj ohne Bestandsangabe
 	* @param artikelNr muss vierstellig sein!
 	* @param bezeichnung darf kein leerer String sein!
 	* @param artikelPreis darf nicht negativ sein!
+	* @throw ArtikelException Falls Vorbedingungen nicht erfuellt sind!
 	*/
-	Artikel(int artikelNr, string bezeichnung, double artikelPreis);
+	Artikel(int artikelNr, string bezeichnung, double artikelPreis)
+			throw (ArtikelException);
 	virtual ~Artikel(){}
 	/**
 	* @brief bucheZugang
 	* @details Funktion zum erhoehen des Bestands
 	* @param menge muss positiv sein!
+	* @throw ArtikelException Falls Vorbedingungen nicht erfuellt sind!
 	*/
-	void bucheZugang(int menge);
+	void bucheZugang(int menge) throw (ArtikelException);
 	/**
 	* @brief bucheAbgang
 	* @details Funktion zum verringern des Bestands
 	* @param menge muss positiv sein!
+	* @throw ArtikelException Falls Vorbedingungen nicht erfuellt sind!
 	*/
-	void bucheAbgang(int menge);
+	void bucheAbgang(int menge) throw (ArtikelException);
 	/**
 	* @brief setBezeichnung
 	* @details Funktion zum setzen der Bezeichnung
 	* @param neuBezeichnung darf nicht leer sein!
+	* @throw ArtikelException Falls Vorbedingungen nicht erfuellt sind!
 	*/
-	void setBezeichnung(string neuBezeichnung);
+	void setBezeichnung(string neuBezeichnung) throw (ArtikelException);
 	/**
 	* @brief setBestand bei Inventur
 	* @details Funktion zum setzen des Bestands
 	* @param neuBestand darf nicht negativ sein!
+	* @throw ArtikelException Falls Vorbedingungen nicht erfuellt sind!
 	*/
-	void setBestand(int neuBestand);
+	void setBestand(int neuBestand) throw (ArtikelException);
 	/**
 	* @brief Set neuer Preis
 	* @param neuPreis darf nicht negativ sein!
+	* @throw ArtikelException Falls Vorbedingungen nicht erfuellt sind!
 	*/
-	void setPreis(double neuPreis);
+	void setPreis(double neuPreis) throw (ArtikelException);
 	/**
 	 * @brief Preisaenderung
-	 * @param preisaenderung in Prozent (max. 99%)
+	 * @param preisaenderung in Prozent (0% < preisaenderung < 100%)
+	 * @throw ArtikelException Falls Vorbedingungen nicht erfuellt sind!
 	 */
-	void aenderePreis(double preisaenderung);
+	void aenderePreis(double preisaenderung) throw (ArtikelException);
 	/**
 	* @brief get Artikelnummer
 	* @return artikelNr
@@ -115,6 +135,7 @@ public:
 	virtual string toString() const;
 	friend ostream& operator<<(ostream&, const Artikel&);
 private:
+	void init(int artikelNr, string bezeichnung, double artikelPreis, int bestand) throw(ArtikelException);
 	int artikelNr; ///< Artikel Nummer
 	string bezeichnung; ///< Artikel Bezeichnung
 	int bestand; ///< Artikel Bestand

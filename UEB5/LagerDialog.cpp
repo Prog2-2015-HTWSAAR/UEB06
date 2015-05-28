@@ -43,6 +43,8 @@ void LagerDialog::dialog(){
 }
 void LagerDialog::startLagerDialog(int size, string name) {
 	Lager* lager1 = new Lager(size, name);
+	if(name == STANDARDLAGERNAME)
+		lager1 = new Lager(size);
 	int answer;
 	int artikelNr;
 	int bestand;
@@ -76,8 +78,6 @@ void LagerDialog::startLagerDialog(int size, string name) {
 				cin >> bezeichnung;
 				cout << ARTIKELPREIS;
 				cin >> preis;
-				cout << BESTAND;
-				cin >> bestand;
 				lager1->createArtikel(artikelNr, bezeichnung, preis);
 				break;
 			case 3:

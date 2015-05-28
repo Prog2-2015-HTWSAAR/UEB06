@@ -19,8 +19,8 @@
 * @param bezeichnung darf kein leerer String sein!
 * @param artikelPreis darf nicht negativ sein!
 */
-Artikel::Artikel(int artikelNr, string bezeichnung, double artikelPreis){
-	Artikel(artikelNr, bezeichnung, artikelPreis, 0);
+Artikel::Artikel(int artikelNr, string bezeichnung, double artikelPreis) throw(ArtikelException){
+	init(artikelNr, bezeichnung, artikelPreis, 0);
 }
 /**
 * @brief Konstruktor mit 4 Parametern
@@ -31,9 +31,13 @@ Artikel::Artikel(int artikelNr, string bezeichnung, double artikelPreis){
 * @param bestand darf nicht negativ sein!
 */
 
-Artikel::Artikel(int artikelNr, string bezeichnung, double artikelPreis, int bestand){
+Artikel::Artikel(int artikelNr, string bezeichnung, double artikelPreis, int bestand) throw(ArtikelException){
+	init(artikelNr, bezeichnung, artikelPreis, bestand);
+}
+
+void Artikel::init(int artikelNr, string bezeichnung, double artikelPreis, int bestand) throw(ArtikelException){
 	if (artikelNr < LOWERBORDERARTIKELNUMMER || artikelNr > UPPERBORDERARTIKELNUMMER) {
-		throw THROWARTIKELNUMMERERROR;
+		throw ArtikelException(THROWARTIKELNUMMERERROR);
 	}
 	if (bezeichnung.empty()){
 		throw THROWBEZEICHNUNGERROR;
@@ -47,16 +51,14 @@ Artikel::Artikel(int artikelNr, string bezeichnung, double artikelPreis, int bes
 	this->artikelNr = artikelNr;
 	this->bezeichnung = bezeichnung;
 	this->bestand = bestand;
-	this->artikelPreis=artikelPreis;
+	this->artikelPreis = artikelPreis;
 }
-
-
 /**
 * @brief bucheZugang
 * @details Funktion zum erhoehen des Bestands
 * @param menge muss positiv sein!
 */
-void Artikel::bucheZugang(int menge){
+void Artikel::bucheZugang(int menge) throw(ArtikelException){
 	if(menge <= 0){
 		throw THROWONLYPOSITIVEALLOWEDERROR;
 	}
@@ -68,7 +70,7 @@ void Artikel::bucheZugang(int menge){
 * @details Funktion zum verringern des Bestands
 * @param menge muss positiv sein!
 */
-void Artikel::bucheAbgang(int menge){
+void Artikel::bucheAbgang(int menge)  throw(ArtikelException){
 	if(menge <= 0){
 		throw THROWONLYPOSITIVEALLOWEDERROR;
 	}
@@ -82,7 +84,7 @@ void Artikel::bucheAbgang(int menge){
 * @details Funktion zum setzen des Bestands
 * @param neuBestand darf nicht negativ sein!
 */
-void Artikel::setBestand(int neuBestand){
+void Artikel::setBestand(int neuBestand)  throw(ArtikelException){
 	if (neuBestand < 0){
 		throw THROWBESTANDERROR;
 	}
@@ -94,7 +96,7 @@ void Artikel::setBestand(int neuBestand){
 * @details Funktion zum setzen der Bezeichnung
 * @param neuBezeichnung darf nicht leer sein!
 */
-void Artikel::setBezeichnung(string neuBezeichnung){
+void Artikel::setBezeichnung(string neuBezeichnung)  throw(ArtikelException){
 	if (neuBezeichnung.empty()){
 		throw THROWBEZEICHNUNGERROR;
 	}
@@ -104,7 +106,7 @@ void Artikel::setBezeichnung(string neuBezeichnung){
 * @brief Set neuer Preis
 * @param neuPreis darf nicht negativ sein!
 */
-void Artikel::setPreis(double neuPreis){
+void Artikel::setPreis(double neuPreis) throw(ArtikelException){
 	if(neuPreis < 0){
 		throw THROWPREISERROR;
 	}
@@ -114,7 +116,7 @@ void Artikel::setPreis(double neuPreis){
  * @brief Preisaenderung
  * @param preisaenderung in Prozent (max. 99%)
  */
-void Artikel::aenderePreis(double preisaenderung){
+void Artikel::aenderePreis(double preisaenderung) throw(ArtikelException){
 	if (abs(preisaenderung) > 100 ){
 		throw THROWCHARGETOODAMNHIGHERROR;
 	}	if (abs(preisaenderung) == 0){

@@ -9,16 +9,20 @@
 #include <sstream>
 #include <cmath>
 Lager::Lager(int maxAnzArtikel) {
-	Lager(maxAnzArtikel, MUSTERLAGER);
+	init(maxAnzArtikel, MUSTERLAGER);
 }
 Lager::Lager(int maxAnzArtikel, string name){
-	this->anzArtikel = ARTIKELANZAHL;
+	init(maxAnzArtikel, name);
+}
+void Lager::init(int maxAnzArtikel, string name){
+	//TODO Exceptions
+	anzArtikel = ARTIKELANZAHL;
 	this->maxAnzArtikel = maxAnzArtikel;
 	this->name = name;
-	artikelTab = new Artikel*[maxAnzArtikel];
+	this->artikelTab = new Artikel*[maxAnzArtikel];
 }
 Lager::~Lager() {
-	// TODO Auto-generated destructor stub
+	loescheAlleArtikel();
 }
 
 

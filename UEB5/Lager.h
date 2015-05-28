@@ -26,7 +26,7 @@ public:
 	/**
 	 * @brief Konstruktor mit Namensangabe
 	 * @param maxAnzArtikel muss positiv sein!
-	 * @param name Name des Lagers
+	 * @param name Name des Lagers darf nicht leer sein!
 	 */
 	Lager(int maxAnzArtikel, string name);
 	/**
@@ -73,6 +73,7 @@ public:
 private:
 	int findeArtikel(int artikelNr);
 	void loescheAlleArtikel();
+	void init(int maxAnzArtikel, string name);
 	string name;
 	Artikel** artikelTab;
 	int anzArtikel;
