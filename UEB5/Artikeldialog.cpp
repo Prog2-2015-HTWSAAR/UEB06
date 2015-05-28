@@ -288,7 +288,7 @@ void Artikeldialog::createArtikelMitBestand(){
 	cout << BESTAND;
 	cin >> bestand;
 	leereEingabe();
-	Artikel artikel(artikelNr, bezeichnung, artikelPreis, bestand);
+	Artikel* artikel(artikelNr, bezeichnung, artikelPreis, bestand);
 	manuell(artikel);
 
 }
@@ -308,7 +308,7 @@ void Artikeldialog::createArtikelOhneBestand(){
 	cout << ARTIKELPREIS;
 	cin >> artikelPreis;
 	leereEingabe();
-	Artikel artikel(artikelNr, bezeichnung,artikelPreis);
+	Artikel* artikel(artikelNr, bezeichnung,artikelPreis);
 	manuell(artikel);
 }
 
@@ -317,16 +317,16 @@ void Artikeldialog::createArtikelOhneBestand(){
 * @details manuell Fkt untere ebene des Dialogs
 * @param artikel Artikel obj
 */
-void Artikeldialog::manuell(Artikel artikel){
+void Artikeldialog::manuell(Artikel* artikel){
 	int answer=-1;
 	double preis=0.0;
 	int menge=0;
 	string bezeichnung;
 	do {
-		cout << SEPERATOR << endl << ARTIKELNUMMER << artikel.getArtikelNr() 
-			<< endl << BEZEICHNUNG << artikel.getBezeichnung() << endl 
-			<< ARTIKELPREIS << artikel.getArtikelPreis() << endl << BESTAND 
-			<< artikel.getBestand() << endl << SEPERATOR << endl 
+		cout << SEPERATOR << endl << ARTIKELNUMMER << artikel->getArtikelNr()
+			<< endl << BEZEICHNUNG << artikel->getBezeichnung() << endl
+			<< ARTIKELPREIS << artikel->getArtikelPreis() << endl << BESTAND
+			<< artikel->getBestand() << endl << SEPERATOR << endl
 			<< MANUELLDIALOGOPTIONONE << endl << MANUELLDIALOGOPTIONTWO
 			<< endl << MANUELLDIALOGOPTIONTHREE << endl << endl 
 			<< MANUELLDIALOGOPTIONFOUR << endl << MANUELLDIALOGOPTIONFIVE 
@@ -340,32 +340,32 @@ void Artikeldialog::manuell(Artikel artikel){
 				case 1:
 					cout << BEZEICHNUNG;
 					cin >> bezeichnung;
-					artikel.setBezeichnung(bezeichnung);
+					artikel->setBezeichnung(bezeichnung);
 					break;
 				case 2:
 					cout << NEWPHRASE << ARTIKELPREIS;
 					cin >> preis;
-					artikel.setPreis(preis);
+					artikel->setPreis(preis);
 					break;
 				case 3:
 					cout << NEWPHRASE << BESTAND;
 					cin >> menge;
-					artikel.setBestand(menge);
+					artikel->setBestand(menge);
 					break;
 				case 4:
 					cout << PRICECHANGEPHRASE;
 					cin >> preis;
-					artikel.aenderePreis(preis);
+					artikel->aenderePreis(preis);
 					break;
 				case 5:
 					cout << VALUEPHRASE;
 					cin >> menge;
-					artikel.bucheAbgang(menge);
+					artikel->bucheAbgang(menge);
 					break;
 				case 6:
 					cout << VALUEPHRASE;
 					cin >> menge;
-					artikel.bucheZugang(menge);
+					artikel->bucheZugang(menge);
 					break;
 				default: cout << INPUTERRORPHRASE << endl;
 			}

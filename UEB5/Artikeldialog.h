@@ -116,7 +116,7 @@ public:
 	 * @brief Interaktiver Test eines Artikels
 	 * @param artikel
 	 */
-	void manuell(Artikel artikel);
+	void manuell(Artikel* artikel);
 	/**
 	 * @brief Interaktives Erstellen eines Testartikels mit Bestand
 	 * @details ruft manuell() auf
