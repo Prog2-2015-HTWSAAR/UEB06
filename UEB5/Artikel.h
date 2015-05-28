@@ -113,6 +113,7 @@ public:
 		return artikelPreis;
 	}
 	virtual string toString() const;
+	friend ostream& operator<<(ostream&, const Artikel&);
 private:
 	int artikelNr; ///< Artikel Nummer
 	string bezeichnung; ///< Artikel Bezeichnung

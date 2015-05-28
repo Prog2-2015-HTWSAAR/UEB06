@@ -15,7 +15,7 @@ Lager::Lager(int maxAnzArtikel, string name){
 	this->anzArtikel = ARTIKELANZAHL;
 	this->maxAnzArtikel = maxAnzArtikel;
 	this->name = name;
-	this->artikelTab = new Artikel*[maxAnzArtikel];
+	artikelTab = new Artikel*[maxAnzArtikel];
 }
 Lager::~Lager() {
 	// TODO Auto-generated destructor stub
@@ -82,7 +82,7 @@ string Lager::toString() const {
 ostream& operator<<(ostream& o, const Lager& lager) {
 	o << "Lager: " << lager.name << '\n';
 	for (int i = 0; i < lager.anzArtikel; i++) {
-		o << lager.artikelTab[i] << endl;
+		o << *lager.artikelTab[i] << endl;
 	}
 	return o;
 }

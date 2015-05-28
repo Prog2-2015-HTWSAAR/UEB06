@@ -132,3 +132,6 @@ string Artikel::toString() const {
 	  << BESTAND << bestand;
 	return o.str();
 }
+ostream& operator<<(ostream& o, const Artikel& artikel) {
+	return o << artikel.toString();
+}

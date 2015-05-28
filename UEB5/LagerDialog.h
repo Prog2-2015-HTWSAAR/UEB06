@@ -45,7 +45,7 @@ public:
 	void dialog();
 	void leereEingabe();
 	void startLagerDialog(int size, string name);
-	void LagerDialog::artikelEditDialog();
+	void artikelEditDialog();
 private:
 //	FunktionsTyp einlesenFunktion();
 //	void ausfuehrenFunktion(FunktionsTyp);
