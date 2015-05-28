@@ -8,6 +8,7 @@
 #ifndef ARTIKEL_H_
 #define ARTIKEL_H_
 #include <string>
+#include <iostream>
 #include <stdexcept>
 
 
@@ -29,9 +30,9 @@ class Artikel {
 public:
 	const int LOWERBORDERARTIKELNUMMER = 1000;
 	const int UPPERBORDERARTIKELNUMMER = 9999;
-	const string ARTIKELNUMMER = "Artikelnummer: ";
-	const string BEZEICHNUNG = "Bezeichnung: ";
-	const string ARTIKELPREIS = "Artikelpreis: ";
+	const string ARTIKELNUMMER = "ArtikelNr: ";
+	const string BEZEICHNUNG = "Bez.: ";
+	const string ARTIKELPREIS = "Preis: ";
 	const string BESTAND = "Bestand: ";
 	const char* THROWARTIKELNUMMERERROR = "Die Artikelnummer muss eine 4-stellige positive Zahl sein!";
 	const char* THROWBEZEICHNUNGERROR = "Die Bezeichnung eines Artikels darf nicht leer sein!";
@@ -43,26 +44,17 @@ public:
 	const char* THROWZEROORNANERROR = "0 or NaN Forbidden";
 
 	/**
-	* @brief Konstruktor mit 4 Parametern
+	* @brief Konstruktor
 	* @details Konstruktor zur Erzeugung eines Artikel Obj mit Bestandsangabe
 	* @param artikelNr muss vierstellig sein!
 	* @param bezeichnung darf kein leerer String sein!
 	* @param artikelPreis darf nicht negativ sein!
-	* @param bestand darf nicht negativ sein!
+	* @param bestand (optional) darf nicht negativ sein!
 	* @throw ArtikelException Falls Vorbedingungen nicht erfuellt sind!
 	*/
-	Artikel(int artikelNr, string bezeichnung, double artikelPreis, int bestand)
+	Artikel(int artikelNr, string bezeichnung, double artikelPreis, int bestand = 0)
 			throw (ArtikelException);
-	/**
-	* @brief Konstruktor mit 3 Parametern
-	* @details Konstruktor zur Erzeugung eines Artikel Obj ohne Bestandsangabe
-	* @param artikelNr muss vierstellig sein!
-	* @param bezeichnung darf kein leerer String sein!
-	* @param artikelPreis darf nicht negativ sein!
-	* @throw ArtikelException Falls Vorbedingungen nicht erfuellt sind!
-	*/
-	Artikel(int artikelNr, string bezeichnung, double artikelPreis)
-			throw (ArtikelException);
+
 	virtual ~Artikel(){}
 	/**
 	* @brief bucheZugang
@@ -135,7 +127,6 @@ public:
 	virtual string toString() const;
 	friend ostream& operator<<(ostream&, const Artikel&);
 private:
-	void init(int artikelNr, string bezeichnung, double artikelPreis, int bestand) throw(ArtikelException);
 	int artikelNr; ///< Artikel Nummer
 	string bezeichnung; ///< Artikel Bezeichnung
 	int bestand; ///< Artikel Bestand

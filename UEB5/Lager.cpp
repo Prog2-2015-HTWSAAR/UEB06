@@ -8,21 +8,25 @@
 #include "Lager.h"
 #include <sstream>
 #include <cmath>
-Lager::Lager(int maxAnzArtikel) {
-	init(maxAnzArtikel, MUSTERLAGER);
-}
+const char* Lager::defaultName = "Musterlager";
 Lager::Lager(int maxAnzArtikel, string name){
-	init(maxAnzArtikel, name);
-}
-void Lager::init(int maxAnzArtikel, string name){
 	//TODO Exceptions
 	anzArtikel = ARTIKELANZAHL;
 	this->maxAnzArtikel = maxAnzArtikel;
 	this->name = name;
 	this->artikelTab = new Artikel*[maxAnzArtikel];
+
 }
+//void Lager::init(int maxAnzArtikel, string name){
+//	//TODO Exceptions
+//	anzArtikel = ARTIKELANZAHL;
+//	this->maxAnzArtikel = maxAnzArtikel;
+//	this->name = name;
+//	this->artikelTab = new Artikel*[maxAnzArtikel];
+//}
 Lager::~Lager() {
 	loescheAlleArtikel();
+	delete[] artikelTab;
 }
 
 
@@ -84,7 +88,8 @@ string Lager::toString() const {
 	return o.str();
 }
 ostream& operator<<(ostream& o, const Lager& lager) {
-	o << "Lager: " << lager.name << '\n';
+	o << "Lager: " << lager.name << " ";
+	o << lager.anzArtikel << "/" << lager.maxAnzArtikel <<'\n';
 	for (int i = 0; i < lager.anzArtikel; i++) {
 		o << *lager.artikelTab[i] << endl;
 	}

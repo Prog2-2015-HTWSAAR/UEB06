@@ -12,47 +12,35 @@
 #include <sstream>
 #include "Artikel.h"
 #include <cmath>
+
 /**
-* @brief Konstruktor mit 3 Parametern
-* @details Konstruktor zur Erzeugung eines Artikel Obj ohne Bestandsangabe
+* @brief Konstruktor
+* @details Konstruktor zur Erzeugung eines Artikel Obj; Bestandsangabe optional
 * @param artikelNr muss vierstellig sein!
 * @param bezeichnung darf kein leerer String sein!
 * @param artikelPreis darf nicht negativ sein!
-*/
-Artikel::Artikel(int artikelNr, string bezeichnung, double artikelPreis) throw(ArtikelException){
-	init(artikelNr, bezeichnung, artikelPreis, 0);
-}
-/**
-* @brief Konstruktor mit 4 Parametern
-* @details Konstruktor zur Erzeugung eines Artikel Obj mit Bestandsangabe
-* @param artikelNr muss vierstellig sein!
-* @param bezeichnung darf kein leerer String sein!
-* @param artikelPreis darf nicht negativ sein!
-* @param bestand darf nicht negativ sein!
+* @param bestand (optional) darf nicht negativ sein!
 */
 
 Artikel::Artikel(int artikelNr, string bezeichnung, double artikelPreis, int bestand) throw(ArtikelException){
-	init(artikelNr, bezeichnung, artikelPreis, bestand);
-}
-
-void Artikel::init(int artikelNr, string bezeichnung, double artikelPreis, int bestand) throw(ArtikelException){
 	if (artikelNr < LOWERBORDERARTIKELNUMMER || artikelNr > UPPERBORDERARTIKELNUMMER) {
 		throw ArtikelException(THROWARTIKELNUMMERERROR);
 	}
 	if (bezeichnung.empty()){
-		throw THROWBEZEICHNUNGERROR;
+		throw ArtikelException(THROWBEZEICHNUNGERROR);
 	}
 	if (bestand < 0){
-		throw THROWBESTANDERROR;
+		throw ArtikelException(THROWBESTANDERROR);
 	}
 	if(artikelPreis <= 0){
-		throw THROWPREISERROR;
+		throw ArtikelException(THROWPREISERROR);
 	}
 	this->artikelNr = artikelNr;
 	this->bezeichnung = bezeichnung;
 	this->bestand = bestand;
 	this->artikelPreis = artikelPreis;
 }
+
 /**
 * @brief bucheZugang
 * @details Funktion zum erhoehen des Bestands
@@ -60,7 +48,7 @@ void Artikel::init(int artikelNr, string bezeichnung, double artikelPreis, int b
 */
 void Artikel::bucheZugang(int menge) throw(ArtikelException){
 	if(menge <= 0){
-		throw THROWONLYPOSITIVEALLOWEDERROR;
+		throw ArtikelException(THROWONLYPOSITIVEALLOWEDERROR);
 	}
 
 	bestand += menge;
@@ -72,10 +60,10 @@ void Artikel::bucheZugang(int menge) throw(ArtikelException){
 */
 void Artikel::bucheAbgang(int menge)  throw(ArtikelException){
 	if(menge <= 0){
-		throw THROWONLYPOSITIVEALLOWEDERROR;
+		throw ArtikelException(THROWONLYPOSITIVEALLOWEDERROR);
 	}
 	if (bestand - menge < 0){
-		throw THROWBESTANDREDUCEERROR;
+		throw ArtikelException(THROWBESTANDREDUCEERROR);
 	}
 	bestand -= menge;
 }
@@ -86,7 +74,7 @@ void Artikel::bucheAbgang(int menge)  throw(ArtikelException){
 */
 void Artikel::setBestand(int neuBestand)  throw(ArtikelException){
 	if (neuBestand < 0){
-		throw THROWBESTANDERROR;
+		throw ArtikelException(THROWBESTANDERROR);
 	}
 	bestand = neuBestand;
 
@@ -98,7 +86,7 @@ void Artikel::setBestand(int neuBestand)  throw(ArtikelException){
 */
 void Artikel::setBezeichnung(string neuBezeichnung)  throw(ArtikelException){
 	if (neuBezeichnung.empty()){
-		throw THROWBEZEICHNUNGERROR;
+		throw ArtikelException(THROWBEZEICHNUNGERROR);
 	}
 	bezeichnung = neuBezeichnung;
 }
@@ -108,7 +96,7 @@ void Artikel::setBezeichnung(string neuBezeichnung)  throw(ArtikelException){
 */
 void Artikel::setPreis(double neuPreis) throw(ArtikelException){
 	if(neuPreis < 0){
-		throw THROWPREISERROR;
+		throw ArtikelException(THROWPREISERROR);
 	}
 	artikelPreis=round(neuPreis*100)/100.0; // auf zwei stellen runden
 }
@@ -118,9 +106,9 @@ void Artikel::setPreis(double neuPreis) throw(ArtikelException){
  */
 void Artikel::aenderePreis(double preisaenderung) throw(ArtikelException){
 	if (abs(preisaenderung) > 100 ){
-		throw THROWCHARGETOODAMNHIGHERROR;
+		throw ArtikelException(THROWCHARGETOODAMNHIGHERROR);
 	}	if (abs(preisaenderung) == 0){
-		throw THROWZEROORNANERROR;
+		throw ArtikelException(THROWZEROORNANERROR);
 	}
 	artikelPreis*=(1+(preisaenderung/100));
 	artikelPreis=round(artikelPreis*100)/100;

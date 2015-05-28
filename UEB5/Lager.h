@@ -10,25 +10,33 @@
 #include "Artikel.h"
 
 /**
+ * Standardausnahme fuer logische Fehler in der Lagerklasse
+ */
+class LagerException : public ArtikelException {
+public:
+    LagerException(const string& msg = "") : ArtikelException(msg) {}
+};
+/**
  * @brief Eine Lagerklasse
  */
 class Lager {
 public:
 	Lager& operator=(const Lager&) throw();
-	const string MUSTERLAGER = "Musterlager";
+	static const char* defaultName;
 	const int ARTIKELANZAHL = 0;
+	static const int defaultSize = 100;
 	/**
 	 * @brief Konstruktor ohne Namensangabe
 	 *
 	 * @param maxAnzArtikel muss positiv sein!
 	 */
-	Lager(int maxAnzArtikel);
+	//Lager(int maxAnzArtikel);
 	/**
 	 * @brief Konstruktor mit Namensangabe
 	 * @param maxAnzArtikel muss positiv sein!
 	 * @param name Name des Lagers darf nicht leer sein!
 	 */
-	Lager(int maxAnzArtikel, string name);
+	Lager(int maxAnzArtikel = defaultSize, string name = defaultName);
 	/**
 	 * @brief Destructor löscht alle Artikel
 	 */
@@ -71,9 +79,20 @@ public:
 	friend ostream& operator<<(ostream&, const Lager&);
 //	virtual string toString() const;
 private:
+	/**
+	 *
+	 */
 	int findeArtikel(int artikelNr);
+	/**
+	 *
+	 */
 	void loescheAlleArtikel();
-	void init(int maxAnzArtikel, string name);
+	/**
+	 * @brief Initialisierung des Lagers
+	 * @param maxAnzArtikel muss positiv sein!
+	 * @param name darf nicht leer sein!
+	 */
+	//void init(int maxAnzArtikel, string name);
 	string name;
 	Artikel** artikelTab;
 	int anzArtikel;
