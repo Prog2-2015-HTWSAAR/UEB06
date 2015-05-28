@@ -46,8 +46,8 @@ void Artikeldialog::testeConstructor1(int artikelNr, string bezeichnung, double 
 		Artikel artikel(artikelNr,bezeichnung,artikelpreis);
 		cout << endl << CREATEARTIKELPHRASE << endl;
 		ausgeben(artikel);
-	} catch (const char* e) {
-		cout << ERRORPHRASE << e << endl;
+	} catch (ArtikelException& e) {
+		cout << ERRORPHRASE << e.what() << endl;
 	}
 
 }
@@ -68,8 +68,8 @@ void Artikeldialog::testeConstructor2(int artikelNr, string bezeichnung, double 
 		Artikel artikel(artikelNr,bezeichnung,artikelpreis,bestand);
 		cout << endl << CREATEARTIKELPHRASE << endl;
 		ausgeben(artikel);
-	} catch (const char* e) {
-		cout << ERRORPHRASE << e << endl;
+	} catch (ArtikelException& e) {
+		cout << ERRORPHRASE << e.what() << endl;
 	}
 
 }
@@ -92,8 +92,8 @@ void Artikeldialog::testeBucheAbgang(Artikel *artikel){
 		artikel->bucheAbgang(menge);
 		cout << endl << "Artikel nach Abgang:" << endl;
 		ausgeben(*artikel);
-	} catch (const char* e) {
-		cout << ERRORPHRASE << e << endl;
+	} catch (ArtikelException& e) {
+		cout << ERRORPHRASE << e.what() << endl;
 	}
 }
 
@@ -116,8 +116,8 @@ void Artikeldialog::testeBucheZugang(Artikel *artikel){
 		artikel->bucheZugang(menge);
 		cout << endl << "Artikel nach Zugang:" << endl;
 		ausgeben(*artikel);
-	} catch (const char* e) {
-		cout << ERRORPHRASE << e << endl;
+	} catch (ArtikelException& e) {
+		cout << ERRORPHRASE << e.what() << endl;
 	}
 
 }
@@ -140,8 +140,8 @@ void Artikeldialog::testeSetBezeichnung(Artikel *artikel){
 		artikel->setBezeichnung(bezeichnung);
 		cout << endl << "Artikel nachher:" << endl;
 		ausgeben(*artikel);
-	} catch (const char* e) {
-		cout << ERRORPHRASE << e << endl;
+	} catch (ArtikelException& e) {
+		cout << ERRORPHRASE << e.what() << endl;
 	}
 
 }
@@ -164,8 +164,8 @@ void Artikeldialog::testeSetBestand(Artikel *artikel){
 		artikel->setBestand(bestand);
 		cout << endl << "Artikel nachher:" << endl;
 		ausgeben(*artikel);
-	} catch (const char* e) {
-		cout << ERRORPHRASE << e << endl;
+	} catch (ArtikelException& e) {
+		cout << ERRORPHRASE << e.what() << endl;
 	}
 
 }
@@ -186,8 +186,8 @@ void Artikeldialog::testeSetPreis(Artikel *artikel){
 		artikel->setPreis(preis);
 		cout << endl << "Artikel nachher:" << endl;
 		ausgeben(*artikel);
-	} catch (const char* e) {
-		cout << ERRORPHRASE << e << endl;
+	} catch (ArtikelException& e) {
+		cout << ERRORPHRASE << e.what() << endl;
 	}
 
 }
@@ -209,8 +209,8 @@ void Artikeldialog::testeAenderePreis(Artikel *artikel){
 		artikel->aenderePreis(preisaenderung);
 		cout << endl << "Artikel nach Zugang:" << endl;
 		ausgeben(*artikel);
-	} catch (const char* e) {
-		cout << ERRORPHRASE << e << endl;
+	} catch (ArtikelException& e) {
+		cout << ERRORPHRASE << e.what() << endl;
 	}
 }
 /**
@@ -222,9 +222,10 @@ void Artikeldialog::testeAlles(){
 	string beschreibung = TESTBEZ;
 	int bestand = TESTBESTAND;
 	double preis= TESTPREIS;
-	Artikel* artikel = new Artikel(artikelNr, beschreibung, bestand);
+	Artikel* artikel = new Artikel(artikelNr, beschreibung, preis, bestand);
 
 	cout << endl << "Starte alle Tests..." << endl;
+
 	testeConstructor1(artikelNr, beschreibung, preis);
 	testeConstructor2(artikelNr, beschreibung, preis, bestand);
 	testeBucheAbgang(artikel);
@@ -261,8 +262,8 @@ void Artikeldialog::dialog(){
 				default:
 					cout << INPUTERRORPHRASE << endl;
 			}
-		} catch (const char* e) {
-			cout << ERRORPHRASE << e << endl;
+		} catch (ArtikelException& e) {
+			cout << ERRORPHRASE << e.what() << endl;
 		}
 	} while (answer != 0);
 }
@@ -326,7 +327,7 @@ void Artikeldialog::manuell(Artikel artikel){
 			<< endl << BEZEICHNUNG << artikel.getBezeichnung() << endl 
 			<< ARTIKELPREIS << artikel.getArtikelPreis() << endl << BESTAND 
 			<< artikel.getBestand() << endl << SEPERATOR << endl 
-			<< MANUELLDIALOGOPTIONONE << endl << MANUELLDIALOGOPTIONTHREE 
+			<< MANUELLDIALOGOPTIONONE << endl << MANUELLDIALOGOPTIONTWO
 			<< endl << MANUELLDIALOGOPTIONTHREE << endl << endl 
 			<< MANUELLDIALOGOPTIONFOUR << endl << MANUELLDIALOGOPTIONFIVE 
 			<< endl << MANUELLDIALOGOPTIONSIX << endl << endl 
@@ -368,8 +369,8 @@ void Artikeldialog::manuell(Artikel artikel){
 					break;
 				default: cout << INPUTERRORPHRASE << endl;
 			}
-		} catch (const char* e) {
-			cout << endl << ERRORPHRASE << e << endl << endl;
+		} catch (ArtikelException& e) {
+			cout << endl << ERRORPHRASE << e.what() << endl << endl;
 		}
 		leereEingabe();
 	} while (answer != 0);

@@ -13,6 +13,8 @@ void BasisDialog::dialog(){
 				<< endl << STANDARDCHOICEPHRASE;
 			cin >> answer;
 			switch (answer) {
+			case 0:
+				break;
 			case 1:
 				enterArtikelDialog();
 				break;

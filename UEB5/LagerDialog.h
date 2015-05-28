@@ -1,7 +1,7 @@
 #ifndef LAGERDIALOG_H_
 #define LAGERDIALOG_H_
 #include "BasisDialog.h"
-
+#include "Lager.h"
 class LagerDialog
 {
 //	namespace Lager {
@@ -22,8 +22,9 @@ public:
 	const string SEPERATORCREATELAGER =	"-L-------CREATE-LAGER----------";
 	const string SEPERATORDELETELAGER = "-L-------DELETE-LAGER----------";
 	const string SEPERATORCREATEARTIKEL =	"-L-------CREATE-ARTIKEL--------";
-	const string DIALOGOPTIONONE = "(1) Lager mit Name Anlegen";
-	const string DIALOGOPTIONTWO = "(2) Lager ohne Name Anlegen";
+	const string DIALOGOPTIONONE = "(1) Groesse und Name festlegen";
+	const string DIALOGOPTIONTWO = "(2) Groesse festlegen";
+	const string DIALOGOPTIONTHREE = "(3) Standardlager";
 	const string STANDARDEXITOPTION = "(0) -EXIT/BACK-";
 	const string STANDARDBACKOPTION = "(0) -BACK-";
 	const string LAGERDIALOGOPTIONONE = "(1) Artikel Anlegen";
@@ -44,7 +45,7 @@ public:
 	virtual ~LagerDialog();
 	void dialog();
 	void leereEingabe();
-	void startLagerDialog(int size, string name);
+	void startLagerDialog(Lager* lager);
 	void artikelEditDialog();
 private:
 //	FunktionsTyp einlesenFunktion();
