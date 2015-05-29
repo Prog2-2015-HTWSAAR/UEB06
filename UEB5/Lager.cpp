@@ -9,21 +9,22 @@
 #include <sstream>
 #include <cmath>
 const char* Lager::defaultName = "Musterlager";
+const char* Lager::meldungGroesse = "Lagergroesse muss positiv sein!";
+const char* Lager::meldungNameLeer = "Lagername darf nicht leer sein!";
 Lager::Lager(int maxAnzArtikel, string name){
-	//TODO Exceptions
+	if(maxAnzArtikel < 1){
+		throw LagerException(meldungGroesse);
+	}
+	if(name.empty()){
+		throw LagerException(meldungNameLeer);
+	}
 	anzArtikel = ARTIKELANZAHL;
 	this->maxAnzArtikel = maxAnzArtikel;
 	this->name = name;
 	this->artikelTab = new Artikel*[maxAnzArtikel];
 
 }
-//void Lager::init(int maxAnzArtikel, string name){
-//	//TODO Exceptions
-//	anzArtikel = ARTIKELANZAHL;
-//	this->maxAnzArtikel = maxAnzArtikel;
-//	this->name = name;
-//	this->artikelTab = new Artikel*[maxAnzArtikel];
-//}
+
 Lager::~Lager() {
 	loescheAlleArtikel();
 	delete[] artikelTab;
@@ -52,12 +53,14 @@ void Lager::deleteArtikel(int artikelNr){
 		anzArtikel--;
 	}
 }
-void Lager::bucheAbgang(Artikel* artikel, int menge){
-	artikel->bucheAbgang(menge);
+void Lager::bucheAbgang(int artikelNr, int menge){
+	int index = findeArtikel(artikelNr);
+	artikelTab[index]->bucheAbgang(menge);
 }
 
-void Lager::bucheZugang(Artikel* artikel, int menge){
-	artikel->bucheZugang(menge);
+void Lager::bucheZugang(int artikelNr, int menge){
+	int index = findeArtikel(artikelNr);
+	artikelTab[index]->bucheZugang(menge);
 }
 void Lager::preiseAendern(double preisAenderung){
 	for(int i = 0; i < anzArtikel; i++){

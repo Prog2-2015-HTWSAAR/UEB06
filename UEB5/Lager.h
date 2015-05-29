@@ -21,24 +21,15 @@ public:
  */
 class Lager {
 public:
-	Lager& operator=(const Lager&) throw();
-	static const char* defaultName;
-	const int ARTIKELANZAHL = 0;
-	static const int defaultSize = 100;
+
 	/**
-	 * @brief Konstruktor ohne Namensangabe
-	 *
-	 * @param maxAnzArtikel muss positiv sein!
-	 */
-	//Lager(int maxAnzArtikel);
-	/**
-	 * @brief Konstruktor mit Namensangabe
-	 * @param maxAnzArtikel muss positiv sein!
-	 * @param name Name des Lagers darf nicht leer sein!
+	 * @brief Konstruktor
+	 * @param maxAnzArtikel (optional) muss positiv sein!
+	 * @param name (optional) Name des Lagers darf nicht leer sein!
 	 */
 	Lager(int maxAnzArtikel = defaultSize, string name = defaultName);
 	/**
-	 * @brief Destructor löscht alle Artikel
+	 * @brief Destructor loescht alle Artikel
 	 */
 	virtual ~Lager();
 	/**
@@ -66,18 +57,23 @@ public:
 	/**
 	 *
 	 */
-	void bucheZugang(Artikel *artikel, int menge);
+	void bucheZugang(int artikelNr, int menge);
 	/**
 	 *
 	 */
-	void bucheAbgang(Artikel *artikel, int menge);
+	void bucheAbgang(int artikelNr, int menge);
 	/**
 	 *
 	 */
 	void preiseAendern(double preisaenderung);
 	string toString() const;
 	friend ostream& operator<<(ostream&, const Lager&);
-//	virtual string toString() const;
+	Lager& operator=(const Lager&) throw();
+	static const char* meldungGroesse;
+	static const char* meldungNameLeer;
+	static const char* defaultName;
+	static const int ARTIKELANZAHL = 0;
+	static const int defaultSize = 100;
 private:
 	/**
 	 *

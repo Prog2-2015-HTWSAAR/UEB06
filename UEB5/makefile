@@ -9,5 +9,10 @@ build: project_ueb_05
 doc: 
 	/Applications/Doxygen/doxygen doxyfile
 rebuild: clean all
+	a=0	
+	while[a==0]
+	do
+	echo noob
+	done
 project_ueb_05: 
 	g++ -c -Wall -pedantic *.cpp -std=c++11

@@ -14,9 +14,11 @@ void LagerDialog::dialog(){
 			<< endl << DIALOGOPTIONTHREE<< endl <<STANDARDEXITOPTION << endl
 			<< endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
+		leereEingabe();
 		try {
 			switch (answer){
 			case 0:
+				cout << "exit is no option here" << endl;
 				break;
 			case 1:
 				cout << SEPERATORCREATELAGER << endl << ENTERSIZEPHRASE;
@@ -24,6 +26,7 @@ void LagerDialog::dialog(){
 				leereEingabe();
 				cout << ENTERNAMEPHRASE;
 				cin >> name;
+				leereEingabe();
 				lager = new Lager(anzahl, name);
 				startLagerDialog(lager);
 				break;
@@ -37,18 +40,20 @@ void LagerDialog::dialog(){
 			case 3:
 				lager = new Lager();
 				startLagerDialog(lager);
+
 				break;
 			default:
 				cout << INPUTERRORPHRASE << endl;
 			}
+			delete lager;
+		}catch (LagerException& e) {
+			cout << ERRORPHRASE << e.what() << endl;
 		}
-		catch (const char* e) {
-			cout << ERRORPHRASE << e << endl;
-		}
-		leereEingabe();
+
 	} while (answer != 0);
 }
 void LagerDialog::startLagerDialog(Lager* lager) {
+	//TODO REST LAGERFUNKIONENEN IMPLEMENTIEREN!!!
 	int answer = -1;
 	int artikelNr = 0000;
 	int bestand = 0;
@@ -61,6 +66,7 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 			<< endl << LAGERDIALOGOPTIONFIVE << endl << LAGERDIALOGOPTIONSIX << endl 
 			<< LAGERDIALOGOPTIONEXIT << endl << endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
+		leereEingabe();
 		try {
 			switch (answer){
 			case 0:
@@ -68,21 +74,28 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 			case 1:
 				cout << SEPERATORCREATEARTIKEL << endl << ARTIKELNUMMER;
 				cin >> artikelNr;
+				leereEingabe();
 				cout << BEZEICHNUNG;
 				cin >> bezeichnung;
+				leereEingabe();
 				cout << ARTIKELPREIS;
 				cin >> preis;
+				leereEingabe();
 				cout << BESTAND;
 				cin >> bestand;
+				leereEingabe();
 				lager->createArtikel(artikelNr, bezeichnung, preis, bestand);
 				break;
 			case 2:
 				cout << SEPERATORCREATEARTIKEL << endl << ARTIKELNUMMER;
 				cin >> artikelNr;
+				leereEingabe();
 				cout << BEZEICHNUNG;
 				cin >> bezeichnung;
+				leereEingabe();
 				cout << ARTIKELPREIS;
 				cin >> preis;
+				leereEingabe();
 				lager->createArtikel(artikelNr, bezeichnung, preis);
 				break;
 			case 3:
@@ -96,13 +109,13 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 				cout << INPUTERRORPHRASE << endl;
 			}
 
+		}catch (ArtikelException& e) {
+			cout << ERRORPHRASE << e.what() << endl;
+		}catch (LagerException& e) {
+			cout << ERRORPHRASE << e.what() << endl;
 		}
-		catch (const char* e) {
-			cout << ERRORPHRASE << e << endl;
-		}
-		leereEingabe();
 	} while (answer != 0);
-	delete lager;
+
 }
 void LagerDialog::artikelEditDialog(){
 	int answer = -1;
@@ -112,6 +125,7 @@ void LagerDialog::artikelEditDialog(){
 			<< endl << EDITDIALOGOPTIONFIVE << endl << EDITDIALOGOPTIONSIX << endl
 			<< STANDARDBACKOPTION << endl << endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
+		leereEingabe();
 		try {
 			switch (answer){
 			case 0:
