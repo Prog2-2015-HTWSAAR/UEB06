@@ -18,7 +18,6 @@ void LagerDialog::dialog(){
 		try {
 			switch (answer){
 			case 0:
-				cout << "exit is no option here" << endl;
 				break;
 			case 1:
 				cout << SEPERATORCREATELAGER << endl << ENTERSIZEPHRASE;
@@ -53,8 +52,8 @@ void LagerDialog::dialog(){
 	} while (answer != 0);
 }
 void LagerDialog::startLagerDialog(Lager* lager) {
-	//TODO REST LAGERFUNKIONENEN IMPLEMENTIEREN!!!
 	int answer = -1;
+	string wirklichLoeschen ="n";
 	int artikelNr = 0000;
 	int bestand = 0;
 	double preis;
@@ -63,13 +62,19 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 		cout << *lager << endl;
 		cout << SEPERATOR << endl << LAGERDIALOGOPTIONONE << endl << LAGERDIALOGOPTIONTWO
 			<< endl << LAGERDIALOGOPTIONTHREE << endl << LAGERDIALOGOPTIONFOUR 
-			<< endl << LAGERDIALOGOPTIONFIVE << endl << LAGERDIALOGOPTIONSIX << endl 
-			<< LAGERDIALOGOPTIONEXIT << endl << endl << STANDARDCHOICEPHRASE;
+			<< endl << LAGERDIALOGOPTIONEXIT << endl << endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
 		leereEingabe();
 		try {
 			switch (answer){
 			case 0:
+				cout << SEPERATORDELETEARTIKEL << endl <<LAGERWIRKLICHLOESCHEN;
+				cin >> wirklichLoeschen;
+				leereEingabe();
+				if (wirklichLoeschen != "j"){
+					answer = 9;
+				}
+				cout << endl;
 				break;
 			case 1:
 				cout << SEPERATORCREATEARTIKEL << endl << ARTIKELNUMMER;
@@ -84,6 +89,7 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 				cout << BESTAND;
 				cin >> bestand;
 				leereEingabe();
+				cout << endl;
 				lager->createArtikel(artikelNr, bezeichnung, preis, bestand);
 				break;
 			case 2:
@@ -96,14 +102,22 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 				cout << ARTIKELPREIS;
 				cin >> preis;
 				leereEingabe();
+				cout << endl;
 				lager->createArtikel(artikelNr, bezeichnung, preis);
 				break;
 			case 3:
+				artikelEditDialog(lager);
 				break;
 			case 4:
-				artikelEditDialog();
-				break;
-			case 5:
+				cout << SEPERATORDELETEARTIKEL << endl << ARTIKELNUMMER;
+				cin >> artikelNr;
+				leereEingabe();
+				cout << ARTIKELWIRKLICHLOESCHEN;
+				cin >> wirklichLoeschen;
+				leereEingabe();
+				if (wirklichLoeschen == "j"){
+					lager->deleteArtikel(artikelNr);
+				}
 				break;
 			default:
 				cout << INPUTERRORPHRASE << endl;
@@ -117,13 +131,16 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 	} while (answer != 0);
 
 }
-void LagerDialog::artikelEditDialog(){
+void LagerDialog::artikelEditDialog(Lager* lager){
+	int artikelNr = 0000;
+	int bestandAenderung = 0;
+	double preisAenderung = 0.0;
 	int answer = -1;
 	do {
+		cout << endl << *lager << endl;
 		cout << SEPERATOR << endl << EDITDIALOGOPTIONONE << endl << EDITDIALOGOPTIONTWO
-			<< endl << EDITDIALOGOPTIONTHREE << endl << EDITDIALOGOPTIONFOUR
-			<< endl << EDITDIALOGOPTIONFIVE << endl << EDITDIALOGOPTIONSIX << endl
-			<< STANDARDBACKOPTION << endl << endl << STANDARDCHOICEPHRASE;
+			<< endl << EDITDIALOGOPTIONTHREE << endl << STANDARDBACKOPTION << endl 
+			<< endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
 		leereEingabe();
 		try {
@@ -131,14 +148,28 @@ void LagerDialog::artikelEditDialog(){
 			case 0:
 				break;
 			case 1:
+				cout << SEPERATORBUCHEZUGANG << endl << ARTIKELNUMMER;
+				cin >> artikelNr;
+				leereEingabe();
+				cout << ZUGANG;
+				cin >> bestandAenderung;
+				leereEingabe();
+				lager->bucheZugang(artikelNr, bestandAenderung);
 				break;
 			case 2:
+				cout << SEPERATORBUCHEABGANG << endl << ARTIKELNUMMER;
+				cin >> artikelNr;
+				leereEingabe();
+				cout << ABGANG;
+				cin >> bestandAenderung;
+				leereEingabe();
+				lager->bucheAbgang(artikelNr, bestandAenderung);
 				break;
 			case 3:
-				break;
-			case 4:
-				break;
-			case 5:
+				cout << SEPERATORAENDEREPREIS << endl << PRICECHANGEPHRASE;
+				cin >> preisAenderung;
+				leereEingabe();
+				lager->preiseAendern(preisAenderung);
 				break;
 			default:
 				cout << INPUTERRORPHRASE << endl;
@@ -147,7 +178,6 @@ void LagerDialog::artikelEditDialog(){
 		catch (const char* e) {
 			cout << ERRORPHRASE << e << endl;
 		}
-		leereEingabe();
 	} while (answer != 0);
 }
 

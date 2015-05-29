@@ -32,14 +32,20 @@ Lager::~Lager() {
 
 
 void Lager::createArtikel(int artikelNr, string bezeichnung, double artikelPreis){
-	Artikel* ap = new Artikel(artikelNr, bezeichnung, artikelPreis);
-	artikelTab[anzArtikel] = ap;
-	anzArtikel++;
+	int i = findeArtikel(artikelNr);
+	if (i == -1){
+		Artikel* ap = new Artikel(artikelNr, bezeichnung, artikelPreis);
+		artikelTab[anzArtikel] = ap;
+		anzArtikel++;
+	}
 }
 void Lager::createArtikel(int artikelNr, string bezeichnung, double artikelPreis, int bestand){
-	Artikel* ap = new Artikel(artikelNr,bezeichnung,artikelPreis,bestand);
-	artikelTab[anzArtikel] = ap;
-	anzArtikel++;
+	int i = findeArtikel(artikelNr);
+	if (i == -1){
+		Artikel* ap = new Artikel(artikelNr, bezeichnung, artikelPreis, bestand);
+		artikelTab[anzArtikel] = ap;
+		anzArtikel++;
+	}
 }
 void Lager::deleteArtikel(int artikelNr){
 	int i = findeArtikel(artikelNr);
@@ -54,18 +60,25 @@ void Lager::deleteArtikel(int artikelNr){
 	}
 }
 void Lager::bucheAbgang(int artikelNr, int menge){
-	int index = findeArtikel(artikelNr);
-	artikelTab[index]->bucheAbgang(menge);
+	int i = findeArtikel(artikelNr);
+	if (i != -1 && menge > NULL){
+		int index = findeArtikel(artikelNr);
+		artikelTab[index]->bucheAbgang(menge);
+	}
 }
 
 void Lager::bucheZugang(int artikelNr, int menge){
-	int index = findeArtikel(artikelNr);
-	artikelTab[index]->bucheZugang(menge);
+	int i = findeArtikel(artikelNr);
+	if (i != -1 && menge > NULL){
+		int index = findeArtikel(artikelNr);
+		artikelTab[index]->bucheZugang(menge);
+	}
 }
 void Lager::preiseAendern(double preisAenderung){
-	for(int i = 0; i < anzArtikel; i++){
+	for (int i = 0; i < anzArtikel; i++){
 		artikelTab[i]->aenderePreis(preisAenderung);
 	}
+
 }
 int Lager::findeArtikel(int artikelNr){
 	for(int i = 0; i < anzArtikel; i++){
