@@ -288,7 +288,7 @@ void Artikeldialog::createArtikelMitBestand(){
 	cout << BESTAND;
 	cin >> bestand;
 	leereEingabe();
-	Artikel* artikel(artikelNr, bezeichnung, artikelPreis, bestand);
+	Artikel* artikel = new Artikel(artikelNr, bezeichnung, artikelPreis, bestand);
 	manuell(artikel);
 
 }
@@ -308,7 +308,7 @@ void Artikeldialog::createArtikelOhneBestand(){
 	cout << ARTIKELPREIS;
 	cin >> artikelPreis;
 	leereEingabe();
-	Artikel* artikel(artikelNr, bezeichnung,artikelPreis);
+	Artikel* artikel = new Artikel(artikelNr, bezeichnung,artikelPreis);
 	manuell(artikel);
 }
 

@@ -10,4 +10,4 @@ doc:
 	/Applications/Doxygen/doxygen doxyfile
 rebuild: clean all
 project_ueb_05: 
-	g++ -c -Wall -pedantic *.cpp
+	g++ -c -Wall -pedantic *.cpp -std=c++11
