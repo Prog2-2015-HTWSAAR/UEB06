@@ -11,6 +11,11 @@
 const char* Lager::defaultName = "Musterlager";
 const char* Lager::meldungGroesse = "Lagergroesse muss positiv sein!";
 const char* Lager::meldungNameLeer = "Lagername darf nicht leer sein!";
+/**
+* @brief Konstruktor
+* @param maxAnzArtikel (optional) muss positiv sein!
+* @param name (optional) Name des Lagers darf nicht leer sein!
+*/
 Lager::Lager(int maxAnzArtikel, string name){
 	if(maxAnzArtikel < 1){
 		throw LagerException(meldungGroesse);
@@ -24,13 +29,21 @@ Lager::Lager(int maxAnzArtikel, string name){
 	this->artikelTab = new Artikel*[maxAnzArtikel];
 
 }
-
+/**
+* @brief Destructor loescht alle Artikel
+*/
 Lager::~Lager() {
 	loescheAlleArtikel();
 	delete[] artikelTab;
 }
 
-
+/**
+* @brief Eintragen eines neuen Artikels ohne Bestandsangabe
+* @details Artikel wird am Ende ins ArtikelTab eingetragen, falls moeglich
+* @param artikelNr
+* @param bezeichnung
+* @param artikelPreis
+*/
 void Lager::createArtikel(int artikelNr, string bezeichnung, double artikelPreis){
 	int i = findeArtikel(artikelNr);
 	if (i == -1){
@@ -39,6 +52,14 @@ void Lager::createArtikel(int artikelNr, string bezeichnung, double artikelPreis
 		anzArtikel++;
 	}
 }
+/**
+* @brief Eintragen eines neuen Artikels mit Bestandsangabe
+* @details Artikel wird am Ende ins ArtikelTab eingetragen, falls moeglich
+* @param artikelNr
+* @param bezeichnung
+* @param artikelPreis
+* @param bestand
+*/
 void Lager::createArtikel(int artikelNr, string bezeichnung, double artikelPreis, int bestand){
 	int i = findeArtikel(artikelNr);
 	if (i == -1){
@@ -47,6 +68,10 @@ void Lager::createArtikel(int artikelNr, string bezeichnung, double artikelPreis
 		anzArtikel++;
 	}
 }
+/**
+* @brief deleteArtikel Entfernen eines Artikels aus dem Lager
+* @param artikelNr
+*/
 void Lager::deleteArtikel(int artikelNr){
 	int i = findeArtikel(artikelNr);
 	if(i >= 0){
@@ -59,6 +84,11 @@ void Lager::deleteArtikel(int artikelNr){
 		anzArtikel--;
 	}
 }
+/**
+* @brief bucheZugang erhoeht den bestand
+* @param artikelNr
+* @param menge
+*/
 void Lager::bucheAbgang(int artikelNr, int menge){
 	int i = findeArtikel(artikelNr);
 	if (i >= 0 ){
@@ -66,7 +96,11 @@ void Lager::bucheAbgang(int artikelNr, int menge){
 		artikelTab[index]->bucheAbgang(menge);
 	}
 }
-
+/**
+* @brief bucheAbgang verringert den bestand
+* @param artikelNr
+* @param menge
+*/
 void Lager::bucheZugang(int artikelNr, int menge){
 	int i = findeArtikel(artikelNr);
 	if (i >= 0 ){
@@ -74,12 +108,20 @@ void Lager::bucheZugang(int artikelNr, int menge){
 		artikelTab[index]->bucheZugang(menge);
 	}
 }
+/**
+* @brief preiseAendern aendert alle preise prozentual
+* @param preisaenderung
+*/
 void Lager::preiseAendern(double preisAenderung){
 	for (int i = 0; i < anzArtikel; i++){
 		artikelTab[i]->aenderePreis(preisAenderung);
 	}
 
 }
+/**
+* @brief findeArtikel Findet einen Artikel
+* @param artikelNr
+*/
 int Lager::findeArtikel(int artikelNr){
 	for(int i = 0; i < anzArtikel; i++){
 	if (artikelNr == artikelTab[i]->getArtikelNr()){
@@ -88,6 +130,10 @@ int Lager::findeArtikel(int artikelNr){
 	}
 	return -1;
 }
+/**
+* @brief loescheAlleArtikel loesche alle artikel
+* @param artikelNr
+*/
 void Lager::loescheAlleArtikel(){
 	for(int i = 0; i < anzArtikel; i++){
 		delete artikelTab[i];

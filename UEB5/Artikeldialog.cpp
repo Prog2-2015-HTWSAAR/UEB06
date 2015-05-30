@@ -39,14 +39,25 @@ const char* Artikeldialog::USEVALUESPHRASE = "Nutze folgende Werte : ";
 const char* Artikeldialog::VALUEPHRASE = "Wert: ";
 const char* Artikeldialog::CREATEARTIKELPHRASE = "Erstellter Artikel:";
 const char* Artikeldialog::ERRORPHRASE = "Fehler: ";
+/**
+* @brief Konstruktor
+* @details Konstruktor zur Erzeugung eines Artikel Obj; Bestandsangabe optional
+*/
 Artikeldialog::Artikeldialog(){
 	// Nothing to do here
 }
-
+/**
+* @brief Dekonstruktor
+* @details Dekonstruktor
+*/
 Artikeldialog::~Artikeldialog(){
 	// Nothing to do here
 }
-
+/**
+* @brief ausgeben
+* @details Ausgabe fkt
+* @param Artikel& artikel Artikel obj
+*/
 void Artikeldialog::ausgeben(const Artikel& artikel){
 	cout << ARTIKELNUMMER << artikel.getArtikelNr()
 		 << BEZEICHNUNG << artikel.getBezeichnung()
@@ -60,7 +71,6 @@ void Artikeldialog::ausgeben(const Artikel& artikel){
 * @param bezeichnung Bezeichnung des neuen Obj
 * @param artikelpreis
 */
-
 void Artikeldialog::testeConstructor1(int artikelNr, string bezeichnung, double artikelpreis){
 	cout << endl << RUNTESTCONSTRUCTORPHRASE << WITHOUTPHRASE << endl
 		<< USEVALUESPHRASE << endl << ARTIKELNUMMER << artikelNr << endl

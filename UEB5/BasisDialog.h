@@ -17,8 +17,20 @@ public:
 	static const char* INPUTERRORPHRASE;
 	static const char* ERRORPHRASE;
 
+	/**
+	* @brief Konstruktor
+	* @details Konstruktor
+	*/
 	BasisDialog();
+	/**
+	* @brief Dekonstruktor
+	* @details Dekonstruktor
+	*/
 	~BasisDialog();
+	/**
+	* @brief Eingabeleerung
+	* @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
+	*/
 	void leereEingabe();
 	void enterArtikelDialog();
 	void enterLagerDialog();

@@ -32,7 +32,6 @@ const char* Artikel::meldungNullNaN = "0 or NaN Forbidden";
 * @param artikelPreis darf nicht negativ sein!
 * @param bestand (optional) darf nicht negativ sein!
 */
-
 Artikel::Artikel(int artikelNr, string bezeichnung, double artikelPreis, int bestand) throw(ArtikelException){
 	if (artikelNr < MINARTKIKELNR || artikelNr > MAXARTIKELNR) {
 		throw ArtikelException(meldungArtikelNr);

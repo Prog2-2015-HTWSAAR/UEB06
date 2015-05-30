@@ -54,7 +54,10 @@ public:
 	*/
 	Artikel(int artikelNr, string bezeichnung, double artikelPreis, int bestand = 0)
 			throw (ArtikelException);
-
+	/**
+	* @brief Dekonstruktor
+	* @details Dekonstruktor
+	*/
 	virtual ~Artikel(){}
 	/**
 	* @brief bucheZugang

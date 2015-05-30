@@ -1,44 +1,51 @@
 #include "LagerDialog.h"
-	const char* LagerDialog::LAGERWIRKLICHLOESCHEN = "Lager wirklich Loeschen (j)=Ja: ";
-	const char* LagerDialog::ARTIKELWIRKLICHLOESCHEN = "Artikel wirklich Loeschen (j)=Ja: ";
-	const char* LagerDialog::ARTIKELNUMMER = "Artikelnummer: ";
-	const char* LagerDialog::BEZEICHNUNG = "Bezeichnung: ";
-	const char* LagerDialog::ARTIKELPREIS = "Artikelpreis: ";
-	const char* LagerDialog::BESTAND = "Bestand: ";
-	const char* LagerDialog::ZUGANG = "Zugang: ";
-	const char* LagerDialog::ABGANG = "Abgang: ";
-	const char* LagerDialog::PRICECHANGEPHRASE = "Preisaenderung (%): ";
-	const char* LagerDialog::EDITDIALOGOPTIONONE = "(1) BUCHE - Zugang";
-	const char* LagerDialog::EDITDIALOGOPTIONTWO = "(2) BUCHE - Abgang";
-	const char* LagerDialog::EDITDIALOGOPTIONTHREE = "(3) Aendere Preis (%)";
-	const char* LagerDialog::SEPERATOR =			  "-L-----------------------------";
-	const char* LagerDialog::SEPERATORCREATELAGER =   "-L-------CREATE-LAGER----------";
-	const char* LagerDialog::SEPERATORDELETELAGER =   "-L-------DELETE-LAGER----------";
-	const char* LagerDialog::SEPERATORBUCHEZUGANG =   "-L-------BUCHE-ZUGANG----------";
-	const char* LagerDialog::SEPERATORBUCHEABGANG =   "-L-------BUCHE-ABGANG----------";
-	const char* LagerDialog::SEPERATORAENDEREPREIS =  "-L-------AENDERE-PREIS---------";
-	const char* LagerDialog::SEPERATORDELETEARTIKEL = "-L-------DELETE-ARTIKEL--------";
-	const char* LagerDialog::SEPERATORCREATEARTIKEL = "-L-------CREATE-ARTIKEL--------";
-	const char* LagerDialog::DIALOGOPTIONONE = "(1) Groesse und Name festlegen";
-	const char* LagerDialog::DIALOGOPTIONTWO = "(2) Groesse festlegen";
-	const char* LagerDialog::DIALOGOPTIONTHREE = "(3) Standardlager";
-	const char* LagerDialog::STANDARDEXITOPTION = "(0) -EXIT/BACK-";
-	const char* LagerDialog::STANDARDBACKOPTION = "(0) -BACK-";
-	const char* LagerDialog::LAGERDIALOGOPTIONONE = "(1) Artikel Anlegen";
-	const char* LagerDialog::LAGERDIALOGOPTIONTWO = "(2) Artikel Anlegen ohne Bestand";
-	const char* LagerDialog::LAGERDIALOGOPTIONTHREE = "(3) Artikel Bearbeiten";
-	const char* LagerDialog::LAGERDIALOGOPTIONFOUR = "(4) Artikel Loeschen";
-	const char* LagerDialog::LAGERDIALOGOPTIONEXIT = "(0) Lager Loeschen";
-	const char* LagerDialog::STANDARDCHOICEPHRASE = "Waehlen sie eine Option : ";
-	const char* LagerDialog::INPUTERRORPHRASE = "-> FEHLERHAFTE EINGABE <-";
-	const char* LagerDialog::ERRORPHRASE = "Fehler: ";
-	const char* LagerDialog::STANDARDLAGERNAME = "Lager";
-	const char* LagerDialog::ENTERNAMEPHRASE = "Bitte geben sie den Lagernamen ein: ";
-	const char* LagerDialog::ENTERSIZEPHRASE = "Bitte geben sie die Lagergroesse ein: ";
+const char* LagerDialog::LAGERWIRKLICHLOESCHEN = "Lager wirklich Loeschen (j)=Ja: ";
+const char* LagerDialog::ARTIKELWIRKLICHLOESCHEN = "Artikel wirklich Loeschen (j)=Ja: ";
+const char* LagerDialog::ARTIKELNUMMER = "Artikelnummer: ";
+const char* LagerDialog::BEZEICHNUNG = "Bezeichnung: ";
+const char* LagerDialog::ARTIKELPREIS = "Artikelpreis: ";
+const char* LagerDialog::BESTAND = "Bestand: ";
+const char* LagerDialog::ZUGANG = "Zugang: ";
+const char* LagerDialog::ABGANG = "Abgang: ";
+const char* LagerDialog::PRICECHANGEPHRASE = "Preisaenderung (%): ";
+const char* LagerDialog::EDITDIALOGOPTIONONE = "(1) BUCHE - Zugang";
+const char* LagerDialog::EDITDIALOGOPTIONTWO = "(2) BUCHE - Abgang";
+const char* LagerDialog::EDITDIALOGOPTIONTHREE = "(3) Aendere Preis (%)";
+const char* LagerDialog::SEPERATOR = "-L-----------------------------";
+const char* LagerDialog::SEPERATORCREATELAGER = "-L-------CREATE-LAGER----------";
+const char* LagerDialog::SEPERATORDELETELAGER = "-L-------DELETE-LAGER----------";
+const char* LagerDialog::SEPERATORBUCHEZUGANG = "-L-------BUCHE-ZUGANG----------";
+const char* LagerDialog::SEPERATORBUCHEABGANG = "-L-------BUCHE-ABGANG----------";
+const char* LagerDialog::SEPERATORAENDEREPREIS = "-L-------AENDERE-PREIS---------";
+const char* LagerDialog::SEPERATORDELETEARTIKEL = "-L-------DELETE-ARTIKEL--------";
+const char* LagerDialog::SEPERATORCREATEARTIKEL = "-L-------CREATE-ARTIKEL--------";
+const char* LagerDialog::DIALOGOPTIONONE = "(1) Groesse und Name festlegen";
+const char* LagerDialog::DIALOGOPTIONTWO = "(2) Groesse festlegen";
+const char* LagerDialog::DIALOGOPTIONTHREE = "(3) Standardlager";
+const char* LagerDialog::STANDARDEXITOPTION = "(0) -EXIT/BACK-";
+const char* LagerDialog::STANDARDBACKOPTION = "(0) -BACK-";
+const char* LagerDialog::LAGERDIALOGOPTIONONE = "(1) Artikel Anlegen";
+const char* LagerDialog::LAGERDIALOGOPTIONTWO = "(2) Artikel Anlegen ohne Bestand";
+const char* LagerDialog::LAGERDIALOGOPTIONTHREE = "(3) Artikel Bearbeiten";
+const char* LagerDialog::LAGERDIALOGOPTIONFOUR = "(4) Artikel Loeschen";
+const char* LagerDialog::LAGERDIALOGOPTIONEXIT = "(0) Lager Loeschen";
+const char* LagerDialog::STANDARDCHOICEPHRASE = "Waehlen sie eine Option : ";
+const char* LagerDialog::INPUTERRORPHRASE = "-> FEHLERHAFTE EINGABE <-";
+const char* LagerDialog::ERRORPHRASE = "Fehler: ";
+const char* LagerDialog::STANDARDLAGERNAME = "Lager";
+const char* LagerDialog::ENTERNAMEPHRASE = "Bitte geben sie den Lagernamen ein: ";
+const char* LagerDialog::ENTERSIZEPHRASE = "Bitte geben sie die Lagergroesse ein: ";
+/**
+* @brief Konstructor
+*/
 LagerDialog::LagerDialog(){}
-
+/**
+* @brief Destructor
+*/
 LagerDialog::~LagerDialog(){}
-
+/**
+* @brief dialog Dialog
+*/
 void LagerDialog::dialog(){
 	Lager* lager = NULL;
 	int answer = -1;
@@ -46,7 +53,7 @@ void LagerDialog::dialog(){
 	string name = STANDARDLAGERNAME;
 	do {
 		cout << SEPERATOR << endl << DIALOGOPTIONONE << endl << DIALOGOPTIONTWO
-			<< endl << DIALOGOPTIONTHREE<< endl <<STANDARDEXITOPTION << endl
+			<< endl << DIALOGOPTIONTHREE << endl << STANDARDEXITOPTION << endl
 			<< endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
 		leereEingabe();
@@ -81,15 +88,20 @@ void LagerDialog::dialog(){
 			default:
 				cout << INPUTERRORPHRASE << endl;
 			}
-		}catch (LagerException& e) {
+		}
+		catch (LagerException& e) {
 			cout << ERRORPHRASE << e.what() << endl;
 		}
 
 	} while (answer != 0);
 }
+/**
+* @brief startLagerDialog Dialog Lagermanagementdialog
+* @param Lager* lager
+*/
 void LagerDialog::startLagerDialog(Lager* lager) {
 	int answer = -1;
-	string wirklichLoeschen ="n";
+	string wirklichLoeschen = "n";
 	int artikelNr = 0000;
 	int bestand = 0;
 	double preis;
@@ -97,14 +109,14 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 	do {
 		cout << *lager << endl;
 		cout << SEPERATOR << endl << LAGERDIALOGOPTIONONE << endl << LAGERDIALOGOPTIONTWO
-			<< endl << LAGERDIALOGOPTIONTHREE << endl << LAGERDIALOGOPTIONFOUR 
+			<< endl << LAGERDIALOGOPTIONTHREE << endl << LAGERDIALOGOPTIONFOUR
 			<< endl << LAGERDIALOGOPTIONEXIT << endl << endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
 		leereEingabe();
 		try {
 			switch (answer){
 			case 0:
-				cout << SEPERATORDELETEARTIKEL << endl <<LAGERWIRKLICHLOESCHEN;
+				cout << SEPERATORDELETEARTIKEL << endl << LAGERWIRKLICHLOESCHEN;
 				cin >> wirklichLoeschen;
 				leereEingabe();
 				if (wirklichLoeschen != "j"){
@@ -159,14 +171,20 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 				cout << INPUTERRORPHRASE << endl;
 			}
 
-		}catch (LagerException& e) {
+		}
+		catch (LagerException& e) {
 			cout << ERRORPHRASE << e.what() << endl;
-		}catch (ArtikelException& e) {
+		}
+		catch (ArtikelException& e) {
 			cout << ERRORPHRASE << e.what() << endl;
 		}
 	} while (answer != 0);
 
 }
+/**
+* @brief artikelEditDialog Dialog zum aendern eines Artikels
+* @param Lager* lager
+*/
 void LagerDialog::artikelEditDialog(Lager* lager){
 	int artikelNr = 0000;
 	int bestandAenderung = 0;
@@ -175,7 +193,7 @@ void LagerDialog::artikelEditDialog(Lager* lager){
 	do {
 		cout << endl << *lager << endl;
 		cout << SEPERATOR << endl << EDITDIALOGOPTIONONE << endl << EDITDIALOGOPTIONTWO
-			<< endl << EDITDIALOGOPTIONTHREE << endl << STANDARDBACKOPTION << endl 
+			<< endl << EDITDIALOGOPTIONTHREE << endl << STANDARDBACKOPTION << endl
 			<< endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
 		leereEingabe();
@@ -216,7 +234,10 @@ void LagerDialog::artikelEditDialog(Lager* lager){
 		}
 	} while (answer != 0);
 }
-
+/**
+* @brief Eingabeleerung
+* @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
+*/
 void LagerDialog::leereEingabe(){
 	cin.clear();
 	cin.ignore(BIGNUMBER, '\n');

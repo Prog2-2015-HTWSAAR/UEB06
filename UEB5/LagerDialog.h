@@ -43,12 +43,32 @@ public:
 	static const char* STANDARDLAGERNAME;
 	static const char* ENTERNAMEPHRASE;
 	static const char* ENTERSIZEPHRASE;
-
+	/**
+	* @brief Konstructor
+	*/
 	LagerDialog();
+	/**
+	* @brief Destructor 
+	*/
 	virtual ~LagerDialog();
+	/**
+	* @brief dialog Dialog
+	*/
 	void dialog();
+	/**
+	* @brief Eingabeleerung
+	* @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
+	*/
 	void leereEingabe();
+	/**
+	* @brief startLagerDialog Dialog Lagermanagementdialog
+	* @param Lager* lager
+	*/
 	void startLagerDialog(Lager* lager);
+	/**
+	* @brief artikelEditDialog Dialog zum aendern eines Artikels
+	* @param Lager* lager
+	*/
 	void artikelEditDialog(Lager* lager);
 private:
 //	FunktionsTyp einlesenFunktion();

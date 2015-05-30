@@ -132,7 +132,6 @@ public:
 	 * @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
 	 */
 	void leereEingabe();
-	void createArtikelLagerOhneBestand();
 };
 #endif /* ARTIKELDIALOG_H_ */
 

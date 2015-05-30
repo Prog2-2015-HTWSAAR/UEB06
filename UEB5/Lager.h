@@ -50,22 +50,32 @@ public:
 	 */
 	void createArtikel(int artikelNr, string bezeichnung, double artikelPreis, int bestand);
 	/**
-	 * @brief Entfernen eines Artikels aus dem Lager
+	 * @brief deleteArtikel Entfernen eines Artikels aus dem Lager
 	 * @param artikelNr
 	 */
 	void deleteArtikel(int artikelNr);
 	/**
-	 *
-	 */
+	* @brief bucheZugang erhoeht den bestand
+	* @param artikelNr
+	* @param menge
+	*/
 	void bucheZugang(int artikelNr, int menge);
 	/**
-	 *
-	 */
+	* @brief bucheAbgang verringert den bestand
+	* @param artikelNr
+	* @param menge
+	*/
 	void bucheAbgang(int artikelNr, int menge);
 	/**
-	 *
-	 */
+	* @brief preiseAendern aendert alle preise prozentual
+	* @param preisaenderung
+	*/
 	void preiseAendern(double preisaenderung);
+	/**
+	* @brief toString ToString
+	* @param maxAnzArtikel muss positiv sein!
+	* @param name darf nicht leer sein!
+	*/
 	string toString() const;
 	friend ostream& operator<<(ostream&, const Lager&);
 	Lager& operator=(const Lager&) throw();
@@ -76,12 +86,14 @@ public:
 	static const int defaultSize = 100;
 private:
 	/**
-	 *
-	 */
+	* @brief findeArtikel Findet einen Artikel
+	* @param artikelNr
+	*/
 	int findeArtikel(int artikelNr);
 	/**
-	 *
-	 */
+	* @brief loescheAlleArtikel loesche alle artikel
+	* @param artikelNr
+	*/
 	void loescheAlleArtikel();
 	/**
 	 * @brief Initialisierung des Lagers
