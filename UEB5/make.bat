@@ -1,2 +1,2 @@
-g++ -c -Wall -pedantic *.cpp -std=c++11
+g++ -c -Wall -pedantic *.cpp 
 g++ -o ueb05 *.o

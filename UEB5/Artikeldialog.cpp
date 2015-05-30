@@ -14,7 +14,31 @@
 #include "Artikel.h"
 #include <iostream>
 
-
+const char* Artikeldialog::ARTIKELNUMMER = "Artikelnummer: ";
+const char* Artikeldialog::BEZEICHNUNG = "\nBezeichnung: ";
+const char* Artikeldialog::ARTIKELPREIS = "\nArtikelpreis: ";
+const char* Artikeldialog::BESTAND = "\naktl. Bestand: ";
+const char* Artikeldialog::SEPERATOR = "-A-----------------------------";
+const char* Artikeldialog::NEWPHRASE = "Neuer";
+const char* Artikeldialog::DIALOGOPTIONONE = "(1) Automatischer Test";
+const char* Artikeldialog::DIALOGOPTIONTWO = "(2) Manueller Test mit Bestandsangabe";
+const char* Artikeldialog::DIALOGOPTIONTHREE = "(3) Manueller Test ohne Bestandsangabe";
+const char* Artikeldialog::STANDARDEXITOPTION = "(0) -EXIT/BACK-";
+const char* Artikeldialog::STANDARDCHOICEPHRASE = "Waehlen sie eine Option : ";
+const char* Artikeldialog::MANUELLDIALOGOPTIONONE = "(1) SET - Bezeichnung";
+const char* Artikeldialog::MANUELLDIALOGOPTIONTWO = "(2) SET - ArtikelPreis";
+const char* Artikeldialog::MANUELLDIALOGOPTIONTHREE = "(3) SET - Bestand";
+const char* Artikeldialog::MANUELLDIALOGOPTIONFOUR = "(4) Aendere Preis (%)";
+const char* Artikeldialog::MANUELLDIALOGOPTIONFIVE = "(5) BUCHE - Abgang";
+const char* Artikeldialog::MANUELLDIALOGOPTIONSIX = "(6) BUCHE - Zugang";
+const char* Artikeldialog::PRICECHANGEPHRASE = "Preisaenderung (%): ";
+const char* Artikeldialog::INPUTERRORPHRASE = "-> FEHLERHAFTE EINGABE <-";
+const char* Artikeldialog::WITHOUTPHRASE = "ohne Bestand...";
+const char* Artikeldialog::RUNTESTCONSTRUCTORPHRASE = "Starte Test zum Erstellen eines Artikels";
+const char* Artikeldialog::USEVALUESPHRASE = "Nutze folgende Werte : ";
+const char* Artikeldialog::VALUEPHRASE = "Wert: ";
+const char* Artikeldialog::CREATEARTIKELPHRASE = "Erstellter Artikel:";
+const char* Artikeldialog::ERRORPHRASE = "Fehler: ";
 Artikeldialog::Artikeldialog(){
 	// Nothing to do here
 }

@@ -1,6 +1,12 @@
 #include "BasisDialog.h"
 
-
+const char* BasisDialog::SEPERATOR = "-B-----------------------------";
+const char* BasisDialog::DIALOGOPTIONONE = "(1) Artikeldialog";
+const char* BasisDialog::DIALOGOPTIONTWO = "(2) Lagerdialog";
+const char* BasisDialog::STANDARDEXITOPTION = "(0) -EXIT/BACK-";
+const char* BasisDialog::STANDARDCHOICEPHRASE = "Waehlen sie eine Option : ";
+const char* BasisDialog::INPUTERRORPHRASE = "-> FEHLERHAFTE EINGABE <-";
+const char* BasisDialog::ERRORPHRASE = "Fehler: ";
 BasisDialog::BasisDialog(){}
 BasisDialog::~BasisDialog(){}
 

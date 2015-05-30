@@ -1,7 +1,42 @@
 #include "LagerDialog.h"
-
-
+	const char* LagerDialog::LAGERWIRKLICHLOESCHEN = "Lager wirklich Loeschen (j)=Ja: ";
+	const char* LagerDialog::ARTIKELWIRKLICHLOESCHEN = "Artikel wirklich Loeschen (j)=Ja: ";
+	const char* LagerDialog::ARTIKELNUMMER = "Artikelnummer: ";
+	const char* LagerDialog::BEZEICHNUNG = "Bezeichnung: ";
+	const char* LagerDialog::ARTIKELPREIS = "Artikelpreis: ";
+	const char* LagerDialog::BESTAND = "Bestand: ";
+	const char* LagerDialog::ZUGANG = "Zugang: ";
+	const char* LagerDialog::ABGANG = "Abgang: ";
+	const char* LagerDialog::PRICECHANGEPHRASE = "Preisaenderung (%): ";
+	const char* LagerDialog::EDITDIALOGOPTIONONE = "(1) BUCHE - Zugang";
+	const char* LagerDialog::EDITDIALOGOPTIONTWO = "(2) BUCHE - Abgang";
+	const char* LagerDialog::EDITDIALOGOPTIONTHREE = "(3) Aendere Preis (%)";
+	const char* LagerDialog::SEPERATOR =			  "-L-----------------------------";
+	const char* LagerDialog::SEPERATORCREATELAGER =   "-L-------CREATE-LAGER----------";
+	const char* LagerDialog::SEPERATORDELETELAGER =   "-L-------DELETE-LAGER----------";
+	const char* LagerDialog::SEPERATORBUCHEZUGANG =   "-L-------BUCHE-ZUGANG----------";
+	const char* LagerDialog::SEPERATORBUCHEABGANG =   "-L-------BUCHE-ABGANG----------";
+	const char* LagerDialog::SEPERATORAENDEREPREIS =  "-L-------AENDERE-PREIS---------";
+	const char* LagerDialog::SEPERATORDELETEARTIKEL = "-L-------DELETE-ARTIKEL--------";
+	const char* LagerDialog::SEPERATORCREATEARTIKEL = "-L-------CREATE-ARTIKEL--------";
+	const char* LagerDialog::DIALOGOPTIONONE = "(1) Groesse und Name festlegen";
+	const char* LagerDialog::DIALOGOPTIONTWO = "(2) Groesse festlegen";
+	const char* LagerDialog::DIALOGOPTIONTHREE = "(3) Standardlager";
+	const char* LagerDialog::STANDARDEXITOPTION = "(0) -EXIT/BACK-";
+	const char* LagerDialog::STANDARDBACKOPTION = "(0) -BACK-";
+	const char* LagerDialog::LAGERDIALOGOPTIONONE = "(1) Artikel Anlegen";
+	const char* LagerDialog::LAGERDIALOGOPTIONTWO = "(2) Artikel Anlegen ohne Bestand";
+	const char* LagerDialog::LAGERDIALOGOPTIONTHREE = "(3) Artikel Bearbeiten";
+	const char* LagerDialog::LAGERDIALOGOPTIONFOUR = "(4) Artikel Loeschen";
+	const char* LagerDialog::LAGERDIALOGOPTIONEXIT = "(0) Lager Loeschen";
+	const char* LagerDialog::STANDARDCHOICEPHRASE = "Waehlen sie eine Option : ";
+	const char* LagerDialog::INPUTERRORPHRASE = "-> FEHLERHAFTE EINGABE <-";
+	const char* LagerDialog::ERRORPHRASE = "Fehler: ";
+	const char* LagerDialog::STANDARDLAGERNAME = "Lager";
+	const char* LagerDialog::ENTERNAMEPHRASE = "Bitte geben sie den Lagernamen ein: ";
+	const char* LagerDialog::ENTERSIZEPHRASE = "Bitte geben sie die Lagergroesse ein: ";
 LagerDialog::LagerDialog(){}
+
 LagerDialog::~LagerDialog(){}
 
 void LagerDialog::dialog(){
@@ -28,6 +63,7 @@ void LagerDialog::dialog(){
 				leereEingabe();
 				lager = new Lager(anzahl, name);
 				startLagerDialog(lager);
+				delete lager;
 				break;
 			case 2:
 				cout << SEPERATORCREATELAGER << endl << ENTERSIZEPHRASE;
@@ -35,16 +71,16 @@ void LagerDialog::dialog(){
 				leereEingabe();
 				lager = new Lager(anzahl);
 				startLagerDialog(lager);
+				delete lager;
 				break;
 			case 3:
 				lager = new Lager();
 				startLagerDialog(lager);
-
+				delete lager;
 				break;
 			default:
 				cout << INPUTERRORPHRASE << endl;
 			}
-			delete lager;
 		}catch (LagerException& e) {
 			cout << ERRORPHRASE << e.what() << endl;
 		}

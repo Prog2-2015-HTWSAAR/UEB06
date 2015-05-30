@@ -28,20 +28,20 @@ public:
 */
 class Artikel {
 public:
-	const int LOWERBORDERARTIKELNUMMER = 1000;
-	const int UPPERBORDERARTIKELNUMMER = 9999;
-	const string ARTIKELNUMMER = "ArtikelNr: ";
-	const string BEZEICHNUNG = "Bez.: ";
-	const string ARTIKELPREIS = "Preis: ";
-	const string BESTAND = "Bestand: ";
-	const char* THROWARTIKELNUMMERERROR = "Die Artikelnummer muss eine 4-stellige positive Zahl sein!";
-	const char* THROWBEZEICHNUNGERROR = "Die Bezeichnung eines Artikels darf nicht leer sein!";
-	const char* THROWBESTANDERROR = "Der Bestand darf nie negativ sein!";
-	const char* THROWPREISERROR = "Der Preis darf nie null oder negativ sein!";
-	const char* THROWONLYPOSITIVEALLOWEDERROR = "Es duerfen nur positive Mengen gebucht werden!";
-	const char* THROWBESTANDREDUCEERROR = "Es koennen nicht mehr Artikel abgebucht werden als vorhanden!";
-	const char* THROWCHARGETOODAMNHIGHERROR = "This change is too damn High!";
-	const char* THROWZEROORNANERROR = "0 or NaN Forbidden";
+	static const int MINARTKIKELNR = 1000;
+	static const int MAXARTIKELNR = 9999;
+	static const char* ARTIKELNUMMER;
+	static const char* BEZEICHNUNG;
+	static const char* ARTIKELPREIS;
+	static const char* BESTAND;
+	static const char* meldungArtikelNr;
+	static const char* meldungArtikelBez;
+	static const char* meldungBestand;
+	static const char* meldungPreis;
+	static const char* meldungBuchungsmenge;
+	static const char* meldungZuHoheAbbuchung;
+	static const char* meldungTooHighChange;
+	static const char* meldungNullNaN;
 
 	/**
 	* @brief Konstruktor

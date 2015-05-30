@@ -26,31 +26,31 @@
 #define BIGNUMBER 10000
 class Artikeldialog {
 public:
-	const string ARTIKELNUMMER = "Artikelnummer: ";
-	const string BEZEICHNUNG = "\nBezeichnung: ";
-	const string ARTIKELPREIS = "\nArtikelpreis: ";
-	const string BESTAND = "\naktl. Bestand: ";
-	const string SEPERATOR = "-A-----------------------------";
-	const string NEWPHRASE = "Neuer";
-	const string DIALOGOPTIONONE = "(1) Automatischer Test";
-	const string DIALOGOPTIONTWO = "(2) Manueller Test mit Bestandsangabe";
-	const string DIALOGOPTIONTHREE = "(3) Manueller Test ohne Bestandsangabe";
-	const string STANDARDEXITOPTION = "(0) -EXIT/BACK-";
-	const string STANDARDCHOICEPHRASE = "Waehlen sie eine Option : ";
-	const string MANUELLDIALOGOPTIONONE = "(1) SET - Bezeichnung";
-	const string MANUELLDIALOGOPTIONTWO = "(2) SET - ArtikelPreis";
-	const string MANUELLDIALOGOPTIONTHREE = "(3) SET - Bestand";
-	const string MANUELLDIALOGOPTIONFOUR = "(4) Aendere Preis (%)";
-	const string MANUELLDIALOGOPTIONFIVE = "(5) BUCHE - Abgang";
-	const string MANUELLDIALOGOPTIONSIX = "(6) BUCHE - Zugang";
-	const string PRICECHANGEPHRASE = "Preisaenderung (%): ";
-	const string INPUTERRORPHRASE = "-> FEHLERHAFTE EINGABE <-";
-	const string WITHOUTPHRASE = "ohne Bestand...";
-	const string RUNTESTCONSTRUCTORPHRASE = "Starte Test zum Erstellen eines Artikels";
-	const string USEVALUESPHRASE = "Nutze folgende Werte : ";
-	const string VALUEPHRASE = "Wert: ";
-	const string CREATEARTIKELPHRASE = "Erstellter Artikel:";
-	const string ERRORPHRASE = "Fehler: ";
+	static const char* ARTIKELNUMMER;
+	static const char* BEZEICHNUNG;
+	static const char* ARTIKELPREIS;
+	static const char* BESTAND;
+	static const char* SEPERATOR;
+	static const char* NEWPHRASE;
+	static const char* DIALOGOPTIONONE;
+	static const char* DIALOGOPTIONTWO;
+	static const char* DIALOGOPTIONTHREE;
+	static const char* STANDARDEXITOPTION;
+	static const char* STANDARDCHOICEPHRASE;
+	static const char* MANUELLDIALOGOPTIONONE;
+	static const char* MANUELLDIALOGOPTIONTWO;
+	static const char* MANUELLDIALOGOPTIONTHREE;
+	static const char* MANUELLDIALOGOPTIONFOUR;
+	static const char* MANUELLDIALOGOPTIONFIVE;
+	static const char* MANUELLDIALOGOPTIONSIX;
+	static const char* PRICECHANGEPHRASE;
+	static const char* INPUTERRORPHRASE;
+	static const char* WITHOUTPHRASE;
+	static const char* RUNTESTCONSTRUCTORPHRASE;
+	static const char* USEVALUESPHRASE;
+	static const char* VALUEPHRASE;
+	static const char* CREATEARTIKELPHRASE;
+	static const char* ERRORPHRASE;
 	Artikeldialog();
 	virtual ~Artikeldialog();
 	/**

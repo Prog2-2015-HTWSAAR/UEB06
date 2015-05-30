@@ -18,7 +18,7 @@ Lager::Lager(int maxAnzArtikel, string name){
 	if(name.empty()){
 		throw LagerException(meldungNameLeer);
 	}
-	anzArtikel = ARTIKELANZAHL;
+	anzArtikel = defaultArtikelAnzahl;
 	this->maxAnzArtikel = maxAnzArtikel;
 	this->name = name;
 	this->artikelTab = new Artikel*[maxAnzArtikel];

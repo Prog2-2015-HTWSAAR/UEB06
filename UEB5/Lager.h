@@ -72,7 +72,7 @@ public:
 	static const char* meldungGroesse;
 	static const char* meldungNameLeer;
 	static const char* defaultName;
-	static const int ARTIKELANZAHL = 0;
+	static const int defaultArtikelAnzahl = 0;
 	static const int defaultSize = 100;
 private:
 	/**
