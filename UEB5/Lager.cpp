@@ -61,7 +61,7 @@ void Lager::deleteArtikel(int artikelNr){
 }
 void Lager::bucheAbgang(int artikelNr, int menge){
 	int i = findeArtikel(artikelNr);
-	if (i != -1 && menge > NULL){
+	if (i >= 0 ){
 		int index = findeArtikel(artikelNr);
 		artikelTab[index]->bucheAbgang(menge);
 	}
@@ -69,7 +69,7 @@ void Lager::bucheAbgang(int artikelNr, int menge){
 
 void Lager::bucheZugang(int artikelNr, int menge){
 	int i = findeArtikel(artikelNr);
-	if (i != -1 && menge > NULL){
+	if (i >= 0 ){
 		int index = findeArtikel(artikelNr);
 		artikelTab[index]->bucheZugang(menge);
 	}
