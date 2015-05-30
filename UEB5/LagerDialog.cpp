@@ -123,9 +123,9 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 				cout << INPUTERRORPHRASE << endl;
 			}
 
-		}catch (ArtikelException& e) {
-			cout << ERRORPHRASE << e.what() << endl;
 		}catch (LagerException& e) {
+			cout << ERRORPHRASE << e.what() << endl;
+		}catch (ArtikelException& e) {
 			cout << ERRORPHRASE << e.what() << endl;
 		}
 	} while (answer != 0);
