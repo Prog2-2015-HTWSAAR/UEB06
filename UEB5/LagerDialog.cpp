@@ -5,7 +5,7 @@ LagerDialog::LagerDialog(){}
 LagerDialog::~LagerDialog(){}
 
 void LagerDialog::dialog(){
-	Lager* lager;
+	Lager* lager = NULL;
 	int answer = -1;
 	int anzahl = -1;
 	string name = STANDARDLAGERNAME;
