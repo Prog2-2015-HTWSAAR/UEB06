@@ -8,7 +8,7 @@ build:
 	g++ -c -Wall -pedantic *.cpp
 	g++ -o ueb05 *.o
 build11: 
-	g++ -c -Wall -pedantic *.cpp
+	g++ -c -Wall -pedantic *.cpp -std=c++11
 	g++ -o ueb05 *.o
 doc: 
 	/export/home_14/andschreiner/doxygen/bin/doxygen doxyfile
