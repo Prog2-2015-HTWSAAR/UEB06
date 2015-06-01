@@ -1,8 +1,10 @@
 /*
- * Lager.cpp
+ * @file Lager.cpp
  *
- *  Created on: 23.05.2015
- *      Author: Simon
+ * @date 23.05.2015
+ * @author Andreas Schreiber & Simon Bastian
+ *
+ * Lager-Klasees Implementation
  */
 
 #include "Lager.h"
@@ -11,6 +13,7 @@
 const char* Lager::defaultName = "Musterlager";
 const char* Lager::meldungGroesse = "Lagergroesse muss positiv sein!";
 const char* Lager::meldungNameLeer = "Lagername darf nicht leer sein!";
+const char* Lager::meldungArtNrVorhanden = "Artikelnummer bereits vorhanden!";
 /**
 * @brief Konstruktor
 * @param maxAnzArtikel (optional) muss positiv sein!
@@ -50,6 +53,8 @@ void Lager::createArtikel(int artikelNr, string bezeichnung, double artikelPreis
 		Artikel* ap = new Artikel(artikelNr, bezeichnung, artikelPreis);
 		artikelTab[anzArtikel] = ap;
 		anzArtikel++;
+	}else{
+		throw LagerException(meldungArtNrVorhanden);
 	}
 }
 /**
@@ -66,6 +71,8 @@ void Lager::createArtikel(int artikelNr, string bezeichnung, double artikelPreis
 		Artikel* ap = new Artikel(artikelNr, bezeichnung, artikelPreis, bestand);
 		artikelTab[anzArtikel] = ap;
 		anzArtikel++;
+	}else{
+		throw LagerException(meldungArtNrVorhanden);
 	}
 }
 /**
@@ -121,6 +128,7 @@ void Lager::preiseAendern(double preisAenderung){
 /**
 * @brief findeArtikel Findet einen Artikel
 * @param artikelNr
+* @returns index, falls Artikel gefunden, sonst -1
 */
 int Lager::findeArtikel(int artikelNr){
 	for(int i = 0; i < anzArtikel; i++){
@@ -140,6 +148,10 @@ void Lager::loescheAlleArtikel(){
 	}
 	anzArtikel = 0;
 }
+/**
+ * @brief toString gibt den Inhalt des Lagers als String zurueck
+ * @returns Stringrepresentation des Lager-Objekts
+ */
 string Lager::toString() const {
 	ostringstream o;
 	o << "Lager: " << name << '\n';
@@ -149,6 +161,11 @@ string Lager::toString() const {
 	o << endl;
 	return o.str();
 }
+/**
+ * @brief <<Operator zur ausgabe in einen stream
+ * @param[in,out] ostream& Streamreferenz
+ * @param[in] Lager& Lagerreferenz
+ */
 ostream& operator<<(ostream& o, const Lager& lager) {
 	o << "Lager: " << lager.name << " ";
 	o << lager.anzArtikel << "/" << lager.maxAnzArtikel <<'\n';

@@ -1,3 +1,14 @@
+/**
+* compile: g++ -c -Wall -pedantic *.cpp
+* compile: g++ -o ueb05 *.o
+* @file Artikeldialog.h
+* @author Andreas Schreiner & Simon Bastian
+*
+* @date 01.06.2015
+*
+* BasisDialog Implementation
+*
+*/
 #ifndef BASISDIALOG_H_
 #define BASISDIALOG_H_
 #include "Artikel.h"
@@ -18,23 +29,31 @@ public:
 	static const char* ERRORPHRASE;
 
 	/**
-	* @brief Konstruktor
-	* @details Konstruktor
-	*/
+	 * @brief Konstruktor
+	 */
 	BasisDialog();
 	/**
-	* @brief Dekonstruktor
-	* @details Dekonstruktor
-	*/
+	 * @brief Dekonstruktor
+	 */
 	~BasisDialog();
 	/**
-	* @brief Eingabeleerung
-	* @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
-	*/
+	 * @brief Eingabeleerung
+	 * @details Im Falle einer falschen eingabe leert dies den Eingabepuffer.
+	 */
 	void leereEingabe();
+	/**
+	 * @brief Initiiert den ArtikelDialog
+	 */
 	void enterArtikelDialog();
+	/**
+	 * @brief Initiiert den LagerDialog
+	 */
 	void enterLagerDialog();
-	void dialog();
+	/**
+	 * @brief Initiiert den StartDialog
+	 * @details Auswahl zwischen Artikel- und Lagerdialog
+	 */
+	void startDialog();
 
 };
 

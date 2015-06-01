@@ -4,7 +4,7 @@
 * @file ueb03.cpp
 * @author Andreas Schreiner & Simon Bastian
 *
-* @date 16.05.2015
+* @date 26.05.2015
 *
 * Main Funktion
 *
@@ -17,6 +17,6 @@
 */
 int main(){
 	BasisDialog dia;
-	dia.dialog();
+	dia.startDialog();
 	return 0;
 }

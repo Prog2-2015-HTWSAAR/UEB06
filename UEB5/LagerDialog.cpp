@@ -1,3 +1,14 @@
+/**
+* compile: g++ -c -Wall -pedantic *.cpp
+* compile: g++ -o ueb05 *.o
+* @file LagerDialog.cpp
+* @author Andreas Schreiner & Simon Bastian
+*
+* @date 01.06.2015
+*
+* LagerDialog implementation
+*
+*/
 #include "LagerDialog.h"
 const char* LagerDialog::LAGERWIRKLICHLOESCHEN = "Lager wirklich Loeschen (j)=Ja: ";
 const char* LagerDialog::ARTIKELWIRKLICHLOESCHEN = "Artikel wirklich Loeschen (j)=Ja: ";
@@ -182,7 +193,7 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 
 }
 /**
-* @brief artikelEditDialog Dialog zum aendern eines Artikels
+* @brief artikelEditDialog Dialog zum Aendern von Artikeln
 * @param Lager* lager
 */
 void LagerDialog::artikelEditDialog(Lager* lager){

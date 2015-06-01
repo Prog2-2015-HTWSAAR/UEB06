@@ -1,6 +1,6 @@
 /**
 * compile: g++ -c -Wall -pedantic *.cpp
-* compile: g++ -o ueb03 *.o
+* compile: g++ -o ueb05 *.o
 * @file Artikeldialog.cpp
 * @author Andreas Schreiner & Simon Bastian
 *
@@ -40,24 +40,22 @@ const char* Artikeldialog::VALUEPHRASE = "Wert: ";
 const char* Artikeldialog::CREATEARTIKELPHRASE = "Erstellter Artikel:";
 const char* Artikeldialog::ERRORPHRASE = "Fehler: ";
 /**
-* @brief Konstruktor
-* @details Konstruktor zur Erzeugung eines Artikel Obj; Bestandsangabe optional
-*/
+ * @brief Konstruktor
+ */
 Artikeldialog::Artikeldialog(){
 	// Nothing to do here
 }
 /**
-* @brief Dekonstruktor
-* @details Dekonstruktor
-*/
+ * @brief Destruktor
+ */
 Artikeldialog::~Artikeldialog(){
 	// Nothing to do here
 }
 /**
-* @brief ausgeben
-* @details Ausgabe fkt
-* @param Artikel& artikel Artikel obj
-*/
+ * @brief ausgeben
+ * @details Ausgabe fkt
+ * @param Artikel& artikel Artikel obj
+ */
 void Artikeldialog::ausgeben(const Artikel& artikel){
 	cout << ARTIKELNUMMER << artikel.getArtikelNr()
 		 << BEZEICHNUNG << artikel.getBezeichnung()
@@ -66,11 +64,11 @@ void Artikeldialog::ausgeben(const Artikel& artikel){
 }
 
 /**
-* @brief testeConstructor1 mit 2 Parameter(Artikelnummer. Bezeichnung)
-* @param artikelNr Artikelnummer des neuen Obj
-* @param bezeichnung Bezeichnung des neuen Obj
-* @param artikelpreis
-*/
+ * @brief testeConstructor1 mit 2 Parameter(Artikelnummer. Bezeichnung)
+ * @param artikelNr Artikelnummer des neuen Obj
+ * @param bezeichnung Bezeichnung des neuen Obj
+ * @param artikelpreis
+ */
 void Artikeldialog::testeConstructor1(int artikelNr, string bezeichnung, double artikelpreis){
 	cout << endl << RUNTESTCONSTRUCTORPHRASE << WITHOUTPHRASE << endl
 		<< USEVALUESPHRASE << endl << ARTIKELNUMMER << artikelNr << endl
@@ -86,11 +84,11 @@ void Artikeldialog::testeConstructor1(int artikelNr, string bezeichnung, double 
 
 }
 /**
-* @brief testeConstructor2 mit 3 Parameter(Artikelnummer.Bezeichnung, Bestand)
-* @param artikelNr Artikelnummer
-* @param bezeichnung Bezeichnung
-* @param bestand Lagerbestand
-*/
+ * @brief testeConstructor2 mit 3 Parameter(Artikelnummer.Bezeichnung, Bestand)
+ * @param artikelNr Artikelnummer
+ * @param bezeichnung Bezeichnung
+ * @param bestand Lagerbestand
+ */
 void Artikeldialog::testeConstructor2(int artikelNr, string bezeichnung, double artikelpreis, int bestand){
 
 	cout << endl << RUNTESTCONSTRUCTORPHRASE << endl << USEVALUESPHRASE 
@@ -108,10 +106,10 @@ void Artikeldialog::testeConstructor2(int artikelNr, string bezeichnung, double 
 
 }
 /**
-* @brief testeBucheAbgang
-* @details Autom Test Buche Abgang Bestand
-* @param artikel Artikel obj
-*/
+ * @brief testeBucheAbgang
+ * @details Autom Test Buche Abgang Bestand
+ * @param artikel Artikel obj
+ */
 void Artikeldialog::testeBucheAbgang(Artikel *artikel){
 	int menge = TESTABGANG;
 
@@ -132,10 +130,10 @@ void Artikeldialog::testeBucheAbgang(Artikel *artikel){
 }
 
 /**
-* @brief testeBucheZugang
-* @details Autom Test Buche Zugang Bestand
-* @param artikel Artikel obj
-*/
+ * @brief testeBucheZugang
+ * @details Autom Test Buche Zugang Bestand
+ * @param artikel Artikel obj
+ */
 void Artikeldialog::testeBucheZugang(Artikel *artikel){
 	int menge=TESTZUGANG;
 
@@ -157,10 +155,10 @@ void Artikeldialog::testeBucheZugang(Artikel *artikel){
 }
 
 /**
-* @brief testeSetBezeichnung
-* @details Autom Test Setze Bezeichnung
-* @param artikel Artikel obj
-*/
+ * @brief testeSetBezeichnung
+ * @details Autom Test Setze Bezeichnung
+ * @param artikel Artikel obj
+ */
 void Artikeldialog::testeSetBezeichnung(Artikel *artikel){
 	string bezeichnung = NEUBEZ;
 	cout << endl << "Starte Test zum Setzen der Bezeichnung eines Artikels..." << endl;
@@ -181,10 +179,10 @@ void Artikeldialog::testeSetBezeichnung(Artikel *artikel){
 }
 
 /**
-* @brief testeSetBestand
-* @details Autom Test Setze Bestand
-* @param artikel Artikel obj
-*/
+ * @brief testeSetBestand
+ * @details Autom Test Setze Bestand
+ * @param artikel Artikel obj
+ */
 void Artikeldialog::testeSetBestand(Artikel *artikel){
 	int bestand = NEUBESTAND;
 	cout << endl << "Starte Test zum Setzen des Bestands eines Artikels..." << endl;
@@ -270,10 +268,10 @@ void Artikeldialog::testeAlles(){
 	testeAenderePreis(artikel);
 }
 /**
-* @brief Benutzerdialog
-* @details Dialog zur Auswahl zwischen automatischen Tests und manuellem Testen
-*/
-void Artikeldialog::dialog(){
+ * @brief Benutzerdialog
+ * @details Dialog zur Auswahl zwischen automatischen Tests und manuellem Testen
+ */
+void Artikeldialog::chooseDialog(){
 	int answer;
 	do {
 		cout << SEPERATOR << endl << DIALOGOPTIONONE << endl << DIALOGOPTIONTWO 
@@ -303,9 +301,9 @@ void Artikeldialog::dialog(){
 }
 
 /**
-* @brief createArtikelComplete
-* @details Artikel Erstellung mit 4 parametern
-*/
+ * @brief createArtikelComplete
+ * @details Artikel Erstellung mit 4 parametern
+ */
 void Artikeldialog::createArtikelMitBestand(){
 	int artikelNr=0;
 	string bezeichnung="";
@@ -323,13 +321,13 @@ void Artikeldialog::createArtikelMitBestand(){
 	cin >> bestand;
 	leereEingabe();
 	Artikel* artikel = new Artikel(artikelNr, bezeichnung, artikelPreis, bestand);
-	manuell(artikel);
+	testeManuell(artikel);
 
 }
 /**
-* @brief createArtikelTwoParam
-* @details Artikel Erstellung mit 3 parametern wobei bestand=0
-*/
+ * @brief createArtikelTwoParam
+ * @details Artikel Erstellung mit 3 parametern wobei bestand=0
+ */
 void Artikeldialog::createArtikelOhneBestand(){
 	int artikelNr=0;
 	string bezeichnung="";
@@ -343,15 +341,14 @@ void Artikeldialog::createArtikelOhneBestand(){
 	cin >> artikelPreis;
 	leereEingabe();
 	Artikel* artikel = new Artikel(artikelNr, bezeichnung,artikelPreis);
-	manuell(artikel);
+	testeManuell(artikel);
 }
 
 /**
-* @brief manuell
-* @details manuell Fkt untere ebene des Dialogs
-* @param artikel Artikel obj
-*/
-void Artikeldialog::manuell(Artikel* artikel){
+ * @brief Interaktiver Test eines Artikels
+ * @param artikel
+ */
+void Artikeldialog::testeManuell(Artikel* artikel){
 	int answer=-1;
 	double preis=0.0;
 	int menge=0;

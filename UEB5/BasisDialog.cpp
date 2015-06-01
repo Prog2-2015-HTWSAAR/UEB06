@@ -1,3 +1,14 @@
+/**
+* compile: g++ -c -Wall -pedantic *.cpp
+* compile: g++ -o ueb05 *.o
+* @file Artikeldialog.h
+* @author Andreas Schreiner & Simon Bastian
+*
+* @date 01.06.2015
+*
+* BasisDialog Implementation
+*
+*/
 #include "BasisDialog.h"
 
 const char* BasisDialog::SEPERATOR = "-B-----------------------------";
@@ -7,10 +18,23 @@ const char* BasisDialog::STANDARDEXITOPTION = "(0) -EXIT/BACK-";
 const char* BasisDialog::STANDARDCHOICEPHRASE = "Waehlen sie eine Option : ";
 const char* BasisDialog::INPUTERRORPHRASE = "-> FEHLERHAFTE EINGABE <-";
 const char* BasisDialog::ERRORPHRASE = "Fehler: ";
-BasisDialog::BasisDialog(){}
-BasisDialog::~BasisDialog(){}
-
-void BasisDialog::dialog(){
+/**
+ * @brief Konstruktor
+ */
+BasisDialog::BasisDialog(){
+	//Nothing to do here
+}
+/**
+ * @brief Dekonstruktor
+ */
+BasisDialog::~BasisDialog(){
+	//Nothing to do here
+}
+/**
+ * @brief Initiiert den StartDialog
+ * @details Auswahl zwischen Artikel- und Lagerdialog
+ */
+void BasisDialog::startDialog(){
 	int answer = -1;
 	do {
 		try {
@@ -38,14 +62,24 @@ void BasisDialog::dialog(){
 		leereEingabe();
 	} while (answer != 0);
 }
+/**
+ * @brief Eingabeleerung
+ * @details Im Falle einer falschen Eingabe leert dies den Eingabepuffer.
+ */
 void BasisDialog::leereEingabe(){
 	cin.clear();
 	cin.ignore(BIGNUMBER, '\n');
 }
+/**
+ * @brief Initiiert den ArtikelDialog
+ */
 void BasisDialog::enterArtikelDialog(){
 	Artikeldialog dia;
-	dia.dialog();
+	dia.chooseDialog();
 }
+/**
+ * @brief Initiiert den LagerDialog
+ */
 void BasisDialog::enterLagerDialog(){
 	LagerDialog dia;
 	dia.dialog();

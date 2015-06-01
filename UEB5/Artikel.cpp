@@ -1,12 +1,12 @@
 /**
 * compile: g++ -c -Wall -pedantic *.cpp
-* compile: g++ -o ueb03 *.o
+* compile: g++ -o ueb05 *.o
 * @file Artikel.cpp
 * @author Andreas Schreiner & Simon Bastian
 *
 * @date 16.05.2015
 *
-* Artikel Funktionen
+* Artikel-Klasse
 *
 */
 #include <sstream>
@@ -123,7 +123,10 @@ void Artikel::aenderePreis(double preisaenderung) throw(ArtikelException){
 	artikelPreis*=(1+(preisaenderung/100));
 	artikelPreis=round(artikelPreis*100)/100;
 }
-
+/**
+ * @brief toString gibt den Inhalt des Artikels als String zurueck
+ * @returns Stringrepresentation des Artikel-Objekts
+ */
 string Artikel::toString() const {
 	ostringstream o;
 	o << ARTIKELNUMMER << artikelNr << "\t"
@@ -132,6 +135,12 @@ string Artikel::toString() const {
 	  << BESTAND << bestand;
 	return o.str();
 }
+/**
+ * @brief <<Operator zur ausgabe in einen stream
+ * @param ostream& Streamreferenz
+ * @param Artikel& Artikelreferenz
+ * @returns stream mit angehaengtem ArtikelString
+ */
 ostream& operator<<(ostream& o, const Artikel& artikel) {
 	return o << artikel.toString();
 }

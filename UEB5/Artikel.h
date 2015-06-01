@@ -127,7 +127,17 @@ public:
 	double getArtikelPreis() const{
 		return artikelPreis;
 	}
+	/**
+	 * @brief toString gibt den Inhalt des Artikels als String zurueck
+	 * @returns Stringrepresentation des Artikel-Objekts
+	 */
 	virtual string toString() const;
+	/**
+	 * @brief <<Operator zur ausgabe in einen stream
+	 * @param ostream& Streamreferenz
+	 * @param Artikel& Artikelreferenz
+	 * @returns stream mit angehaengtem ArtikelString
+	 */
 	friend ostream& operator<<(ostream&, const Artikel&);
 private:
 	int artikelNr; ///< Artikel Nummer

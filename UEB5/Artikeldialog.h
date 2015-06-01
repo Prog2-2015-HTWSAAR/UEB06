@@ -1,12 +1,12 @@
 /**
 * compile: g++ -c -Wall -pedantic *.cpp
-* compile: g++ -o ueb03 *.o
+* compile: g++ -o ueb05 *.o
 * @file Artikeldialog.h
 * @author Andreas Schreiner & Simon Bastian
 *
 * @date 08.05.2015
 *
-* H file
+* Artikeldialog Header
 *
 */
 #ifndef ARTIKELDIALOG_H_
@@ -51,6 +51,9 @@ public:
 	static const char* VALUEPHRASE;
 	static const char* CREATEARTIKELPHRASE;
 	static const char* ERRORPHRASE;
+	/**
+	* @brief Konstruktor
+	*/
 	Artikeldialog();
 	virtual ~Artikeldialog();
 	/**
@@ -111,20 +114,20 @@ public:
 	 * @brief Benutzerdialog
 	 * @details Dialog zur Auswahl zwischen automatischen Tests und manuellem Testen
 	 */
-	void dialog();
+	void chooseDialog();
 	/**
 	 * @brief Interaktiver Test eines Artikels
 	 * @param artikel
 	 */
-	void manuell(Artikel* artikel);
+	void testeManuell(Artikel* artikel);
 	/**
 	 * @brief Interaktives Erstellen eines Testartikels mit Bestand
-	 * @details ruft manuell() auf
+	 * @details ruft testeManuell() auf
 	 */
 	void createArtikelMitBestand();
 	/**
 	 * @brief Interaktives Erstellen eines Testartikels ohne Bestand
-	 * @details ruft manuell() auf
+	 * @details ruft testeManuell() auf
 	 */
 	void createArtikelOhneBestand();
 	/**

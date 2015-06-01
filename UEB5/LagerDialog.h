@@ -1,11 +1,22 @@
+/**
+* compile: g++ -c -Wall -pedantic *.cpp
+* compile: g++ -o ueb05 *.o
+* @file LagerDialog.h
+* @author Andreas Schreiner & Simon Bastian
+*
+* @date 01.06.2015
+*
+* LagerDialog-Header
+*
+*/
 #ifndef LAGERDIALOG_H_
 #define LAGERDIALOG_H_
 #include "BasisDialog.h"
 #include "Lager.h"
-class LagerDialog
-{
-//	namespace Lager {
-	//	enum FunktionsTyp { ANLEGEN, EINZAHLEN, ABHEBEN, UEBERWEISEN, LOESCHEN, ENDE = 9 };
+/**
+ * @brief Klasse zum Testen der Lager-Klasse
+ */
+class LagerDialog {
 public:
 	static const char* LAGERWIRKLICHLOESCHEN;
 	static const char* ARTIKELWIRKLICHLOESCHEN;
@@ -66,14 +77,9 @@ public:
 	*/
 	void startLagerDialog(Lager* lager);
 	/**
-	* @brief artikelEditDialog Dialog zum aendern eines Artikels
+	* @brief artikelEditDialog Dialog zum Aendern von Artikeln
 	* @param Lager* lager
 	*/
 	void artikelEditDialog(Lager* lager);
-private:
-//	FunktionsTyp einlesenFunktion();
-//	void ausfuehrenFunktion(FunktionsTyp);
-	void legeKontoAnDialog();
 	};
-//}
 #endif

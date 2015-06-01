@@ -3,6 +3,8 @@
  *
  * @date 23.05.2015
  * @author Andreas Schreiner & Simon Bastian
+ *
+ * Lager-Klasse und zugehoerige Ausnahmen
  */
 
 #ifndef LAGER_H_
@@ -55,32 +57,37 @@ public:
 	 */
 	void deleteArtikel(int artikelNr);
 	/**
-	* @brief bucheZugang erhoeht den bestand
-	* @param artikelNr
-	* @param menge
-	*/
+     * @brief bucheZugang erhoeht den bestand
+	 * @param artikelNr
+	 * @param menge
+	 */
 	void bucheZugang(int artikelNr, int menge);
 	/**
-	* @brief bucheAbgang verringert den bestand
-	* @param artikelNr
-	* @param menge
-	*/
+	 * @brief bucheAbgang verringert den bestand
+	 * @param artikelNr
+	 * @param menge
+	 */
 	void bucheAbgang(int artikelNr, int menge);
 	/**
-	* @brief preiseAendern aendert alle preise prozentual
-	* @param preisaenderung
-	*/
+	 * @brief preiseAendern aendert alle preise prozentual
+	 * @param preisaenderung
+	 */
 	void preiseAendern(double preisaenderung);
 	/**
-	* @brief toString ToString
-	* @param maxAnzArtikel muss positiv sein!
-	* @param name darf nicht leer sein!
-	*/
+	 * @brief toString gibt den Inhalt des Lagers als String zurueck
+	 * @returns Stringrepresentation des Lager-Objekts
+	 */
 	string toString() const;
+	/**
+	 * @brief <<Operator zur ausgabe in einen stream
+	 * @param ostream& Streamreferenz
+	 * @param Lager& Lagerreferenz
+	 * @returns stream mit angehaengtem LagerString
+	 */
 	friend ostream& operator<<(ostream&, const Lager&);
-	Lager& operator=(const Lager&) throw();
 	static const char* meldungGroesse;
 	static const char* meldungNameLeer;
+	static const char* meldungArtNrVorhanden;
 	static const char* defaultName;
 	static const int defaultArtikelAnzahl = 0;
 	static const int defaultSize = 100;
@@ -88,6 +95,7 @@ private:
 	/**
 	* @brief findeArtikel Findet einen Artikel
 	* @param artikelNr
+	* @returns index, falls Artikel gefunden, sonst -1
 	*/
 	int findeArtikel(int artikelNr);
 	/**
@@ -95,12 +103,6 @@ private:
 	* @param artikelNr
 	*/
 	void loescheAlleArtikel();
-	/**
-	 * @brief Initialisierung des Lagers
-	 * @param maxAnzArtikel muss positiv sein!
-	 * @param name darf nicht leer sein!
-	 */
-	//void init(int maxAnzArtikel, string name);
 	string name;
 	Artikel** artikelTab;
 	int anzArtikel;
