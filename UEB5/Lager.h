@@ -70,9 +70,9 @@ public:
 	void bucheAbgang(int artikelNr, int menge);
 	/**
 	 * @brief preiseAendern aendert alle preise prozentual
-	 * @param preisaenderung
+	 * @param preisAenderung
 	 */
-	void preiseAendern(double preisaenderung);
+	void preiseAendern(double preisAenderung);
 	/**
 	 * @brief toString gibt den Inhalt des Lagers als String zurueck
 	 * @returns Stringrepresentation des Lager-Objekts
@@ -80,9 +80,7 @@ public:
 	string toString() const;
 	/**
 	 * @brief <<Operator zur ausgabe in einen stream
-	 * @param ostream& Streamreferenz
-	 * @param Lager& Lagerreferenz
-	 * @returns stream mit angehaengtem LagerString
+	 * @returns referenz auf stream mit angehaengtem LagerString
 	 */
 	friend ostream& operator<<(ostream&, const Lager&);
 	static const char* meldungGroesse;
@@ -100,7 +98,6 @@ private:
 	int findeArtikel(int artikelNr);
 	/**
 	* @brief loescheAlleArtikel loesche alle artikel
-	* @param artikelNr
 	*/
 	void loescheAlleArtikel();
 	string name;

@@ -54,7 +54,7 @@ Artikeldialog::~Artikeldialog(){
 /**
  * @brief ausgeben
  * @details Ausgabe fkt
- * @param Artikel& artikel Artikel obj
+ * @param artikel Artikelreferenz
  */
 void Artikeldialog::ausgeben(const Artikel& artikel){
 	cout << ARTIKELNUMMER << artikel.getArtikelNr()

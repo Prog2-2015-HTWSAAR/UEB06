@@ -117,7 +117,7 @@ void Lager::bucheZugang(int artikelNr, int menge){
 }
 /**
 * @brief preiseAendern aendert alle preise prozentual
-* @param preisaenderung
+* @param preisAenderung
 */
 void Lager::preiseAendern(double preisAenderung){
 	for (int i = 0; i < anzArtikel; i++){
@@ -140,7 +140,6 @@ int Lager::findeArtikel(int artikelNr){
 }
 /**
 * @brief loescheAlleArtikel loesche alle artikel
-* @param artikelNr
 */
 void Lager::loescheAlleArtikel(){
 	for(int i = 0; i < anzArtikel; i++){
@@ -163,8 +162,9 @@ string Lager::toString() const {
 }
 /**
  * @brief <<Operator zur ausgabe in einen stream
- * @param[in,out] ostream& Streamreferenz
- * @param[in] Lager& Lagerreferenz
+ * @param o Streamreferenz
+ * @param lager Lagerreferenz
+ * @returns referenz auf stream mit angehaengtem LagerString
  */
 ostream& operator<<(ostream& o, const Lager& lager) {
 	o << "Lager: " << lager.name << " ";

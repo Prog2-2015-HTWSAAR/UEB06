@@ -137,9 +137,9 @@ string Artikel::toString() const {
 }
 /**
  * @brief <<Operator zur ausgabe in einen stream
- * @param ostream& Streamreferenz
- * @param Artikel& Artikelreferenz
- * @returns stream mit angehaengtem ArtikelString
+ * @param o Streamreferenz
+ * @param artikel Artikelreferenz
+ * @returns Referenz auf Stream mit angehaengtem ArtikelString
  */
 ostream& operator<<(ostream& o, const Artikel& artikel) {
 	return o << artikel.toString();

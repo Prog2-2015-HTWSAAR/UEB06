@@ -108,7 +108,7 @@ void LagerDialog::dialog(){
 }
 /**
 * @brief startLagerDialog Dialog Lagermanagementdialog
-* @param Lager* lager
+* @param lager
 */
 void LagerDialog::startLagerDialog(Lager* lager) {
 	int answer = -1;
@@ -194,7 +194,7 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 }
 /**
 * @brief artikelEditDialog Dialog zum Aendern von Artikeln
-* @param Lager* lager
+* @param lager
 */
 void LagerDialog::artikelEditDialog(Lager* lager){
 	int artikelNr = 0000;

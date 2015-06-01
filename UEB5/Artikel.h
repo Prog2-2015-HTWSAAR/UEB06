@@ -134,8 +134,8 @@ public:
 	virtual string toString() const;
 	/**
 	 * @brief <<Operator zur ausgabe in einen stream
-	 * @param ostream& Streamreferenz
-	 * @param Artikel& Artikelreferenz
+	 * @param o Streamreferenz
+	 * @param artikel Artikelreferenz
 	 * @returns stream mit angehaengtem ArtikelString
 	 */
 	friend ostream& operator<<(ostream&, const Artikel&);

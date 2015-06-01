@@ -73,12 +73,12 @@ public:
 	void leereEingabe();
 	/**
 	* @brief startLagerDialog Dialog Lagermanagementdialog
-	* @param Lager* lager
+	* @param lager
 	*/
 	void startLagerDialog(Lager* lager);
 	/**
 	* @brief artikelEditDialog Dialog zum Aendern von Artikeln
-	* @param Lager* lager
+	* @param lager
 	*/
 	void artikelEditDialog(Lager* lager);
 	};
