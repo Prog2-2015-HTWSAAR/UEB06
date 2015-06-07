@@ -18,6 +18,33 @@
  */
 class LagerDialog {
 public:
+	static const char* TESTARTIKELBEZEICHNUNGONE;
+	static const char* TESTARTIKELBEZEICHNUNGTWO;
+	static const char* TESTARTIKELBEZEICHNUNGTHREE;
+	static const char* TESTLAGERNAME;
+	static const char* AUTOTESTERZEUGEARTIKEL;
+	static const char* AUTOTESTLOESCHEARTIKEL;
+	static const char* AUTOTESTZUBUCHEN;
+	static const char* AUTOTESTABBUCHEN;
+	static const char* AUTOTESTPREISAENDERN;
+	static const int TESTARTIKELNUMMERONE;
+	static const int TESTARTIKELNUMMERTWO;
+	static const int TESTARTIKELNUMMERTHREE;
+	static const int TESTARTIKELNUMMERFOUR;
+	static const int TESTARTIKELNUMMERWRONG;
+	static const int TESTARTIKELBESTANDONE;
+	static const int TESTARTIKELBESTANDTWO;
+	static const int TESTARTIKELBESTANDTHREE;
+	static const int TESTARTIKELBESTANDNEGATIVE;
+	static const int TESTARTIKELBESTANDAENDERUNGONE;
+	static const int TESTARTIKELBESTANDAENDERUNGTWO;
+	static const int TESTLAGERSIZEFUERAUTO;
+	static const double TESTARTIKELPREISONE;
+	static const double TESTARTIKELPREISTWO;
+	static const double TESTARTIKELPREISTHREE;
+	static const double TESTARTIKELPREISNEGATIVE;
+	static const double TESTARTIKELPREISAENDERUNGONE;
+	static const double TESTARTIKELPREISAENDERUNGTWO;
 	static const char* LAGERWIRKLICHLOESCHEN;
 	static const char* ARTIKELWIRKLICHLOESCHEN;
 	static const char* ARTIKELNUMMER;
@@ -41,6 +68,7 @@ public:
 	static const char* DIALOGOPTIONONE;
 	static const char* DIALOGOPTIONTWO;
 	static const char* DIALOGOPTIONTHREE;
+	static const char* DIALOGOPTIONFOUR;
 	static const char* STANDARDEXITOPTION;
 	static const char* STANDARDBACKOPTION;
 	static const char* LAGERDIALOGOPTIONONE;
@@ -81,5 +109,8 @@ public:
 	* @param lager
 	*/
 	void artikelEditDialog(Lager* lager);
-	};
+	
+	void automatischerLagerTest();
+};
+
 #endif

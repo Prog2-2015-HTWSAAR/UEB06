@@ -10,6 +10,33 @@
 *
 */
 #include "LagerDialog.h"
+const char* LagerDialog::TESTARTIKELBEZEICHNUNGONE = "TESTARTIKEL1";
+const char* LagerDialog::TESTARTIKELBEZEICHNUNGTWO = "TESTARTIKEL2";
+const char* LagerDialog::TESTARTIKELBEZEICHNUNGTHREE = "TESTARTIKEL3";
+const char* LagerDialog::TESTLAGERNAME = "LAGERTEST";
+const char* LagerDialog::AUTOTESTERZEUGEARTIKEL = "ERZEUGE Artikel mit folgenden Werten: ";
+const char* LagerDialog::AUTOTESTLOESCHEARTIKEL = "LOESCHE Artikel mit folgenden Werten: ";
+const char* LagerDialog::AUTOTESTZUBUCHEN = "ERHOHE Bestand um: ";
+const char* LagerDialog::AUTOTESTABBUCHEN = "VERRINGERE Bestand um: ";
+const char* LagerDialog::AUTOTESTPREISAENDERN = "AENDERE Preise um: ";
+const int LagerDialog::TESTARTIKELNUMMERWRONG = 123;
+const int LagerDialog::TESTARTIKELNUMMERONE = 1111;
+const int LagerDialog::TESTARTIKELNUMMERTWO = 2222;
+const int LagerDialog::TESTARTIKELNUMMERTHREE = 3333;
+const int LagerDialog::TESTARTIKELNUMMERFOUR = 3323;
+const int LagerDialog::TESTARTIKELBESTANDONE = 1;
+const int LagerDialog::TESTARTIKELBESTANDTWO = 2;
+const int LagerDialog::TESTARTIKELBESTANDTHREE = 3;
+const int LagerDialog::TESTARTIKELBESTANDNEGATIVE = -1;
+const int LagerDialog::TESTARTIKELBESTANDAENDERUNGONE = 4;
+const int LagerDialog::TESTARTIKELBESTANDAENDERUNGTWO = 19;
+const double LagerDialog::TESTARTIKELPREISONE = 1.0;
+const double LagerDialog::TESTARTIKELPREISTWO = 2.4;
+const double LagerDialog::TESTARTIKELPREISTHREE = 44.3;
+const double LagerDialog::TESTARTIKELPREISAENDERUNGONE = 10;
+const double LagerDialog::TESTARTIKELPREISAENDERUNGTWO = -12;
+const double LagerDialog::TESTARTIKELPREISNEGATIVE = -1;
+const int LagerDialog::TESTLAGERSIZEFUERAUTO = 3;
 const char* LagerDialog::LAGERWIRKLICHLOESCHEN = "Lager wirklich Loeschen (j)=Ja: ";
 const char* LagerDialog::ARTIKELWIRKLICHLOESCHEN = "Artikel wirklich Loeschen (j)=Ja: ";
 const char* LagerDialog::ARTIKELNUMMER = "Artikelnummer: ";
@@ -33,6 +60,7 @@ const char* LagerDialog::SEPERATORCREATEARTIKEL = "-L-------CREATE-ARTIKEL------
 const char* LagerDialog::DIALOGOPTIONONE = "(1) Groesse und Name festlegen";
 const char* LagerDialog::DIALOGOPTIONTWO = "(2) Groesse festlegen";
 const char* LagerDialog::DIALOGOPTIONTHREE = "(3) Standardlager";
+const char* LagerDialog::DIALOGOPTIONFOUR = "(4) Automatischer Test";
 const char* LagerDialog::STANDARDEXITOPTION = "(0) -EXIT/BACK-";
 const char* LagerDialog::STANDARDBACKOPTION = "(0) -BACK-";
 const char* LagerDialog::LAGERDIALOGOPTIONONE = "(1) Artikel Anlegen";
@@ -46,6 +74,7 @@ const char* LagerDialog::ERRORPHRASE = "Fehler: ";
 const char* LagerDialog::STANDARDLAGERNAME = "Lager";
 const char* LagerDialog::ENTERNAMEPHRASE = "Bitte geben sie den Lagernamen ein: ";
 const char* LagerDialog::ENTERSIZEPHRASE = "Bitte geben sie die Lagergroesse ein: ";
+
 /**
 * @brief Konstructor
 */
@@ -64,7 +93,7 @@ void LagerDialog::dialog(){
 	string name = STANDARDLAGERNAME;
 	do {
 		cout << SEPERATOR << endl << DIALOGOPTIONONE << endl << DIALOGOPTIONTWO
-			<< endl << DIALOGOPTIONTHREE << endl << STANDARDEXITOPTION << endl
+			<< endl << DIALOGOPTIONTHREE << endl << DIALOGOPTIONFOUR << endl << STANDARDEXITOPTION << endl
 			<< endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
 		leereEingabe();
@@ -94,6 +123,10 @@ void LagerDialog::dialog(){
 			case 3:
 				lager = new Lager();
 				startLagerDialog(lager);
+				delete lager;
+				break;
+			case 4: 
+				automatischerLagerTest();
 				delete lager;
 				break;
 			default:
@@ -252,4 +285,95 @@ void LagerDialog::artikelEditDialog(Lager* lager){
 void LagerDialog::leereEingabe(){
 	cin.clear();
 	cin.ignore(BIGNUMBER, '\n');
+}
+void LagerDialog::automatischerLagerTest(){
+	Lager* lager = NULL;
+	lager = new Lager(TESTLAGERSIZEFUERAUTO, TESTLAGERNAME); //Lager Erzeugen size 3
+	int testNummer = 0;
+	while (testNummer != 15){
+		try{
+			cout << *lager << endl;
+			switch (testNummer){
+			case 0: 
+				cout << AUTOTESTERZEUGEARTIKEL << TESTARTIKELNUMMERWRONG << ", " << TESTARTIKELBEZEICHNUNGONE 
+					<< ", " << TESTARTIKELPREISONE << ", " << TESTARTIKELBESTANDONE << endl;
+				lager->createArtikel(TESTARTIKELNUMMERWRONG, TESTARTIKELBEZEICHNUNGONE, TESTARTIKELPREISONE, TESTARTIKELBESTANDONE); //test 1 Falsche ArtNr
+				break;
+			case 1:
+				cout << AUTOTESTERZEUGEARTIKEL << TESTARTIKELNUMMERONE << ", " << TESTARTIKELBEZEICHNUNGONE 
+					<< ", " << TESTARTIKELPREISONE << ", " << TESTARTIKELBESTANDNEGATIVE << endl;
+				lager->createArtikel(TESTARTIKELNUMMERONE, TESTARTIKELBEZEICHNUNGONE, TESTARTIKELPREISONE, TESTARTIKELBESTANDNEGATIVE); //test 2 NEGATIVER BESTAND
+				break;
+			case 2:
+				cout << AUTOTESTERZEUGEARTIKEL << TESTARTIKELNUMMERONE << ", " << TESTARTIKELBEZEICHNUNGONE 
+					<< ", " << TESTARTIKELPREISNEGATIVE << ", " << TESTARTIKELBESTANDONE << endl;
+				lager->createArtikel(TESTARTIKELNUMMERONE, TESTARTIKELBEZEICHNUNGONE, TESTARTIKELPREISNEGATIVE, TESTARTIKELBESTANDONE); //test 3 NEGATIVER PREIS
+				break;
+			case 3:
+				cout << AUTOTESTERZEUGEARTIKEL << TESTARTIKELNUMMERONE << ", " << TESTARTIKELBEZEICHNUNGONE 
+					<< ", " << TESTARTIKELPREISONE << ", " << TESTARTIKELBESTANDONE << endl;
+				lager->createArtikel(TESTARTIKELNUMMERONE, TESTARTIKELBEZEICHNUNGONE, TESTARTIKELPREISONE, TESTARTIKELBESTANDONE); //Artikel 1 Erzeugen
+				break;
+			case 4:
+				cout << AUTOTESTERZEUGEARTIKEL << TESTARTIKELNUMMERONE << ", " << TESTARTIKELBEZEICHNUNGTWO 
+					<< ", " << TESTARTIKELPREISTWO << ", " << TESTARTIKELBESTANDTWO << endl;
+				lager->createArtikel(TESTARTIKELNUMMERONE, TESTARTIKELBEZEICHNUNGTWO, TESTARTIKELPREISTWO, TESTARTIKELBESTANDTWO); //test 4 Artikel 2 mit gleicher ArtNr wie Artikel 1
+				break;
+			case 5:
+				cout << AUTOTESTERZEUGEARTIKEL << TESTARTIKELNUMMERTWO << ", " << TESTARTIKELBEZEICHNUNGTWO 
+					<< ", " << TESTARTIKELPREISTWO << ", " << TESTARTIKELBESTANDTWO << endl;
+				lager->createArtikel(TESTARTIKELNUMMERTWO, TESTARTIKELBEZEICHNUNGTWO, TESTARTIKELPREISTWO, TESTARTIKELBESTANDTWO); //Artikel 2 Erzeugen
+				break;
+			case 6:
+				cout << AUTOTESTERZEUGEARTIKEL << TESTARTIKELNUMMERTHREE << ", " << TESTARTIKELBEZEICHNUNGTHREE 
+					<< ", " << TESTARTIKELPREISTHREE << ", " << TESTARTIKELBESTANDTHREE << endl;
+				lager->createArtikel(TESTARTIKELNUMMERTHREE, TESTARTIKELBEZEICHNUNGTHREE, TESTARTIKELPREISTHREE, TESTARTIKELBESTANDTHREE); //Artikel 3 Erzeugen
+				break;
+			case 7:
+				cout << AUTOTESTERZEUGEARTIKEL << TESTARTIKELNUMMERFOUR << ", " << TESTARTIKELBEZEICHNUNGTHREE 
+					<< ", " << TESTARTIKELPREISTHREE << ", " << TESTARTIKELBESTANDTHREE << endl;
+				lager->createArtikel(TESTARTIKELNUMMERFOUR, TESTARTIKELBEZEICHNUNGTHREE, TESTARTIKELPREISTHREE, TESTARTIKELBESTANDTHREE); //test 5 Artikel 4 Erzeugen
+				break;
+			case 8:
+				cout << AUTOTESTLOESCHEARTIKEL << TESTARTIKELNUMMERONE << ", " << TESTARTIKELBEZEICHNUNGONE 
+					<< ", " << TESTARTIKELPREISONE << ", " << TESTARTIKELBESTANDONE << endl;
+				lager->deleteArtikel(TESTARTIKELNUMMERONE); //test 6 Loesche Artikel 1
+				break;
+			case 9:
+				cout << ARTIKELNUMMER << TESTARTIKELNUMMERTWO << endl << AUTOTESTZUBUCHEN << TESTARTIKELBESTANDAENDERUNGONE << endl;
+				lager->bucheZugang(TESTARTIKELNUMMERTWO, TESTARTIKELBESTANDAENDERUNGONE); // test 6.1 Bestang Zugang
+				break;
+			case 10:
+				cout << ARTIKELNUMMER << TESTARTIKELNUMMERTWO << endl << AUTOTESTABBUCHEN << TESTARTIKELBESTANDAENDERUNGONE << endl;
+				lager->bucheAbgang(TESTARTIKELNUMMERTWO, TESTARTIKELBESTANDAENDERUNGONE);  // test 6.2 Bestang Abgang
+				break;
+			case 11:
+				cout << ARTIKELNUMMER << TESTARTIKELNUMMERTWO << endl << AUTOTESTABBUCHEN << TESTARTIKELBESTANDAENDERUNGTWO << endl;
+				lager->bucheAbgang(TESTARTIKELNUMMERTWO, TESTARTIKELBESTANDAENDERUNGTWO);  // test 6.3 Bestang Abgang Negative
+				break;
+			case 12:
+				cout << ARTIKELNUMMER << TESTARTIKELNUMMERTWO << endl << AUTOTESTPREISAENDERN << TESTARTIKELPREISAENDERUNGONE << "%" << endl;
+				lager->preiseAendern(TESTARTIKELPREISAENDERUNGONE); //test 7.1 Preiserhoehen
+				break;
+			case 13:
+				cout << ARTIKELNUMMER << TESTARTIKELNUMMERTWO << endl << AUTOTESTPREISAENDERN << TESTARTIKELPREISAENDERUNGTWO << "%" << endl;
+				lager->preiseAendern(TESTARTIKELPREISAENDERUNGTWO); //test 7.2 Preisverringern
+				break;
+			case 14:
+				delete lager;
+				break;
+			}
+		}
+		catch (const char* e) {
+			cout << ERRORPHRASE << e << endl;
+		}
+		catch (LagerException& e) {
+			cout << ERRORPHRASE << e.what() << endl;
+		}
+		catch (ArtikelException& e) {
+			cout << ERRORPHRASE << e.what() << endl;
+		}
+		testNummer++;
+	}
+	cout << "ENDE";
 }

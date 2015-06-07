@@ -40,7 +40,7 @@ Lager::Lager(const Lager& lager){
 	// Attribute uebertragen
 	this->name = lager.name;
 	this->maxAnzArtikel = lager.maxAnzArtikel;
-	artikelTab = new Lager*[maxAnzArtikel];
+	artikelTab = new Artikel*[maxAnzArtikel];
 	anzArtikel = lager.anzArtikel;
 	//vorhandene Artikel kopieren
 	for(int i = 0; i > anzArtikel; i++){
@@ -48,6 +48,7 @@ Lager::Lager(const Lager& lager){
 		artikelTab[i] = new Artikel(*tmp);
 	}
 }
+
 /**
 * @brief Destructor loescht alle Artikel
 */
