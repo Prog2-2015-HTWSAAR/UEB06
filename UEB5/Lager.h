@@ -31,9 +31,21 @@ public:
 	 */
 	Lager(int maxAnzArtikel = defaultSize, string name = defaultName);
 	/**
+	 * Expliziter Kopierkonstruktor
+	 * @param Referenz auf zu kopierendes Objekt
+	 */
+	Lager(const Lager&);
+	/**
 	 * @brief Destructor loescht alle Artikel
 	 */
 	virtual ~Lager();
+	/**
+	 * Expliziter Zuweisungsoperator
+	 *
+	 * @param Referenz auf das zugewiesene Objekt
+	 * @return Referenz auf das aktuelle Objekt
+	 */
+	Lager& operator=(const Lager&);
 	/**
 	 * @brief Eintragen eines neuen Artikels ohne Bestandsangabe
 	 * @details Artikel wird am Ende ins ArtikelTab eingetragen, falls moeglich
@@ -86,6 +98,7 @@ public:
 	static const char* meldungGroesse;
 	static const char* meldungNameLeer;
 	static const char* meldungArtNrVorhanden;
+	static const char* meldungLagerVoll;
 	static const char* defaultName;
 	static const int defaultArtikelAnzahl = 0;
 	static const int defaultSize = 100;

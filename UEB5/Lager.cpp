@@ -14,6 +14,7 @@ const char* Lager::defaultName = "Musterlager";
 const char* Lager::meldungGroesse = "Lagergroesse muss positiv sein!";
 const char* Lager::meldungNameLeer = "Lagername darf nicht leer sein!";
 const char* Lager::meldungArtNrVorhanden = "Artikelnummer bereits vorhanden!";
+const char* Lager::meldungLagerVoll = "Lager ist voll!";
 /**
 * @brief Konstruktor
 * @param maxAnzArtikel (optional) muss positiv sein!
@@ -30,7 +31,22 @@ Lager::Lager(int maxAnzArtikel, string name){
 	this->maxAnzArtikel = maxAnzArtikel;
 	this->name = name;
 	this->artikelTab = new Artikel*[maxAnzArtikel];
-
+}
+/**
+ * Expliziter Kopierkonstruktor
+ * @param Referenz auf zu kopierendes Objekt
+ */
+Lager::Lager(const Lager& lager){
+	// Attribute uebertragen
+	this->name = lager.name;
+	this->maxAnzArtikel = lager.maxAnzArtikel;
+	artikelTab = new Lager*[maxAnzArtikel];
+	anzArtikel = lager.anzArtikel;
+	//vorhandene Artikel kopieren
+	for(int i = 0; i > anzArtikel; i++){
+		Artikel* tmp = lager.artikelTab[i];
+		artikelTab[i] = new Artikel(*tmp);
+	}
 }
 /**
 * @brief Destructor loescht alle Artikel
@@ -38,6 +54,28 @@ Lager::Lager(int maxAnzArtikel, string name){
 Lager::~Lager() {
 	loescheAlleArtikel();
 	delete[] artikelTab;
+}
+
+Lager& Lager::operator=(const Lager& lager){
+	// Zuweisung auf mich selbst?
+	if (this == &lager)
+		return *this;
+
+	// bisherige Konto-Objekte destruieren
+	loescheAlleArtikel();
+	delete[] artikelTab;
+	// Attribute uebertragen und das Array anlegen
+	this->name = lager.name;
+	this->maxAnzArtikel = lager.maxAnzArtikel;
+	artikelTab = new Artikel*[maxAnzArtikel];
+	anzArtikel = lager.anzArtikel;
+
+	// vorhandene Konten kopieren
+	for (int i = 0; i < anzArtikel; i++) {
+		Artikel* tmp = lager.artikelTab[i];
+		artikelTab[i] = new Artikel(*tmp);
+	}
+	return *this;
 }
 
 /**
@@ -48,6 +86,9 @@ Lager::~Lager() {
 * @param artikelPreis
 */
 void Lager::createArtikel(int artikelNr, string bezeichnung, double artikelPreis){
+	if(anzArtikel == maxAnzArtikel){
+		throw LagerException(meldungLagerVoll);
+	}
 	int i = findeArtikel(artikelNr);
 	if (i == -1){
 		Artikel* ap = new Artikel(artikelNr, bezeichnung, artikelPreis);
@@ -66,6 +107,9 @@ void Lager::createArtikel(int artikelNr, string bezeichnung, double artikelPreis
 * @param bestand
 */
 void Lager::createArtikel(int artikelNr, string bezeichnung, double artikelPreis, int bestand){
+	if(anzArtikel == maxAnzArtikel){
+		throw LagerException(meldungLagerVoll);
+	}
 	int i = findeArtikel(artikelNr);
 	if (i == -1){
 		Artikel* ap = new Artikel(artikelNr, bezeichnung, artikelPreis, bestand);
