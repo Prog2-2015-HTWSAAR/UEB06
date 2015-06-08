@@ -42,6 +42,7 @@ void BasisDialog::startDialog(){
 				<< DIALOGOPTIONTWO << endl << STANDARDEXITOPTION << endl
 				<< endl << STANDARDCHOICEPHRASE;
 			cin >> answer;
+			leereEingabe();
 			switch (answer) {
 			case 0:
 				break;
@@ -59,7 +60,7 @@ void BasisDialog::startDialog(){
 		catch (const char* e) {
 			cout << ERRORPHRASE << e << endl;
 		}
-		leereEingabe();
+
 	} while (answer != 0);
 }
 /**
