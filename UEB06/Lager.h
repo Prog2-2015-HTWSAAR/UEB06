@@ -11,7 +11,7 @@
 
 #ifndef LAGER_H_
 #define LAGER_H_
-#include "Artikel.h"
+#include "../UEB06/Artikel.h"
 
 /**
  * Standardausnahme fuer logische Fehler in der Lagerklasse

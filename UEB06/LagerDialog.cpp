@@ -9,7 +9,7 @@
 * LagerDialog implementation
 *
 */
-#include "LagerDialog.h"
+#include "../UEB06/LagerDialog.h"
 const char* LagerDialog::TESTARTIKELBEZEICHNUNGONE = "TESTARTIKEL1";
 const char* LagerDialog::TESTARTIKELBEZEICHNUNGTWO = "TESTARTIKEL2";
 const char* LagerDialog::TESTARTIKELBEZEICHNUNGTHREE = "TESTARTIKEL3";

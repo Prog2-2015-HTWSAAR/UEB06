@@ -11,12 +11,13 @@
 */
 #ifndef BASISDIALOG_H_
 #define BASISDIALOG_H_
-#include "Artikel.h"
-#include "Artikeldialog.h"
-#include "LagerDialog.h"
-#include "Lager.h"
 #include <sstream>
 #include <cmath>
+
+#include "../UEB06/Artikel.h"
+#include "../UEB06/Artikeldialog.h"
+#include "../UEB06/Lager.h"
+#include "../UEB06/LagerDialog.h"
 class BasisDialog
 {
 public:

@@ -9,8 +9,9 @@
 * Artikel-Klasse
 *
 */
+#include "../UEB06/Artikel.h"
+
 #include <sstream>
-#include "Artikel.h"
 #include <cmath>
 const char* Artikel::ARTIKELNUMMER = "ArtikelNr: ";
 const char* Artikel::BEZEICHNUNG = "Bez.: ";

@@ -11,8 +11,8 @@
 */
 #ifndef LAGERDIALOG_H_
 #define LAGERDIALOG_H_
-#include "BasisDialog.h"
-#include "Lager.h"
+#include "../UEB06/BasisDialog.h"
+#include "../UEB06/Lager.h"
 /**
  * @brief Klasse zum Testen der Lager-Klasse
  */

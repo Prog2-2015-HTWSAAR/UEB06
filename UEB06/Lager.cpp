@@ -9,7 +9,8 @@
  * Lager-Klasees Implementation
  */
 
-#include "Lager.h"
+#include "../UEB06/Lager.h"
+
 #include <sstream>
 #include <cmath>
 const char* Lager::defaultName = "Musterlager";

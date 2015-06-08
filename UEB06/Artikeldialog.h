@@ -11,8 +11,10 @@
  */
 #ifndef ARTIKELDIALOG_H_
 #define ARTIKELDIALOG_H_
-#include "Artikel.h"
+
 #include <iostream>
+#include "../UEB06/Artikel.h"
+
 #define TESTNR 4711
 #define TESTBEZ "Wasser"
 #define NEUBEZ "Koelsch-Wasser"
@@ -24,6 +26,8 @@
 #define TESTABGANG 23
 #define TESTZUGANG 21
 #define BIGNUMBER 10000
+
+enum ArtikelTstOption{EXIT, AUTOTEST, MITBST, OHNEBST};
 class Artikeldialog {
 public:
 	static const char* ARTIKELNUMMER;

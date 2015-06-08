@@ -9,7 +9,7 @@
  * BasisDialog Implementation
  *
  */
-#include "BasisDialog.h"
+#include "../UEB06/BasisDialog.h"
 
 const char* BasisDialog::SEPERATOR = "-B-----------------------------";
 const char* BasisDialog::DIALOGOPTIONONE = "(1) Artikeldialog";

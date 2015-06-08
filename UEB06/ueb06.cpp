@@ -11,12 +11,13 @@
 
 */
 #include <iostream>
-#include "BasisDialog.h"
+
+#include "../UEB06/BasisDialog.h"
 /**
 * @brief Main Function
 */
 int main(){
-	BasisDialog dia;
-	dia.startDialog();
+	BasisDialog basisDialog;
+	basisDialog.startDialog();
 	return 0;
 }

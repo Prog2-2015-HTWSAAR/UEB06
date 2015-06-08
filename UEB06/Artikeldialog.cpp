@@ -8,9 +8,10 @@
  *
  * Artikeldialog Funktionen
  */
-#include "Artikeldialog.h"
-#include "Artikel.h"
+#include "../UEB06/Artikeldialog.h"
+
 #include <iostream>
+#include "../UEB06/Artikel.h"
 
 const char* Artikeldialog::ARTIKELNUMMER = "Artikelnummer: ";
 const char* Artikeldialog::BEZEICHNUNG = "\nBezeichnung: ";
@@ -270,7 +271,7 @@ void Artikeldialog::testeAlles(){
  * @details Dialog zur Auswahl zwischen automatischen Tests und manuellem Testen
  */
 void Artikeldialog::chooseDialog(){
-	int answer;
+	ArtikelTstOption answer;
 	do {
 		cout << SEPERATOR << endl << DIALOGOPTIONONE << endl << DIALOGOPTIONTWO 
 			<< endl << DIALOGOPTIONTHREE << endl << STANDARDEXITOPTION << endl 
@@ -278,15 +279,15 @@ void Artikeldialog::chooseDialog(){
 		cin >> answer;
 		try {
 			switch (answer){
-				case 0:
+				case EXIT:
 					break;
-				case 1:
+				case AUTOTEST:
 					testeAlles();
 					break;
-				case 2:
+				case MITBST:
 					createArtikelMitBestand();
 					break;
-				case 3:
+				case OHNEBST:
 					createArtikelOhneBestand();
 					break;
 				default:
