@@ -271,23 +271,25 @@ void Artikeldialog::testeAlles(){
  * @details Dialog zur Auswahl zwischen automatischen Tests und manuellem Testen
  */
 void Artikeldialog::chooseDialog(){
-	ArtikelTstOption answer;
+	int answer = -1;
+	ArtikelTstOption choice;
 	do {
 		cout << SEPERATOR << endl << DIALOGOPTIONONE << endl << DIALOGOPTIONTWO 
 			<< endl << DIALOGOPTIONTHREE << endl << STANDARDEXITOPTION << endl 
 			<< endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
+		choice = static_cast<ArtikelTstOption>(answer);
 		try {
-			switch (answer){
-				case EXIT:
+			switch (choice){
+				case EXITT:
 					break;
 				case AUTOTEST:
 					testeAlles();
 					break;
-				case MITBST:
+				case MITBESTAND:
 					createArtikelMitBestand();
 					break;
-				case OHNEBST:
+				case OHNEBESTAND:
 					createArtikelOhneBestand();
 					break;
 				default:
@@ -296,7 +298,7 @@ void Artikeldialog::chooseDialog(){
 		} catch (ArtikelException& e) {
 			cout << ERRORPHRASE << e.what() << endl;
 		}
-	} while (answer != 0);
+	} while (answer != EXITT);
 }
 
 /**
@@ -348,51 +350,53 @@ void Artikeldialog::createArtikelOhneBestand(){
  * @param artikel
  */
 void Artikeldialog::testeManuell(Artikel* artikel){
-	int answer=-1;
+	int answer = -1;
+	ManuelleOption choice = EXITM;
 	double preis=0.0;
 	int menge=0;
 	string bezeichnung;
 	do {
 		cout << SEPERATOR << endl << ARTIKELNUMMER << artikel->getArtikelNr()
-			<< endl << BEZEICHNUNG << artikel->getBezeichnung() << endl
-			<< ARTIKELPREIS << artikel->getArtikelPreis() << endl << BESTAND
-			<< artikel->getBestand() << endl << SEPERATOR << endl
-			<< MANUELLDIALOGOPTIONONE << endl << MANUELLDIALOGOPTIONTWO
-			<< endl << MANUELLDIALOGOPTIONTHREE << endl << endl 
-			<< MANUELLDIALOGOPTIONFOUR << endl << MANUELLDIALOGOPTIONFIVE 
-			<< endl << MANUELLDIALOGOPTIONSIX << endl << endl 
-			<< STANDARDEXITOPTION << endl << endl << STANDARDCHOICEPHRASE;
+				<< endl << BEZEICHNUNG << artikel->getBezeichnung() << endl
+				<< ARTIKELPREIS << artikel->getArtikelPreis() << endl << BESTAND
+				<< artikel->getBestand() << endl << SEPERATOR << endl
+				<< MANUELLDIALOGOPTIONONE << endl << MANUELLDIALOGOPTIONTWO
+				<< endl << MANUELLDIALOGOPTIONTHREE << endl << endl
+				<< MANUELLDIALOGOPTIONFOUR << endl << MANUELLDIALOGOPTIONFIVE
+				<< endl << MANUELLDIALOGOPTIONSIX << endl << endl
+				<< STANDARDEXITOPTION << endl << endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
+		choice = static_cast<ManuelleOption>(answer);
 		try {
 			switch (answer){
-				case 0:
+				case EXITM:
 					break;
-				case 1:
+				case SETBEZ:
 					cout << BEZEICHNUNG;
 					cin >> bezeichnung;
 					artikel->setBezeichnung(bezeichnung);
 					break;
-				case 2:
+				case SETPRICE:
 					cout << NEWPHRASE << ARTIKELPREIS;
 					cin >> preis;
 					artikel->setPreis(preis);
 					break;
-				case 3:
+				case SETBESTAND:
 					cout << NEWPHRASE << BESTAND;
 					cin >> menge;
 					artikel->setBestand(menge);
 					break;
-				case 4:
+				case CHANGEPRICE:
 					cout << PRICECHANGEPHRASE;
 					cin >> preis;
 					artikel->aenderePreis(preis);
 					break;
-				case 5:
+				case ABGANG:
 					cout << VALUEPHRASE;
 					cin >> menge;
 					artikel->bucheAbgang(menge);
 					break;
-				case 6:
+				case ZUGANG:
 					cout << VALUEPHRASE;
 					cin >> menge;
 					artikel->bucheZugang(menge);

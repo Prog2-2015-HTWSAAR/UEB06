@@ -27,7 +27,8 @@
 #define TESTZUGANG 21
 #define BIGNUMBER 10000
 
-enum ArtikelTstOption{EXIT, AUTOTEST, MITBST, OHNEBST};
+enum ArtikelTstOption{EXITT, AUTOTEST, MITBESTAND, OHNEBESTAND};
+enum ManuelleOption{EXITM, SETBEZ, SETPRICE, SETBESTAND, CHANGEPRICE, ABGANG, ZUGANG};
 class Artikeldialog {
 public:
 	static const char* ARTIKELNUMMER;
