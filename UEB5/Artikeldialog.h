@@ -1,14 +1,14 @@
 /**
-* compile: g++ -c -Wall -pedantic *.cpp
-* compile: g++ -o ueb05 *.o
-* @file Artikeldialog.h
-* @author Andreas Schreiner & Simon Bastian
-*
-* @date 08.05.2015
-*
-* Artikeldialog Header
-*
-*/
+ * compile: g++ -c -Wall -pedantic *.cpp
+ * compile: g++ -o ueb06 *.o
+ * @file Artikeldialog.h
+ * @author Andreas Schreiner & Simon Bastian
+ *
+ * @date 08.05.2015
+ *
+ * Artikeldialog Header
+ *
+ */
 #ifndef ARTIKELDIALOG_H_
 #define ARTIKELDIALOG_H_
 #include "Artikel.h"
@@ -52,8 +52,8 @@ public:
 	static const char* CREATEARTIKELPHRASE;
 	static const char* ERRORPHRASE;
 	/**
-	* @brief Konstruktor
-	*/
+	 * @brief Konstruktor
+	 */
 	Artikeldialog();
 	virtual ~Artikeldialog();
 	/**
@@ -87,9 +87,9 @@ public:
 	 */
 	void testeBucheAbgang(Artikel *artikel);
 	/**
-	* @brief Test des Setzens der Bezeichnung eines Artikels
-	* @param artikel
-	*/
+     * @brief Test des Setzens der Bezeichnung eines Artikels
+	 * @param artikel
+	 */
 	void testeSetBezeichnung(Artikel *artikel);
 	/**
 	 * @brief Test des Setzens des Bestands eines Artikels

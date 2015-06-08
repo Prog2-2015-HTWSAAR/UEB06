@@ -1,6 +1,6 @@
 /**
 * compile: g++ -c -Wall -pedantic *.cpp
-* compile: g++ -o ueb05 *.o
+* compile: g++ -o ueb06 *.o
 * @file LagerDialog.h
 * @author Andreas Schreiner & Simon Bastian
 *

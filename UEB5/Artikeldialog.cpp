@@ -1,15 +1,13 @@
 /**
-* compile: g++ -c -Wall -pedantic *.cpp
-* compile: g++ -o ueb05 *.o
-* @file Artikeldialog.cpp
-* @author Andreas Schreiner & Simon Bastian
-*
-* @date 16.05.2015
-*
-* Artikeldialog Funktionen
-*
-
-*/
+ * compile: g++ -c -Wall -pedantic *.cpp
+ * compile: g++ -o ueb06 *.o
+ * @file Artikeldialog.cpp
+ * @author Andreas Schreiner & Simon Bastian
+ *
+ * @date 16.05.2015
+ *
+ * Artikeldialog Funktionen
+ */
 #include "Artikeldialog.h"
 #include "Artikel.h"
 #include <iostream>

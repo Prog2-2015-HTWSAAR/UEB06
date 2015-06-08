@@ -1,14 +1,14 @@
 /**
-* compile: g++ -c -Wall -pedantic *.cpp
-* compile: g++ -o ueb05 *.o
-* @file Artikeldialog.h
-* @author Andreas Schreiner & Simon Bastian
-*
-* @date 01.06.2015
-*
-* BasisDialog Implementation
-*
-*/
+ * compile: g++ -c -Wall -pedantic *.cpp
+ * compile: g++ -o ueb06 *.o
+ * @file Artikeldialog.h
+ * @author Andreas Schreiner & Simon Bastian
+ *
+ * @date 01.06.2015
+ *
+ * BasisDialog Implementation
+ *
+ */
 #include "BasisDialog.h"
 
 const char* BasisDialog::SEPERATOR = "-B-----------------------------";
