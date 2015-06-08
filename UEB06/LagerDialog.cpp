@@ -9,7 +9,7 @@
 * LagerDialog implementation
 *
 */
-#include "../UEB06/LagerDialog.h"
+#include "LagerDialog.h"
 const char* LagerDialog::TESTARTIKELBEZEICHNUNGONE = "TESTARTIKEL1";
 const char* LagerDialog::TESTARTIKELBEZEICHNUNGTWO = "TESTARTIKEL2";
 const char* LagerDialog::TESTARTIKELBEZEICHNUNGTHREE = "TESTARTIKEL3";
@@ -84,11 +84,11 @@ LagerDialog::LagerDialog(){}
 */
 LagerDialog::~LagerDialog(){}
 /**
-* @brief dialog Dialog
+* @brief Dialog zur Erstellung des Lagers
 */
-void LagerDialog::dialog(){
+void LagerDialog::createLagerDialog(){
 	Lager* lager = NULL;
-	int answer = -1;
+	int answer = EXITCL;
 	int anzahl = -1;
 	string name = STANDARDLAGERNAME;
 	do {
@@ -99,9 +99,9 @@ void LagerDialog::dialog(){
 		leereEingabe();
 		try {
 			switch (answer){
-			case 0:
+			case EXITCL:
 				break;
-			case 1:
+			case SIZENAME:
 				cout << SEPERATORCREATELAGER << endl << ENTERSIZEPHRASE;
 				cin >> anzahl;
 				leereEingabe();
@@ -112,7 +112,7 @@ void LagerDialog::dialog(){
 				startLagerDialog(lager);
 				delete lager;
 				break;
-			case 2:
+			case NAME:
 				cout << SEPERATORCREATELAGER << endl << ENTERSIZEPHRASE;
 				cin >> anzahl;
 				leereEingabe();
@@ -120,12 +120,12 @@ void LagerDialog::dialog(){
 				startLagerDialog(lager);
 				delete lager;
 				break;
-			case 3:
+			case STANDARD:
 				lager = new Lager();
 				startLagerDialog(lager);
 				delete lager;
 				break;
-			case 4: 
+			case LAGERAUTOTST:
 				automatischerLagerTest();
 				delete lager;
 				break;
@@ -144,7 +144,7 @@ void LagerDialog::dialog(){
 * @param lager
 */
 void LagerDialog::startLagerDialog(Lager* lager) {
-	int answer = -1;
+	int answer = EXITML;
 	string wirklichLoeschen = "n";
 	int artikelNr = 0000;
 	int bestand = 0;
@@ -159,16 +159,16 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 		leereEingabe();
 		try {
 			switch (answer){
-			case 0:
+			case EXITML:
 				cout << SEPERATORDELETEARTIKEL << endl << LAGERWIRKLICHLOESCHEN;
 				cin >> wirklichLoeschen;
 				leereEingabe();
 				if (wirklichLoeschen != "j"){
-					answer = 9;
+					answer = ABORT;
 				}
 				cout << endl;
 				break;
-			case 1:
+			case CREATEARTIKEL:
 				cout << SEPERATORCREATEARTIKEL << endl << ARTIKELNUMMER;
 				cin >> artikelNr;
 				leereEingabe();
@@ -184,7 +184,7 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 				cout << endl;
 				lager->createArtikel(artikelNr, bezeichnung, preis, bestand);
 				break;
-			case 2:
+			case CREATEARTIKELOHNEBESTAND:
 				cout << SEPERATORCREATEARTIKEL << endl << ARTIKELNUMMER;
 				cin >> artikelNr;
 				leereEingabe();
@@ -197,10 +197,10 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 				cout << endl;
 				lager->createArtikel(artikelNr, bezeichnung, preis);
 				break;
-			case 3:
+			case EDITARTIKEL:
 				artikelEditDialog(lager);
 				break;
-			case 4:
+			case DELETEARTIKEL:
 				cout << SEPERATORDELETEARTIKEL << endl << ARTIKELNUMMER;
 				cin >> artikelNr;
 				leereEingabe();
@@ -210,6 +210,9 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 				if (wirklichLoeschen == "j"){
 					lager->deleteArtikel(artikelNr);
 				}
+				break;
+			case ABORT:
+				//Do nothing if Artikeldeleting was aborted
 				break;
 			default:
 				cout << INPUTERRORPHRASE << endl;
@@ -222,7 +225,7 @@ void LagerDialog::startLagerDialog(Lager* lager) {
 		catch (ArtikelException& e) {
 			cout << ERRORPHRASE << e.what() << endl;
 		}
-	} while (answer != 0);
+	} while (answer != EXITML);
 
 }
 /**
@@ -243,9 +246,9 @@ void LagerDialog::artikelEditDialog(Lager* lager){
 		leereEingabe();
 		try {
 			switch (answer){
-			case 0:
+			case EXITMA:
 				break;
-			case 1:
+			case ZUGANGL:
 				cout << SEPERATORBUCHEZUGANG << endl << ARTIKELNUMMER;
 				cin >> artikelNr;
 				leereEingabe();
@@ -254,7 +257,7 @@ void LagerDialog::artikelEditDialog(Lager* lager){
 				leereEingabe();
 				lager->bucheZugang(artikelNr, bestandAenderung);
 				break;
-			case 2:
+			case ABGANGL:
 				cout << SEPERATORBUCHEABGANG << endl << ARTIKELNUMMER;
 				cin >> artikelNr;
 				leereEingabe();
@@ -263,7 +266,7 @@ void LagerDialog::artikelEditDialog(Lager* lager){
 				leereEingabe();
 				lager->bucheAbgang(artikelNr, bestandAenderung);
 				break;
-			case 3:
+			case CHANGEPRICES:
 				cout << SEPERATORAENDEREPREIS << endl << PRICECHANGEPHRASE;
 				cin >> preisAenderung;
 				leereEingabe();

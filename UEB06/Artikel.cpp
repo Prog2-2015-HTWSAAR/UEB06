@@ -9,7 +9,7 @@
 * Artikel-Klasse
 *
 */
-#include "../UEB06/Artikel.h"
+#include "Artikel.h"
 
 #include <sstream>
 #include <cmath>

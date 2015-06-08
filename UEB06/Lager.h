@@ -11,7 +11,7 @@
 
 #ifndef LAGER_H_
 #define LAGER_H_
-#include "../UEB06/Artikel.h"
+#include "Artikel.h"
 
 /**
  * Standardausnahme fuer logische Fehler in der Lagerklasse
@@ -34,7 +34,7 @@ public:
 	Lager(int maxAnzArtikel = defaultSize, string name = defaultName);
 	/**
 	 * Expliziter Kopierkonstruktor
-	 * @param Referenz auf zu kopierendes Objekt
+	 * @param lager Referenz auf zu kopierendes Objekt
 	 */
 	Lager(const Lager&);
 	/**
@@ -44,7 +44,7 @@ public:
 	/**
 	 * Expliziter Zuweisungsoperator
 	 *
-	 * @param Referenz auf das zugewiesene Objekt
+	 * @param lager Referenz auf das zugewiesene Objekt
 	 * @return Referenz auf das aktuelle Objekt
 	 */
 	Lager& operator=(const Lager&);

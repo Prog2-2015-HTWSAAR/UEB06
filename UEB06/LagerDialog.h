@@ -11,8 +11,12 @@
 */
 #ifndef LAGERDIALOG_H_
 #define LAGERDIALOG_H_
-#include "../UEB06/BasisDialog.h"
-#include "../UEB06/Lager.h"
+#include "BasisDialog.h"
+#include "Lager.h"
+
+enum CreateLagerOption{EXITCL, SIZENAME, NAME, STANDARD, LAGERAUTOTST};
+enum ManageLagerOption{EXITML, CREATEARTIKEL, CREATEARTIKELOHNEBESTAND, EDITARTIKEL, DELETEARTIKEL, ABORT };
+enum ManageArtikelOption{EXITMA, ZUGANGL, ABGANGL, CHANGEPRICES};
 /**
  * @brief Klasse zum Testen der Lager-Klasse
  */
@@ -91,9 +95,9 @@ public:
 	*/
 	virtual ~LagerDialog();
 	/**
-	* @brief dialog Dialog
+	* @brief Dialog zur Erstellung des Lagers
 	*/
-	void dialog();
+	void createLagerDialog();
 	/**
 	* @brief Eingabeleerung
 	* @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.

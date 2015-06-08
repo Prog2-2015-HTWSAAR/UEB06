@@ -6,10 +6,10 @@ clean:
 	rm -f $(DEL_LIST)
 build: 
 	g++ -c -Wall -pedantic *.cpp
-	g++ -o ueb05 *.o
+	g++ -o ueb06 *.o
 build11: 
 	g++ -c -Wall -pedantic *.cpp -std=c++11
-	g++ -o ueb05 *.o
+	g++ -o ueb06 *.o
 doc: 
 	/export/home_14/andschreiner/doxygen/bin/doxygen doxyfile
 docmac: 
@@ -18,8 +18,8 @@ rebuild: clean all
 
 testbuild: 
 	g++ -c *.cpp 
-	g++ -o ueb05 *.o
+	g++ -o ueb06 *.o
 	
 testbuild11: 
 	g++ -c *.cpp -std=c++11
-	g++ -o ueb05 *.o
+	g++ -o ueb06 *.o

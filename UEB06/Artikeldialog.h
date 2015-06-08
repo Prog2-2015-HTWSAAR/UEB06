@@ -13,7 +13,7 @@
 #define ARTIKELDIALOG_H_
 
 #include <iostream>
-#include "../UEB06/Artikel.h"
+#include "Artikel.h"
 
 #define TESTNR 4711
 #define TESTBEZ "Wasser"

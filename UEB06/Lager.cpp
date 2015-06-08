@@ -9,7 +9,7 @@
  * Lager-Klasees Implementation
  */
 
-#include "../UEB06/Lager.h"
+#include "Lager.h"
 
 #include <sstream>
 #include <cmath>
@@ -37,7 +37,7 @@ Lager::Lager(int maxAnzArtikel, string name){
 }
 /**
  * Expliziter Kopierkonstruktor
- * @param Referenz auf zu kopierendes Objekt
+ * @param lager Referenz auf zu kopierendes Objekt
  */
 Lager::Lager(const Lager& lager){
 	// Attribute uebertragen
@@ -59,7 +59,12 @@ Lager::~Lager() {
 	loescheAlleArtikel();
 	delete[] artikelTab;
 }
-
+/**
+ * Expliziter Zuweisungsoperator
+ *
+ * @param lager Referenz auf das zugewiesene Objekt
+ * @return Referenz auf das aktuelle Objekt
+ */
 Lager& Lager::operator=(const Lager& lager){
 	// Zuweisung auf mich selbst?
 	if (this == &lager)

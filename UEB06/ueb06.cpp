@@ -1,7 +1,7 @@
 /**
 * compile: g++ -c -Wall -pedantic *.cpp
 * compile: g++ -o ueb06 *.o
-* @file ueb05.cpp
+* @file ueb06.cpp
 * @author Andreas Schreiner & Simon Bastian
 *
 * @date 26.05.2015
@@ -12,7 +12,7 @@
 */
 #include <iostream>
 
-#include "../UEB06/BasisDialog.h"
+#include "BasisDialog.h"
 /**
 * @brief Main Function
 */

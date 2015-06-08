@@ -9,7 +9,7 @@
  * BasisDialog Implementation
  *
  */
-#include "../UEB06/BasisDialog.h"
+#include "BasisDialog.h"
 
 const char* BasisDialog::SEPERATOR = "-B-----------------------------";
 const char* BasisDialog::DIALOGOPTIONONE = "(1) Artikeldialog";
@@ -44,12 +44,12 @@ void BasisDialog::startDialog(){
 			cin >> answer;
 			leereEingabe();
 			switch (answer) {
-			case 0:
+			case EXITB:
 				break;
-			case 1:
+			case ARTIKELDIALOG:
 				enterArtikelDialog();
 				break;
-			case 2:
+			case LAGERDIALOG:
 				enterLagerDialog();
 				break;
 			default:
@@ -61,7 +61,7 @@ void BasisDialog::startDialog(){
 			cout << ERRORPHRASE << e << endl;
 		}
 
-	} while (answer != 0);
+	} while (answer != EXITB);
 }
 /**
  * @brief Eingabeleerung
@@ -75,13 +75,13 @@ void BasisDialog::leereEingabe(){
  * @brief Initiiert den ArtikelDialog
  */
 void BasisDialog::enterArtikelDialog(){
-	Artikeldialog dia;
-	dia.chooseDialog();
+	Artikeldialog artikelDialog;
+	artikelDialog.chooseDialog();
 }
 /**
  * @brief Initiiert den LagerDialog
  */
 void BasisDialog::enterLagerDialog(){
-	LagerDialog dia;
-	dia.dialog();
+	LagerDialog lagerDialog;
+	lagerDialog.createLagerDialog();
 }

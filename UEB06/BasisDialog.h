@@ -14,10 +14,11 @@
 #include <sstream>
 #include <cmath>
 
-#include "../UEB06/Artikel.h"
-#include "../UEB06/Artikeldialog.h"
-#include "../UEB06/Lager.h"
-#include "../UEB06/LagerDialog.h"
+#include "Artikel.h"
+#include "Artikeldialog.h"
+#include "Lager.h"
+#include "LagerDialog.h"
+enum BasisOption{EXITB, ARTIKELDIALOG, LAGERDIALOG};
 class BasisDialog
 {
 public:

@@ -11,7 +11,7 @@
 #include "../UEB06/Artikeldialog.h"
 
 #include <iostream>
-#include "../UEB06/Artikel.h"
+#include "Artikel.h"
 
 const char* Artikeldialog::ARTIKELNUMMER = "Artikelnummer: ";
 const char* Artikeldialog::BEZEICHNUNG = "\nBezeichnung: ";
@@ -272,15 +272,13 @@ void Artikeldialog::testeAlles(){
  */
 void Artikeldialog::chooseDialog(){
 	int answer = -1;
-	ArtikelTstOption choice;
 	do {
 		cout << SEPERATOR << endl << DIALOGOPTIONONE << endl << DIALOGOPTIONTWO 
 			<< endl << DIALOGOPTIONTHREE << endl << STANDARDEXITOPTION << endl 
 			<< endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
-		choice = static_cast<ArtikelTstOption>(answer);
 		try {
-			switch (choice){
+			switch (answer){
 				case EXITT:
 					break;
 				case AUTOTEST:
@@ -351,7 +349,6 @@ void Artikeldialog::createArtikelOhneBestand(){
  */
 void Artikeldialog::testeManuell(Artikel* artikel){
 	int answer = -1;
-	ManuelleOption choice = EXITM;
 	double preis=0.0;
 	int menge=0;
 	string bezeichnung;
@@ -366,7 +363,6 @@ void Artikeldialog::testeManuell(Artikel* artikel){
 				<< endl << MANUELLDIALOGOPTIONSIX << endl << endl
 				<< STANDARDEXITOPTION << endl << endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
-		choice = static_cast<ManuelleOption>(answer);
 		try {
 			switch (answer){
 				case EXITM:
@@ -407,7 +403,7 @@ void Artikeldialog::testeManuell(Artikel* artikel){
 			cout << endl << ERRORPHRASE << e.what() << endl << endl;
 		}
 		leereEingabe();
-	} while (answer != 0);
+	} while (answer != EXITM);
 }
 
 /**
